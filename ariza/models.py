@@ -9,9 +9,11 @@ class Ariza(models.Model):
     kurs    = models.CharField(max_length=100)
     pasport_rasm = models.FileField(upload_to='pasport_rasm')
     # imtiyozlarni kiritish
-    nogironlig = models.CharField(max_length=100)
-    chin_yetim = models.CharField(max_length=100)
-    daftar_turishi = models.CharField(max_length=100)
-    boquvchisini_yoqotgan = models.CharField(max_length=100)
+    nogironlig = models.CharField(max_length=100, blank=True)
+    chin_yetim = models.CharField(max_length=100, blank=True)
+    daftar_turishi = models.CharField(max_length=100, blank=True)
+    boquvchisini_yoqotgan = models.CharField(max_length=100, blank=True)
     
     
+
+ 
