@@ -4,10 +4,8 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     sharif = models.CharField(max_length=100)
-    super = models.CharField(max_length=100)
-    dekanat = models.CharField(max_length=100)
-    talaba = models.CharField(max_length=100)
+    super = models.CharField(max_length=100, blank=True)
+    dekanat = models.CharField(max_length=100, blank=True)
+    talaba = models.CharField(max_length=100, blank=True)
 
-class Foydalanuvchi(models.Model):
-    token = models.UUIDField(unique=uuid5)
     
