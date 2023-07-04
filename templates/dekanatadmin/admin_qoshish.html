@@ -1,13 +1,14 @@
 {{data}}
 <a href="{% url 'home' %}">home</a>
 
-<h4>royhatdan otish</h4>
+<h4>dekanat admin qoshish</h4>
 <form method="POST">
     {% csrf_token %}
     <input type="text" name="username" placeholder="tel nomer">
     <input type="text" name="last_name" placeholder="familya">
     <input type="text" name="first_name" placeholder="ism">
     <input type="text" name="sharif" placeholder="sharif">
+    <input type="text" name="fakultet" placeholder="fakultet">
     <input type="text" name="password1" placeholder="parol">
     <input type="text" name="password2" placeholder="parolni tasdiqlash">
     

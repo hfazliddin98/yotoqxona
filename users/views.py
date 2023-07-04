@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.hashers import make_password
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, get_user_model
+from users.models import User
 
+@csrf_exempt
 def home(request):    
     data = 'Saytda texnik ishlar olib borilmaoqda'
     contex = {
@@ -32,13 +35,93 @@ def kirish(request):
     }
     return render(request, 'asosiy/kirish.html', contex)
 
+@csrf_exempt
 def royhat(request):
     data = 'Ro`yhatdan o`tish sahifasi'
+    habar = ''
+    if request.method == 'POST':
+        username = request.POST['username']
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        sharif = request.POST['sharif']        
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        if User.objects.filter(username=username):
+            habar = 'Bunday telefon raqam mavjud'                  
+        else:
+            user = get_user_model().objects.create(
+                talaba='talaba', username = username, last_name = last_name, 
+                first_name = first_name, sharif=sharif,
+                password = make_password(password1), parol=password2
+            )
+            user.is_active = False
+            user.is_staff = False 
+            return redirect('/')  
     contex = {
         'data':data,
+        'habar':habar,
     }
     return render(request, 'asosiy/royhat.html', contex)
 
+@csrf_exempt
+def superadmin_qoshish(request):
+    data = 'Ro`yhatdan o`tish sahifasi'
+    habar = ''
+    if request.method == 'POST':
+        username = request.POST['username']
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        sharif = request.POST['sharif']        
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        if User.objects.filter(username=username):
+            habar = 'Bunday telefon raqam mavjud'                  
+        else:
+            user = get_user_model().objects.create(
+                super='super', username = username, last_name = last_name, 
+                first_name = first_name, sharif=sharif,
+                password = make_password(password1), parol=password2
+            )
+            user.is_active = False
+            user.is_staff = False 
+            return redirect('/')  
+    contex = {
+        'data':data,
+        'habar':habar,
+    }
+    return render(request, 'superadmin/admin_qoshish.html', contex)
+
+
+@csrf_exempt
+def dekanatadmin_qoshish(request):
+    data = 'Ro`yhatdan o`tish sahifasi'
+    habar = ''
+    if request.method == 'POST':
+        username = request.POST['username']
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        sharif = request.POST['sharif']  
+        fakultet = request.POST['fakultet']       
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        if User.objects.filter(username=username):
+            habar = 'Bunday telefon raqam mavjud'                  
+        else:
+            user = get_user_model().objects.create(
+                dekanat='dekanat', username = username, last_name = last_name, 
+                first_name = first_name, sharif=sharif, fakultet=fakultet,
+                password = make_password(password1), parol=password2
+            )
+            user.is_active = False
+            user.is_staff = False 
+            return redirect('/')  
+    contex = {
+        'data':data,
+        'habar':habar,
+    }
+    return render(request, 'dekanatadmin/admin_qoshish.html', contex)
+
+@csrf_exempt
 def dekanatadmin(request):
     data = 'Dekanat admin asosiy sahifasi'
     contex = {
@@ -46,6 +129,7 @@ def dekanatadmin(request):
     }
     return render(request, 'dekanatadmin/home.html', contex)
 
+@csrf_exempt
 def superadmin(request):
     data = 'Super admin asosiy sahifasi'
     contex = {
@@ -53,6 +137,7 @@ def superadmin(request):
     }
     return render(request, 'superadmin/home.html', contex)
 
+@csrf_exempt
 def talaba(request):
     data = 'talaba asosiy shifasiga hush kelibsiz'
     contex = {

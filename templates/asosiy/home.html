@@ -1,4 +1,23 @@
 <marquee>{{data}}</marquee>
 
+{% if user.is_authenticated %} 
 
-<a href="{{kirish}}">kirish</a>
+  {% if user.is_superuser or user.super == 'super' %}
+  <li><a class="dropdown-item" href="{% url 'logout' %}">Chiqish </a></li>
+    {% include 'superadmin/home.html' %}
+  {% endif %}  
+  
+  {% if user.dekanat == 'dekanat' %}
+  <li><a class="dropdown-item" href="{% url 'logout' %}">Chiqish </a></li>
+    {% include 'dekanat/home.html' %}
+  {% endif %}  
+
+  {% if user.talaba == 'talaba'%}
+  <li><a class="dropdown-item" href="{% url 'logout' %}">Chiqish </a></li>
+    {% include 'talaba/home.html' %}
+  {% endif %}  
+ 
+{% else %}
+  {% include 'asosiy/asosiy.html' %}
+{% endif%}
+    
