@@ -4,12 +4,15 @@ from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login, authenticate, get_user_model
 from users.models import User
+from ariza.models import Ariza
 
 @csrf_exempt
 def home(request):    
     data = 'Saytda texnik ishlar olib borilmaoqda'
+    ariza = Ariza.objects.all()
     contex = {
         'data':data,
+        'ariza':ariza,
     }
     return render(request, 'asosiy/home.html', contex)
 

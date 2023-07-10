@@ -2,18 +2,15 @@
 
 {% if user.is_authenticated %} 
 
-  {% if user.is_superuser or user.super == 'super' %}
-  <li><a class="dropdown-item" href="{% url 'logout' %}">Chiqish </a></li>
+  {% if user.is_superuser or user.super == 'super' %}  
     {% include 'superadmin/home.html' %}
   {% endif %}  
   
   {% if user.dekanat == 'dekanat' %}
-  <li><a class="dropdown-item" href="{% url 'logout' %}">Chiqish </a></li>
-    {% include 'dekanat/home.html' %}
+    {% include 'dekanatadmin/home.html' %}
   {% endif %}  
 
   {% if user.talaba == 'talaba'%}
-  <li><a class="dropdown-item" href="{% url 'logout' %}">Chiqish </a></li>
     {% include 'talaba/home.html' %}
   {% endif %}  
  

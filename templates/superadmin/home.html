@@ -1,4 +1,31 @@
 {{data}}
+<hr>
+<li><a class="dropdown-item" href="{% url 'logout' %}">Chiqish </a></li>
+<hr>
 
 <a href="{% url 'superadmin_qoshish' %}">super admin qo`shish</a>
 <a href="{% url 'dekanatadmin_qoshish' %}">dekanat admin qo`shish</a>
+
+<hr>
+
+<h4>arizalar</h4>
+<table>
+    <thead>
+        <tr>
+            <td>telefon</td>
+            <td>familya</td>
+            <td>ism</td>
+            <td>sharif</td>
+            <td>viloyat</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ariza}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

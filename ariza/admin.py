@@ -1,14 +1,16 @@
 from django.contrib import admin
-from .models import Ariza
+from .models import Ariza, Imtiyoz
 
-# class ArizaAdmin(admin.ModelAdmin):
-#     list_display= [
-#         'id','viloyat','tuman','fakultet','yonalish','kurs','nogironlig','chin_yetim','daftar_turishi','boquvchisini_yoqotgan'
-#     ]
-# admin.site.register(Ariza,ArizaAdmin)
 
 class ArizaAdmin(admin.ModelAdmin):
     list_display= [
-        'id','viloyat','tuman'
+        'id', 'talaba_id', 'viloyat', 'tuman'
     ]
 admin.site.register(Ariza,ArizaAdmin)
+
+
+class ImtiyozAdmin(admin.ModelAdmin):
+    list_display= [
+        'talaba_id','nomi'
+    ]
+admin.site.register(Imtiyoz, ImtiyozAdmin)
