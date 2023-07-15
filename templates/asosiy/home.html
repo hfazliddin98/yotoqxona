@@ -2,15 +2,15 @@
 
 {% if user.is_authenticated %} 
 
-  {% if user.is_superuser or user.super == 'super' %}  
+  {% if user.is_superuser or user.lavozim == 'super' %}  
     {% include 'superadmin/home.html' %}
   {% endif %}  
   
-  {% if user.dekanat == 'dekanat' %}
+  {% if user.lavozim == 'dekanat' %}
     {% include 'dekanatadmin/home.html' %}
   {% endif %}  
 
-  {% if user.talaba == 'talaba'%}
+  {% if user.lavozim == 'talaba'%}
     {% include 'talaba/home.html' %}
   {% endif %}  
  

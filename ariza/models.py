@@ -21,5 +21,22 @@ class Imtiyoz(models.Model):
     nomi = models.CharField(max_length=100)
     file = models.FileField(upload_to='imtiyoz/')
     
+class Tolov(models.Model):
+    talaba_id = models.CharField(max_length=100)
+    narhi = models.CharField(max_length=100)
+    kivtansiya = models.FileField(upload_to='kivtansiya/')
+    tasqiqlash = models.CharField(max_length=100, blank=True)
+    
+class Barcha_tolov(models.Model):
+    barcha = models.CharField(max_length=100)
+    oylik = models.CharField(max_length=100)
+    
+class Tark_etgan(models.Model):
+    talaba_id  = models.CharField(max_length=100)
+    tark_etish = models.CharField(max_length=100)
+    
+    
+
+    
     
 

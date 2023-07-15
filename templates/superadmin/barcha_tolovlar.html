@@ -1,0 +1,6 @@
+<h4>Barcha tolovlar</h4>
+
+{{salom}}
+{% for t in tolovlar %}
+    {{t.talaba_id}} <a href="{% url 'tolov_tasdiqlash' t.pk %}">Tasdiqlash</a>
+{% endfor %}

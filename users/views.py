@@ -53,7 +53,7 @@ def royhat(request):
             habar = 'Bunday telefon raqam mavjud'                  
         else:
             user = get_user_model().objects.create(
-                talaba='talaba', username = username, last_name = last_name, 
+                lavozim='talaba', username = username, last_name = last_name, 
                 first_name = first_name, sharif=sharif,
                 password = make_password(password1), parol=password2
             )
@@ -81,7 +81,7 @@ def superadmin_qoshish(request):
             habar = 'Bunday telefon raqam mavjud'                  
         else:
             user = get_user_model().objects.create(
-                super='super', username = username, last_name = last_name, 
+                lavozim='super', username = username, last_name = last_name, 
                 first_name = first_name, sharif=sharif,
                 password = make_password(password1), parol=password2
             )
@@ -110,8 +110,8 @@ def dekanatadmin_qoshish(request):
         if User.objects.filter(username=username):
             habar = 'Bunday telefon raqam mavjud'                  
         else:
-            user = get_user_model().objects.create(
-                dekanat='dekanat', username = username, last_name = last_name, 
+            user = User.objects.create(
+                lavozim='dekanat', username = username, last_name = last_name, 
                 first_name = first_name, sharif=sharif, fakultet=fakultet,
                 password = make_password(password1), parol=password2
             )

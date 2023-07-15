@@ -1,0 +1,15 @@
+<h2>Malumotlari</h2>
+{% for t in talabalar %}
+
+
+    {{t.id}}
+    {{t.username}}
+
+
+
+    <a class="dropdown-item" href="{% url 'tasdiqlangan_ariza' t.pk %}">Tasdiqlash</a>
+    <a class="dropdown-item" href="{% url 'radetilgan_ariza' t.pk %}">Radetish</a>
+{% endfor %}
+
+<hr>
+{{arizalar}}

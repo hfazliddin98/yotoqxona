@@ -4,28 +4,18 @@
 <hr>
 
 <a href="{% url 'superadmin_qoshish' %}">super admin qo`shish</a>
+<br>
 <a href="{% url 'dekanatadmin_qoshish' %}">dekanat admin qo`shish</a>
 
 <hr>
-
-<h4>arizalar</h4>
-<table>
-    <thead>
-        <tr>
-            <td>telefon</td>
-            <td>familya</td>
-            <td>ism</td>
-            <td>sharif</td>
-            <td>viloyat</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{ariza}}</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </tbody>
-</table>
+<a href="{% url 'barcha_arizalar' %}">Barcha arizalar</a>
+<br>
+<a href="{% url 'tasdiqlangan' %}">Tasdiqlangan arizalar</a>
+<br>
+<a href="{% url 'radetilgan' %}">Radetilgan arizalar</a>
+<br>
+<a href="{% url 'radetilgan' %}">Tark etgan talabalar</a>
+<hr>
+<a href="{% url 'barcha_tolovlar' %}">To`lov qilgan talabalar</a>
+<br>
+<a href="{% url 'radetilgan' %}">To`lov tasdiqlangan talabalar</a>
