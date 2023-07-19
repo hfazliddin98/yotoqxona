@@ -1,0 +1,10 @@
+<h3>tark etish sahifasi</h3>
+<hr>
+{{data}}
+<hr>
+
+<form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    <input type="text" name="sabab" placeholder="sabab">
+    <button type="submit">saqlash</button>
+</form>

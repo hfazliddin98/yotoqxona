@@ -3,4 +3,5 @@
 {{salom}}
 {% for t in tolovlar %}
     {{t.talaba_id}} <a href="{% url 'tolov_tasdiqlash' t.pk %}">Tasdiqlash</a>
+    <a href="{% url 'tolov_radetish' t.pk %}">Radetish</a>
 {% endfor %}

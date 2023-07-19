@@ -1,14 +1,16 @@
 <h2>barcha arizalar</h2>
-{% for t in talabalar %}
+{% for a in arizalar %}
+
+    {% for t in talabalar %}
+        {{t.id}}
+        {{t.username}}
 
 
-    {{t.id}}
-    {{t.username}}
 
-
-
-    <a class="dropdown-item" href="{% url 'talaba_malumotlar' t.pk %}">korish</a>
+        <a class="dropdown-item" href="{% url 'talaba_malumotlar' t.pk %}">korish</a>
     
+    {% endfor %}
+
 {% endfor %}
 
 <hr>
