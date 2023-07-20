@@ -9,6 +9,7 @@ class Ariza(models.Model):
     fakultet = models.CharField(max_length=100)
     yonalish = models.CharField(max_length=100)
     kurs    = models.CharField(max_length=100)
+    pasport_serya_raqam = models.CharField(max_length=100)    
     pasport_rasm = models.FileField(upload_to='rasmlar/')
     
     # imtiyozlarni kiritish
@@ -31,8 +32,10 @@ class Tolov(models.Model):
     sana = models.DateTimeField(auto_now_add=True)
     
 class Barcha_tolov(models.Model):
-    barcha = models.CharField(max_length=100)
-    oylik = models.CharField(max_length=100)
+    barcha = models.CharField(max_length=100, blank=True)
+    oylik = models.CharField(max_length=100, blank=True)
+    boshlanginch_tolov = models.CharField(max_length=100, blank=True)
+    hisob_raqam = models.CharField(max_length=100, blank=True)
     sana = models.DateTimeField(auto_now_add=True)
     
 class Tark_etgan(models.Model):

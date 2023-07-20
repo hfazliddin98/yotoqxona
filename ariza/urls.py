@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import arizalar, barcha_arizalar, tasdiqlangan_ariza, radetilgan_ariza, tark_etish
 from .views import tasdiqlangan, radetilgan, talaba_malumotlar, talaba_tolov, tolov_tasdiqlash, tolov_radetish, barcha_tolovlar
+from .views import hisob_varoq, tolov_chek, shartnoma, order
 
 
 urlpatterns = [
@@ -16,4 +17,8 @@ urlpatterns = [
    path('tolov_radetish/<str:pk>/', tolov_radetish, name='tolov_radetish'),
    path('barcha_tolovlar/', barcha_tolovlar, name='barcha_tolovlar'),
    path('tark_etish/', tark_etish, name='tark_etish'),
+   path('hisob_varoq/', hisob_varoq, name='hisob_varoq'),
+   path('tolov_chek/', tolov_chek, name='tolov_chek'),
+   path('shartnoma/', shartnoma, name='shartnoma'),
+   path('order/', order, name='order'),
 ]

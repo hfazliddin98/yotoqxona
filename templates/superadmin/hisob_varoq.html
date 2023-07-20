@@ -1,0 +1,13 @@
+
+<a href="{% url 'home' %}">home</a>
+
+<h4>Barcha tolovlar qiymatlari qoshiladi</h4>
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="barcha" placeholder="barcha">
+    <input type="text" name="oylik" placeholder="oylik">
+    <input type="text" name="boshlanginch_tolov" placeholder="boshlanginch_tolov">
+    <input type="text" name="hisob_raqam" placeholder="hisob_raqam"> 
+    
+    <button type="submit">saqlash</button>
+</form>
