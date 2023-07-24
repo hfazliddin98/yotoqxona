@@ -1,0 +1,210 @@
+{% load static %}
+<!doctype html>
+<html lang="uzb">
+<head>
+    <title>Turar-Joy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900|Rubik:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static '/fonts/ionicons/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static '/fonts/fontawesome/css/font-awesome.min.css' %}">
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-light py-2">
+            <div class="container">
+                <div class="navbar-brand d-flex align-items-center">
+                    <img class="d-flex" src="{% static '/images/logo.png' %}" alt="" width="40">
+                    <a class="d-block" href="{% url 'home' %}">
+                        <div class="logo-word">QDPI Talabalar <br> Turar Joyi</div>
+                    </a>
+                </div>
+                <div class="btn-group">
+                    <button class="btn dropdown-toggle p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Name</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Name Surname</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Chiqish <img src="{% static '/img/logout.svg' %}" alt="Chiqish" width="20"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- END header -->
+    
+    <section id="video-qollanma" class="section-cover asosiy-rasm" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row justify-content-center align-items-center intro">
+                <div class="col-md-9 text-center element-animate">
+                    <p class="lead mb-5">Online ro'yxatdan o'tish uchun video qo'llanma</p>
+                    <div class="btn-play-wrap"><a href="https://vimeo.com/channels/staffpicks/93951774" class="btn-play popup-vimeo "><span class="ion-ios-play"></span></a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END section -->
+    
+    <!-- MAIN-CONTENT -->
+    <div class="main-content">
+        <div class="container">
+            <h3 class="mb-3 pt-5 text-center">Ariza yuborish</h3>
+            <h4 class="mb-3 pt-5 text-center">{{data}}</h4>
+            <!-- ARIZA -->
+            <form enctype="multipart/form-data" method="POST" class="row g-3 needs-validation" novalidate>
+                {% csrf_token %}
+                <!-- MANZIL -->
+                <h4>Doimiy yashash manzili</h4>
+                <div class="col-md-4 col-sm-6">
+                    <label for="region" class="form-label">Viloyat</label>
+                    <select name="viloyat" id="region" class="form-select" size="1" required aria-label="select example">
+                        <option selected="selected" value="" disabled>Viloyat</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Viloyatingizni tanlang.!
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <label for="district" class="form-label">Tuman</label>
+                    <select name="tuman" id="district" class="form-select col-md-4" size="1" required aria-label="select example">
+                        <option selected="selected" value="" disabled>Tuman</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Tumaningizni tanlang.!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="village" class="form-label">Ko'cha</label>
+                    <input name="kocha" type="text" id="village"  class="form-control" placeholder="Ko'cha va uy raqami" required>
+                    <div class="invalid-feedback">
+                        Ko'changizni kiriting.!
+                    </div>
+                </div>
+                
+                <!-- FAKULTET -->
+                <div class="col-md-4 col-sm-6">
+                    <label for="fakultet" class="form-label">Fakultet</label>
+                    <select name="fakultet" id="fakultet" class="form-select" size="1" required aria-label="select example">
+                        <option selected="selected" value="" disabled>Fakultet</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Fakultetingizni tanlang.!
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <label for="major" class="form-label">Yo'nalish</label>
+                    <select name="yonalish" id="major" class="form-select col-md-4" size="1" required aria-label="select example">
+                        <option selected="selected" value="" disabled>Yo'nalish</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Yo'nalishingizni tanlang.!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationCustom04" class="form-label">Kurs</label>
+                    <select name="kurs" class="form-select" id="validationCustom04" required>
+                        <option selected disabled value="">Kurs</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Kursingizni tanlang.!
+                    </div>
+                </div>
+                
+                <!-- Passport -->
+                <div class="col-md-4 col-sm-6">
+                    <label for="seriya" class="form-label">Passport seriya</label>
+                    <input name="pasport_serya" type="text" class="form-control" id="seriya" placeholder="Passport seriya" minlength="2" maxlength="2" required>
+                    <div class="invalid-feedback">
+                        Passport seriyangizni kiriting.!
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <label for="validationCustom03" class="form-label">Passport raqami</label>
+                    <input name="pasport_raqam" type="text" class="form-control" id="validationCustom03" placeholder="Passport raqam" minlength="7" maxlength="7" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
+                    <div class="invalid-feedback">
+                        Passport raqamingizni kiriting.!
+                    </div>
+                </div>                
+                <div class="col-md-4 col-sm-6">
+                    <label for="rasm-passport" class="form-label">Passport rasmi (maksimal 4Mb)</label>
+                    <input name="pasport_rasm" type="file" class="form-control" id="rasm-passport" placeholder="Passport rasmi" required>
+                    <div class="invalid-feedback">
+                        Passport rasmini yuklang.!
+                    </div>
+                </div>
+                
+                
+                <div class="col-12 text-center mb-4">
+                    <button class="btn btn-primary" type="submit">Yuborish</button>
+                </div>
+                
+            </form>
+            
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-md-4 mb-3">
+                    <h3 class="mb-0">
+                        <span>turar-joy.kspi.uz</span>
+                    </h3>
+                    <p class="lead">Talabalar Turar Joyi uchun online ro'yxatdan o'tish platformasi</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h3 class="mb-0">Murojaat uchun telefonlar</h3>
+                    <p class="lead mb-0"><a href="tel:+998944482303">+998 94 4482303</a></p>
+                    <p class="lead mt-0"><a href="tel:+998912040234">+998 91 2040234</a></p>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="mb-0">Biz bilan bog'lanish</h3>
+                    <p>Bizning ijtimoiy tarmoqlar</p>
+                    <p>
+                        <a href="#" class="pl-0 p-3"><span class="fa fa-facebook"></span></a>
+                        <a href="#" class="p-3"><span class="fa fa-telegram"></span></a>
+                        <a href="#" class="p-3"><span class="fa fa-twitter"></span></a>
+                        <a href="#" class="p-3"><span class="fa fa-instagram"></span></a>
+                        <a href="#" class="p-3"><span class="fa fa-youtube-play"></span></a>
+                    </p>
+                </div>              
+            </form>
+        </div>
+    </div>
+    <div class="text-center">
+        &copy;QDPI IT-Park
+    </div>
+</div>
+</footer>
+<!-- END footer -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+<script src="{% static '/js/register.js' %}"></script>
+
+<script>
+    const inputField = document.getElementById("seriya");
+    
+    inputField.addEventListener("keyup", function(event) {
+        event.preventDefault();
+        inputField.value = inputField.value.toUpperCase();
+        inputField.value.length = 2;
+    });
+</script>
+</body>
+</html>

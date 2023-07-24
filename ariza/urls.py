@@ -1,24 +1,61 @@
 from django.urls import path
-from .views import arizalar, barcha_arizalar, tasdiqlangan_ariza, radetilgan_ariza, tark_etish
-from .views import tasdiqlangan, radetilgan, talaba_malumotlar, talaba_tolov, tolov_tasdiqlash, tolov_radetish, barcha_tolovlar
-from .views import hisob_varoq, tolov_chek, shartnoma, order
+from .views import ariza, arizalar, ariza_imtiyoz, barcha_arizalar, tasdiqlangan_ariza, radetilgan_ariza, tark_etish
+from .views import tasdiqlangan, radetilgan, talaba_tolov, tolov_tasdiqlash, tolov_radetish, barcha_tolovlar
+from .views import hisob_varoq, tolov_chek, shartnoma, shartnomalar, order, tark_etgan_talaba, tolovlar, tasdiqlangan_tolov
+from .views import superadminlar, dekanatadminlar
+from .views import talaba_malumotlar, radetilgan_malumotlar, tasdiqlangan_malumotlar, tark_etgan_malumotlar
+from .views import talaba_tolov_malumotlar, tasdiqlangan_tolov_malumotlar
+from .views import imtiyoz, imtiyozli_arizalar, imtiyoz_malumotlar, imtiyozni_tasdiqlash, imtiyozni_radetish
+from .views import arizalar_jadvali
 
 
 urlpatterns = [
-   path('arizalar/', arizalar, name='arizalar'),   
+   # arizalaruchun  
    path('barcha_arizalar/', barcha_arizalar, name='barcha_arizalar'),
+   path('arizalar_jadvali/<str:pk>/', arizalar_jadvali, name='arizalar_jadvali'),
+   
+   
    path('tasdiqlangan_ariza/<str:pk>/', tasdiqlangan_ariza, name='tasdiqlangan_ariza'),
    path('radetilgan_ariza/<str:pk>/', radetilgan_ariza, name='radetilgan_ariza'),
    path('radetilgan/', radetilgan, name='radetilgan'),
    path('tasdiqlangan/', tasdiqlangan, name='tasdiqlangan'),
-   path('talaba_malumotlar/<str:pk>/', talaba_malumotlar, name='talaba_malumotlar'),
+   
+   # imtiyozlar uchun
+   path('imtiyoz/', imtiyoz, name='imtiyoz'), 
+   path('imtiyozli_arizalar/', imtiyozli_arizalar, name='imtiyozli_arizalar'),   
+   path('imtiyoz_malumotlar/<str:pk>/', imtiyoz_malumotlar, name='imtiyoz_malumotlar'),
+   path('imtiyozni_tasdiqlash/<str:pk>/', imtiyozni_tasdiqlash, name='imtiyozni_tasdiqlash'),
+   path('imtiyozni_radetish/<str:pk>/', imtiyozni_radetish, name='imtiyozni_radetish'),
+   
+   # talaba uchun
+   path('ariza/', ariza, name='ariza'), 
+   path('arizalar/', arizalar, name='arizalar'), 
+   path('ariza_imtiyoz/', ariza_imtiyoz, name='ariza_imtiyoz'), 
+   
+   # tolvlar uchun
    path('talaba_tolov/', talaba_tolov, name='talaba_tolov'),
+   path('tasdiqlangan_tolov/', tasdiqlangan_tolov, name='tasdiqlangan_tolov'),
    path('tolov_tasdiqlash/<str:pk>/', tolov_tasdiqlash, name='tolov_tasdiqlash'),
    path('tolov_radetish/<str:pk>/', tolov_radetish, name='tolov_radetish'),
    path('barcha_tolovlar/', barcha_tolovlar, name='barcha_tolovlar'),
    path('tark_etish/', tark_etish, name='tark_etish'),
+   path('tark_etgan_talaba/', tark_etgan_talaba, name='tark_etgan_talaba'),
    path('hisob_varoq/', hisob_varoq, name='hisob_varoq'),
    path('tolov_chek/', tolov_chek, name='tolov_chek'),
+   path('tolovlar/<str:pk>/', tolovlar, name='tolovlar'),
    path('shartnoma/', shartnoma, name='shartnoma'),
+   path('shartnomalar/', shartnomalar, name='shartnomalar'),
    path('order/', order, name='order'),
+   # royhatlar
+   path('superadminlar/', superadminlar, name='superadminlar'),   
+   path('dekanatadminlar/', dekanatadminlar, name='dekanatadminlar'),
+   
+   # ariza malumot
+   path('talaba_malumotlar/<str:pk>/', talaba_malumotlar, name='talaba_malumotlar'),
+   path('tasdiqlangan_malumotlar/<str:pk>/', tasdiqlangan_malumotlar, name='tasdiqlangan_malumotlar'),
+   path('radetilgan_malumotlar/<str:pk>/', radetilgan_malumotlar, name='radetilgan_malumotlar'),
+   path('tark_etgan_malumotlar/<str:pk>/', tark_etgan_malumotlar, name='tark_etgan_malumotlar'),
+    
+   # tolov malumot
+   path('talaba_tolov_malumotlar/<str:pk>/', talaba_tolov_malumotlar, name='talaba_tolov_malumotlar'),
 ]

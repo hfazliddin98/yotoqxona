@@ -1,15 +1,143 @@
-{{data}}
-<a href="{% url 'home' %}">home</a>
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Turar-Joy</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
-<h4>royhatdan otish</h4>
-<form method="POST">
-    {% csrf_token %}
-    <input type="text" id="username" name="username" placeholder="tel nomer">
-    <input type="text" id="last_name" name="last_name" placeholder="familya">
-    <input type="text" id="first_name" name="first_name" placeholder="ism">
-    <input type="text" id="sharif" name="sharif" placeholder="sharif">
-    <input type="text" id="password1" name="password1" placeholder="parol">
-    <input type="text" id="password2" name="password2" placeholder="parolni tasdiqlash">
+  <link rel="stylesheet" href="{% static '/fonts/ionicons/css/ionicons.min.csss' %}">
+  <link rel="stylesheet" href="{% static '/fonts/fontawesome/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static '/css/magnific-popup.css' %}">
     
-    <button type="submit">saqlash</button>
-</form>
+  <!-- Theme Style -->
+  <link rel="stylesheet" href="{% static '/css/style.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet"> 
+</head>
+<body>
+  
+  <header>
+    <nav class="orqa-rang py-3">
+      <div class="container">
+        <div class="navbar-brand d-flex align-items-center">
+          <img class="d-flex" src="{% static '/images/logo.png' %}" alt="" width="40">
+          <a class="d-block" href="{% url 'home' %}">
+            <div class="logo-word">QDPI Talabalar <br> Turar Joyi</div>
+          </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+      </div>
+    </nav>
+  </header>
+  <!-- END header -->
+
+  <section id="video-qollanma" class="section-cover royhat-rasm bosrder border-danger bg-danger" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row justify-content-center align-items-center intro">
+            <div class="col-md-9 text-center element-animate">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END section -->
+  
+  <div class="main-content">
+    <div class="container">
+      <h2 class="text-center my-3 p-3">Ro'yxatdan o'tish</h2>
+      <form class="row g-3 needs-validation" method="POST" novalidate>
+        {% csrf_token %}
+        <div class="col-md-4">
+          <label for="telefon" class="form-label">Telefon raqam</label>
+          <input name="username" type="tel" class="form-control" id="telefon" value="+998 " placeholder="Telefon raqam" required>
+          <div class="invalid-feedback">
+            Telefoningizni kiriting.!
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="familiya" class="form-label">Familiya</label>
+          <input name="last_name" type="text" class="form-control" id="familiya" placeholder="Familiya" required>
+          <div class="invalid-feedback">
+            Familiyangizni kiriting.!
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="ism" class="form-label">Ism</label>
+          <input name="first_name" type="text" class="form-control" id="ism" placeholder="Ism" required>
+          <div class="invalid-feedback">
+            Ismingizni kiriting.!
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="sharif" class="form-label">Sharif</label>
+          <input name="sharif" type="text" class="form-control" id="sharif" placeholder="Sharif" required>
+          <div class="invalid-feedback">
+            Sharifingizni kiriting.!
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <label for="password" class="form-label">Parol</label>
+          <input name="password1" type="password" class="form-control" id="password" placeholder="Parol o'ylab toping" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+          <div class="invalid-feedback">
+            Parolni kiriting.!
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <label for="confirm-password" class="form-label">Parolni tasdiqlang</label>
+          <input name="password2" type="password" id="confirm-password" class="form-control" placeholder="Parolni qayta kiriting" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+          <div class="invalid-feedback">
+            Parolni tekshiring va qayta kiriting.!
+          </div>  
+        </div>
+        <div class="col-12 text-center mb-5 pt-4">
+          <button class="btn btn-primary" type="submit"><span style="border-radius: 10px;">Ro'yxatdan o'tish</span></button>
+        </div>
+      </form>
+    </div>
+    
+  </div>
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row mb-3">
+      <div class="col-md-4 mb-3">
+        <h3 class="mb-0">
+          <span>turar-joy.kspi.uz</span>
+        </h3>
+        <p class="lead">Talabalar Turar Joyi uchun online ro'yxatdan o'tish platformasi</p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <h3 class="mb-0">Murojaat uchun telefonlar</h3>
+        <p class="lead mb-0"><a href="tel:+998944482303">+998 94 4482303</a></p>
+        <p class="lead mt-0"><a href="tel:+998912040234">+998 91 2040234</a></p>
+      </div>
+      <div class="col-md-4">
+        <h3 class="mb-0">Biz bilan bog'lanish</h3>
+        <p>Bizning ijtimoiy tarmoqlar</p>
+        <p>
+          <a href="#" class="pl-0 p-3"><span class="fa fa-facebook"></span></a>
+          <a href="#" class="p-3"><span class="fa fa-telegram"></span></a>
+          <a href="#" class="p-3"><span class="fa fa-twitter"></span></a>
+          <a href="#" class="p-3"><span class="fa fa-instagram"></span></a>
+          <a href="#" class="p-3"><span class="fa fa-youtube-play"></span></a>
+        </p>
+      </div>              
+    </form>
+  </div>
+</div>
+<div class="text-center">
+  &copy;QDPI IT-Park
+</div>
+</div>
+</footer>
+<!-- END footer -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="{% static '/js/register.js' %}"></script>
+</body>
+</html>

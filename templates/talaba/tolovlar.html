@@ -1,0 +1,159 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Turar-Joy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900|Rubik:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static '/fonts/ionicons/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static '/fonts/fontawesome/css/font-awesome.min.css' %}">
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-light py-2">
+            <div class="container">
+                <div class="navbar-brand d-flex align-items-center">
+                    <img class="d-flex" src="{% static '/images/logo.png' %}" alt="" width="40">
+                    <a class="d-block" href="{% url 'home' %}">
+                        <div class="logo-word">QDPI Talabalar <br> Turar Joyi</div>
+                    </a>
+                </div>
+                <div class="btn-group">
+                    <button class="btn dropdown-toggle p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Name</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Name Surname</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Chiqish <img src="{% static '/img/logout.svg' %}" alt="Chiqish" width="20"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- END header -->
+    
+    <section class="section-cover asosiy-rasm" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row justify-content-center align-items-center intro">
+                <div class="col-md-9 text-center element-animate">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END section -->
+    
+    <div class="main-content">
+        <div class="">
+            <div class="container">
+                <div class="d-flex align-items-center justify-content-around">
+                    <div class="yillik-summa text-center">
+                        <div class="yillik-summa-header sarlavha">Yillik to'lov</div>
+                        <div class="yillik-summa-sonda narx">1650000</div>
+                    </div>
+                    <div class="qolgan-summa text-center">
+                        <div class="qolgan-summa-header sarlavha">Qarzdorlik</div>
+                        <div class="qarzdorlik-sonda narx">350000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container p-5">
+            <div class="row text-center">
+                <div class="hisob-varoq border border-2 border-rounded col-md-3 p-3 mb-3">
+                    <div class="hisob-varoq-header fs-3">Bank hisob raqami</div>
+                    <hr>
+                    <a class="btn btn-primary text-center w-100" href="{% url 'tolov_chek' %}">Yuklab olish</a>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="hisob-varoq border border-2 border-rounded col-md-3 p-3 mb-3">
+                    <div class="hisob-varoq-header fs-3">To'langan summa</div>
+                    <hr>
+                    <a class="btn btn-primary text-center w-100" href="{% url 'talaba_tolov' %}">Yuborish</a>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="hisob-varoq border border-2 border-rounded col-md-3 p-3">
+                    <div class="hisob-varoq-header fs-3">To'lov tarixi</div>
+                    <hr>
+                    <button id="korish" class="btn btn-primary text-center w-100">Ko'rish</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container pb-5 jadval">
+        {% for t in data %}
+        <table class="table table-striped">
+            <thead class="table-primary">
+                <th>№</th>
+                <th>Summa</th>
+                <th>Sana</th>
+                <th>Holati</th>
+            </thead>
+            <tbody>
+                <th>{{t.id}}</th>
+                <td>{{t.narhi}}</td>
+                <td>{{t.sana}}</td>
+                <td>{{t.tasdiqlash}}</td>
+            </tbody>
+        </table>
+        {% endfor %}
+    </div>
+    
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-md-4 mb-3">
+                    <h3 class="mb-0">
+                        <span>turar-joy.kspi.uz</span>
+                    </h3>
+                    <p class="lead">Talabalar Turar Joyi uchun online ro'yxatdan o'tish platformasi</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h3 class="mb-0">Murojaat uchun telefonlar</h3>
+                    <p class="lead mb-0"><a href="tel:+998944482303">+998 94 4482303</a></p>
+                    <p class="lead mt-0"><a href="tel:+998912040234">+998 91 2040234</a></p>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="mb-0">Biz bilan bog'lanish</h3>
+                    <p>Bizning ijtimoiy tarmoqlar</p>
+                    <p>
+                        <a href="#" class="pl-0 p-3"><span class="fa fa-facebook"></span></a>
+                        <a href="#" class="p-3"><span class="fa fa-telegram"></span></a>
+                        <a href="#" class="p-3"><span class="fa fa-twitter"></span></a>
+                        <a href="#" class="p-3"><span class="fa fa-instagram"></span></a>
+                        <a href="#" class="p-3"><span class="fa fa-youtube-play"></span></a>
+                    </p>
+                </div>              
+            </form>
+        </div>
+    </div>
+    <div class="text-center">
+        &copy;QDPI IT-Park
+    </div>
+</div>
+</footer>
+<!-- END footer -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="{% static '/js/main.js' %}"></script>
+<script>
+    let btn = document.querySelector('#korish')
+    let jadval = document.querySelector('.jadval')
+    btn.addEventListener('click', ()=> {
+        jadval.style.display = 'block'
+    });
+</script>
+</body>
+</html>

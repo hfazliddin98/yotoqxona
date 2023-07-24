@@ -1,13 +1,238 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-<a href="{% url 'home' %}">home</a>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<h4>Barcha tolovlar qiymatlari qoshiladi</h4>
-<form method="POST">
-    {% csrf_token %}
-    <input type="text" name="barcha" placeholder="barcha">
-    <input type="text" name="oylik" placeholder="oylik">
-    <input type="text" name="boshlanginch_tolov" placeholder="boshlanginch_tolov">
-    <input type="text" name="hisob_raqam" placeholder="hisob_raqam"> 
+  <title>turarjoy.kspi.uz</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static '/assets/img/logo.png' %}" rel="icon">
+  <link href="{% static '/assets/img/logo.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static '/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static '/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static '/assets/vendor/simple-datatables/style.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static '/assets/css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="{% url 'home' %}" class="logo d-flex align-items-center">
+        <img src="{% static '/assets/img/logo.png' %}" alt="">
+        <span class="d-none d-lg-block"> Turar - Joy</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="{% static '/assets/img/profile-img.jpg' %}" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">Nodirbek Nurmamatov</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Nodirbek Nurmamatov </h6>
+              <span>Web Dasturchi</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="{% url 'logout' %}">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Chiqish</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'home' %}">
+          <i class="bi bi-grid"></i>
+          <span>Asosiy</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-heading">Qo'shimcha</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'superadminlar' %}">
+          <i class="bi bi-person-fill"></i>
+          <span>Super adminlar</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'dekanatadminlar' %}">
+          <i class="bi bi-person"></i>
+          <span>Dekanat adminlar</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'barcha_arizalar' %}">
+          <i class="bi bi-envelope"></i>
+          <span>Barcha arizalar</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'tasdiqlangan' %}">
+          <i class="bi bi-person-check-fill"></i>
+          <span>Tasdiqlangan arizalar</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'radetilgan' %}">
+          <i class="bi bi-person-x-fill"></i>
+          <span>Rad etilgan arizalar</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'tark_etgan_talaba' %}">
+          <i class="bi bi-house-x-fill"></i>
+          <span>Tark etgan talabalar</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'barcha_tolovlar' %}">
+          <i class="bi bi-cash-coin"></i>
+          <span>To'lov qilgan talabalar</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'tasdiqlangan_tolov' %}">
+          <i class="bi bi-check2-all"></i>
+          <span>To'lov tasdiqlangan talabalar</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'hisob_varoq' %}">
+          <i class="bi bi-wallet2"></i>
+          <span>To'lovlar</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
     
-    <button type="submit">saqlash</button>
-</form>
+    <main id="main" class="main">
+        
+        <div class="pagetitle">
+            <h1>Asosiy</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Asosiy</a></li>
+                    <li class="breadcrumb-item active"><a href="pays.html">To'lovlar</a></li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+        
+        <section class="section dashboard">
+            <div class="row">
+                <div class="col-lg-12">
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">To'lovlar</h5>
+                            <!-- Table with stripped rows -->
+                            <form method="POST" class="row g-3 needs-validation" novalidate>
+                                {% csrf_token %}
+                                <div class="col-md-3">
+                                    <label for="yillik" class="form-label">Yillik to'lov</label>
+                                    <input name="barcha" type="text" class="form-control" id="yillik" placeholder="Yillik to'lov" required>
+                                    <div class="invalid-feedback">
+                                        Yillik to'lovni kiriting.!
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="oylik" class="form-label">Oylik to'lov</label>
+                                    <input name="oylik" type="text" class="form-control" id="oylik" placeholder="Oylik to'lov" required>
+                                    <div class="invalid-feedback">
+                                        Oylik to'lovni kiriting.!
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="boshlangich" class="form-label">Boshlang'ich to'lov</label>
+                                    <input name="boshlanginch_tolov" type="text" class="form-control" id="boshlangich" placeholder="Boshlang'ich to'lov" required>
+                                    <div class="invalid-feedback">
+                                        Boshlang'ich to'lovni kiriting.!
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="hisob" class="form-label">Hisob raqam</label>
+                                    <input name="hisob_raqam" type="text" class="form-control" id="hisob" placeholder="Hisob raqam" required>
+                                    <div class="invalid-feedback">
+                                        Hisob raqamni kiriting.!
+                                    </div>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button class="btn btn-primary" type="submit">Saqlash</button>
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+        </section>
+        
+    </main><!-- End #main -->
+    
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="copyright">
+            &copy; <strong><span>QDPI IT-Park</span></strong>.
+        </div>
+        <div class="credits">
+            Designed by Nurmamatov Nodirbek
+        </div>
+    </footer><!-- End Footer -->
+    
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    
+    <!-- Vendor JS Files -->
+  <script src="{% static '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static '/assets/vendor/simple-datatables/simple-datatables.js' %}"></script>
+  <script src="{% static '/assets/vendor/tinymce/tinymce.min.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static '/assets/js/main.js' %}"></script>
+    
+</body>
+
+</html>

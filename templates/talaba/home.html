@@ -1,24 +1,143 @@
-{{data}}
-<hr>
-<li><a class="dropdown-item" href="{% url 'logout' %}">Chiqish </a></li>
-<hr>
-<h1>Talaba saytiga hush kelibsiz</h1>
-<hr>
-<a href="{% url 'arizalar' %}">arizalar</a>
-
-
-<hr>
-<a href="{% url 'shartnoma' %}">shartnoma</a>
-<br>
-<a href="{% url 'order' %}">order</a>
-<br>
-<a href="{% url 'tark_etish' %}">yotoqdan Chiqish</a>
-<hr>
-<a href="{% url 'talaba_tolov' %}">tolovlar</a>
-<br>
-<a href="{% url 'talaba_tolov' %}">tolovlar tarixi</a>
-
-<hr>
-<a href="{% url 'tolov_chek' %}">tolov uchun chek</a>
-
-
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Turar-Joy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900|Rubik:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static '/fonts/ionicons/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static '/fonts/fontawesome/css/font-awesome.min.css' %}">
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark py-2">
+            <div class="container">
+                <div class="navbar-brand d-flex align-items-center">
+                    <img class="d-flex" src="{% static '/images/logo.png' %}" alt="" width="40">
+                    <a class="d-block" href="{% url 'home' %}">
+                        <div class="logo-word">QDPI Talabalar <br> Turar Joyi</div>
+                    </a>
+                </div>
+                <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn"><img src="{% static '/images/user.png' %}" width="30%">{{user.first_name}}</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="{% url 'home' %}">{{user.first_name}}</a>
+                        <hr class="my-0">
+                        <a href="{% url 'logout' %}">Chiqish</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- END header -->
+    
+    <section id="video-qollanma" class="section-cover asosiy-rasm" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row justify-content-center align-items-center intro">
+                <div class="col-md-9 text-center element-animate">
+                    <p class="lead mb-5">Online ro'yxatdan o'tish uchun video qo'llanma</p>
+                    <div class="btn-play-wrap"><a href="https://vimeo.com/channels/staffpicks/93951774" class="btn-play popup-vimeo "><span class="ion-ios-play"></span></a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END section -->
+    
+    <div class="main-content asosiy py-5">
+        <div class="container">
+            <div class="asosiy d-flex align-items-center justify-content-around">
+                <a href="{% url 'arizalar' %}" class="ariza d-inline-block mx-2">
+                    <div class="text-center p-4 border border-3 rounded-circle doira">
+                        <svg style="color: #032676;" xmlns="http://www.w3.org/2000/svg" width="60%" height="auto" fill="currentColor" class="bi bi-envelope-plus-fill" viewBox="0 0 16 16">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 4.697v4.974A4.491 4.491 0 0 0 12.5 8a4.49 4.49 0 0 0-1.965.45l-.338-.207L16 4.697Z"/>
+                            <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-3.5-2a.5.5 0 0 0-.5.5v1h-1a.5.5 0 0 0 0 1h1v1a.5.5 0 0 0 1 0v-1h1a.5.5 0 0 0 0-1h-1v-1a.5.5 0 0 0-.5-.5Z"/>
+                        </svg>
+                    </div>
+                    <div class="p-1 text-center rang" style="font-size: 2rem;"><b>Arizalar</b></div>
+                </a>
+                {% for t in data %}
+                <a href="{% url 'tolovlar' t.pk %}" class="pay d-inline-block mx-2">
+                    <div class="text-center p-4 border border-3 rounded-circle doira">
+                        <svg style="color: #032676;" xmlns="http://www.w3.org/2000/svg" width="60%" height="auto" fill="currentColor" class="bi bi-cash-stack" viewBox="0 0 16 16">
+                            <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1H1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+                            <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V5zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2H3z"/>
+                        </svg>
+                    </div>
+                    <div class="p-1 text-center rang" style="font-size: 2rem;"><b>To'lovlar</b></div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-md-4 mb-3">
+                    <h3 class="mb-0">
+                        <span>turar-joy.kspi.uz</span>
+                    </h3>
+                    <p class="lead">Talabalar Turar Joyi uchun online ro'yxatdan o'tish platformasi</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h3 class="mb-0">Murojaat uchun telefonlar</h3>
+                    <p class="lead mb-0"><a href="tel:+998944482303">+998 94 4482303</a></p>
+                    <p class="lead mt-0"><a href="tel:+998912040234">+998 91 2040234</a></p>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="mb-0">Biz bilan bog'lanish</h3>
+                    <p>Bizning ijtimoiy tarmoqlar</p>
+                    <p>
+                        <a href="#" class="pl-0 p-3"><span class="fa fa-facebook"></span></a>
+                        <a href="#" class="p-3"><span class="fa fa-telegram"></span></a>
+                        <a href="#" class="p-3"><span class="fa fa-twitter"></span></a>
+                        <a href="#" class="p-3"><span class="fa fa-instagram"></span></a>
+                        <a href="#" class="p-3"><span class="fa fa-youtube-play"></span></a>
+                    </p>
+                </div>              
+            </form>
+        </div>
+    </div>
+    <div class="text-center">
+        &copy;QDPI IT-Park
+    </div>
+</div>
+</footer>
+<!-- END footer -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="{% static '/js/main.js' %}"></script>
+<script>
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+    
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

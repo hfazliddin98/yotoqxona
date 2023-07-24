@@ -1,0 +1,156 @@
+{% load static %}
+<!doctype html>
+<html lang="uzb">
+<head>
+    <title>Turar-Joy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900|Rubik:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static '/fonts/ionicons/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static '/fonts/fontawesome/css/font-awesome.min.css' %}">
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-light py-2">
+            <div class="container">
+                <div class="navbar-brand d-flex align-items-center">
+                    <img class="d-flex" src="{% static '/images/logo.png' %}" alt="" width="40">
+                    <a class="d-block" href="{% url 'home' %}">
+                        <div class="logo-word">QDPI Talabalar <br> Turar Joyi</div>
+                    </a>
+                </div>
+                <div class="btn-group">
+                    <button class="btn dropdown-toggle p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Name</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Name Surname</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Chiqish <img src="{% static '/img/logout.svg' %}" alt="Chiqish" width="20"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- END header -->
+    
+    <section id="video-qollanma" class="section-cover asosiy-rasm" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row justify-content-center align-items-center intro">
+                <div class="col-md-9 text-center element-animate">
+                    <p class="lead mb-5">Online ro'yxatdan o'tish uchun video qo'llanma</p>
+                    <div class="btn-play-wrap"><a href="https://vimeo.com/channels/staffpicks/93951774" class="btn-play popup-vimeo "><span class="ion-ios-play"></span></a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END section -->
+    
+    <div class="main-content asosiy py-5">
+        <div class="container">
+
+            <div class="ariza-ota mb-4">
+                <div class="ariza-child d-flex align-items-center justify-content-between border rounded p-3" style="border-color: #032676 !important;">
+                        <span class="lead">Ariza yuborish</span>
+                        <a class="btn btn-primary" href="{% url 'ariza' %}">Yuborish</a>
+                </div>
+
+                <div class="ariza-child d-flex align-items-center justify-content-between border rounded p-3" style="border-color: #032676 !important;">
+                    <span class="lead">Imtiyoz qo'shish</span>
+                    <a class="btn btn-primary" href="{% url 'imtiyoz' %}">Qo'shish</a>
+                </div>
+            </div>
+            
+            <table class="table table-bordered" style="border-color: #032676;">
+                <thead>
+                    <tr class="text-center">
+                        <th>Familiya</th>
+                        <th>Ism</th>                        
+                        <th>Ariza holati</th>
+                        <th>Imtiyoz holati</th>
+                    </tr>
+                </thead>
+                {% for t in talaba %}
+                {% for a in ariza %}
+                {% for i in imtiyoz %}
+                <tbody>
+                    <tr class="text-center">
+                        <td>{{t.last_name}}</td>
+                        <td>{{t.first_name}}</td>
+                        <td>{{a.tasdiqlash}}</td>
+                        <td>{{i.tasdiqlash}}</td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+                {% endfor %}
+                {% endfor %}
+            </table>
+
+            {% for t in talaba %}
+            {% for a in ariza %}
+            {% for i in imtiyoz %}
+            <div class="xulosa p-2" style="border: 1px solid #032676;">
+                <h6>Ariza uchun yuborilgan xulosa</h6>
+                <div class="xulosa-matn">{{a.xulosa}}</div>
+            </div>
+
+            <div class="xulosa p-2" style="border: 1px solid #032676;">
+                <h6>Imtiyoz uchun yuborilgan xulosa</h6>
+                <div class="xulosa-matn">{{i.xulosa}}</div>
+            </div>
+            {% endfor %}
+            {% endfor %}
+            {% endfor %}
+            
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-md-4 mb-3">
+                    <h3 class="mb-0">
+                        <span>turar-joy.kspi.uz</span>
+                    </h3>
+                    <p class="lead">Talabalar Turar Joyi uchun online ro'yxatdan o'tish platformasi</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h3 class="mb-0">Murojaat uchun telefonlar</h3>
+                    <p class="lead mb-0"><a href="tel:+998944482303">+998 94 4482303</a></p>
+                    <p class="lead mt-0"><a href="tel:+998912040234">+998 91 2040234</a></p>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="mb-0">Biz bilan bog'lanish</h3>
+                    <p>Bizning ijtimoiy tarmoqlar</p>
+                    <p>
+                        <a href="#" class="pl-0 p-3"><span class="fa fa-facebook"></span></a>
+                        <a href="#" class="p-3"><span class="fa fa-telegram"></span></a>
+                        <a href="#" class="p-3"><span class="fa fa-twitter"></span></a>
+                        <a href="#" class="p-3"><span class="fa fa-instagram"></span></a>
+                        <a href="#" class="p-3"><span class="fa fa-youtube-play"></span></a>
+                    </p>
+                </div>              
+            </form>
+        </div>
+    </div>
+    <div class="text-center">
+        &copy;QDPI IT-Park
+    </div>
+</div>
+</footer>
+<!-- END footer -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="{% static '/js/register.js' %}"></script>
+</body>
+</html>

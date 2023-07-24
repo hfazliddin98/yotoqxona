@@ -8,7 +8,7 @@ from ariza.models import Ariza
 
 @csrf_exempt
 def home(request):    
-    data = 'Saytda texnik ishlar olib borilmaoqda'
+    data = User.objects.filter(id=request.user.id)
     ariza = Ariza.objects.all()
     contex = {
         'data':data,

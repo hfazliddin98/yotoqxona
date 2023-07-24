@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Ariza, Tolov, Tark_etgan
+from .models import Ariza, Tolov, Tark_etgan, Barcha_tolov, Imtiyoz
 
 
 class ArizaAdmin(admin.ModelAdmin):
@@ -20,4 +20,17 @@ class Tark_etganAdmin(admin.ModelAdmin):
         'id', 'talaba_id', 'tark_etish'
     ]
 admin.site.register(Tark_etgan, Tark_etganAdmin)
+
+
+class Barcha_tolovAdmin(admin.ModelAdmin):
+    list_display= [
+        'id'
+    ]
+admin.site.register(Barcha_tolov, Barcha_tolovAdmin)
+
+class ImtiyozAdmin(admin.ModelAdmin):
+    list_display= [
+        'id'
+    ]
+admin.site.register(Imtiyoz, ImtiyozAdmin)
 
