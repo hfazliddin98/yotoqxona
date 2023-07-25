@@ -145,7 +145,7 @@
   boshHarf.forEach((e) => {
     e.addEventListener('keyup', (event)=> {
       event.preventDefault()
-      e.value = e.value.charAt(0).toUpperCase() + e.vlaue.slice(1)
+      e.value = e.value.charAt(0).toUpperCase() + e.vlaue.slice(1).toLowerCase();
     })
   })
 </script>
