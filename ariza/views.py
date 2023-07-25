@@ -120,17 +120,12 @@ def barcha_arizalar(request):
     return render(request, 'superadmin/barcha_arizalar.html', contex)
 
 def dekanat_barcha_arizalar(request):
-    dekanat_fakultet = request.user.fakultet
     talaba = User.objects.filter(lavozim='talaba')
-    arizalar = Ariza.objects.filter(tasdiqlash='')
-    fakultet = Ariza.objects.filter(fakultet=dekanat_fakultet)   
-    print(fakultet)
-    print(dekanat_fakultet)
+    arizalar = Ariza.objects.filter(tasdiqlash='')   
     
     contex = {
         'talaba':talaba,
         'arizalar':arizalar,
-        'fakultet':fakultet,
     }
     return render(request, 'dekanatadmin/dekanat/dekanat_barcha_arizalar.html', contex)
 
@@ -156,7 +151,7 @@ def dekanat_radetilgan_arizalar(request):
 
 def dekanat_barcha_malumot(request, pk):
     talabalar = User.objects.filter(id=pk)
-    arizalar = Ariza.objects.filter(fakultet=request.user.fakultet)
+    arizalar = Ariza.objects.filter(talaba_id=request.user.pk)
     imtiyozlar = Imtiyoz.objects.filter(talaba_id=pk)
     
     contex = {
