@@ -177,27 +177,25 @@
                                         <th scope="col">Ism</th>
                                         <th scope="col">Familiya</th>
                                         <th scope="col">Sharif</th>
-                                        <th scope="col">Fakultet</th>
-                                        <th scope="col">Telefon nomer</th>
+                                        <th scope="col">Fakultet</th>                 
+                                        
                                         <th></th>
                                     </tr>
-                                </thead>
-                                {% for d in data %}
-
-                                  {% for t in talabalar %}                  
+                                </thead>                                
+                                                
                                   <tbody>
+                                    {% for d in data %}
                                     <tr>
                                       <th scope="row">1</th>
-                                      <td>{{t.first_name}}</td>
-                                      <td>{{t.last_name}}</td>
-                                      <td>{{t.sharif}}</td>
-                                      <td>{{d.fakultet}}</td>
-                                      <td>{{t.username}}</td>
-                                      <td><a class="btn btn-primary" href="{% url 'tasdiqlangan_malumotlar' t.pk %}">Ko'rish</a></td>
+                                      <td>{{d.first_name}}</td>
+                                      <td>{{d.last_name}}</td>
+                                      <td>{{d.sharif}}</td>
+                                      <td>{{d.fakultet}}</td>                                      
+                                      <td><a class="btn btn-primary" href="{% url 'tasdiqlangan_malumotlar' d.talaba_id %}">Ko'rish</a></td>
                                     </tr>
-                                  </tbody>
-                                  {% endfor %}
-                                {% endfor %}
+                                    {% endfor %}
+                                  </tbody>                                 
+                               
                             </table>
                             <!-- End Table with stripped rows -->
             </div>

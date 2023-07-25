@@ -19,7 +19,7 @@
 
 // FAKULTET
 const fakultetName = {
-    "Fizika-matematika": [
+    "Fizika va matematika": [
         "Matematika va informatika", 
         "Matematika o'qitish metodikasi", 
         "Fizika va astronomiya", 

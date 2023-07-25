@@ -168,7 +168,7 @@
                             <h3 class="py-3 text-center">Talaba ma'lumotlari</h3>
                             {% for t in talabalar %}
                                 {% for a in arizalar %}
-                                {% for i in imtiyozlar %}
+                                {% for i in tolovlar %}
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="card mb-4">
@@ -216,16 +216,8 @@
                                                     <div class="col-sm-7">
                                                         <p class="text-muted mb-0">{{a.pasport_serya_raqam}}</p>
                                                     </div>
-                                                </div>  
-                                                <hr>                                            
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Imtiyoz turi</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{i.imtiyoz_nomi}}</p>
-                                                    </div>
-                                                </div>                                          
+                                                </div>                                                                                         
+                                                                                         
                                             </div>
                                         </div>
                                     </div>
@@ -276,29 +268,24 @@
                                                         <p class="text-muted mb-0">{{a.tuman}}</p>
                                                     </div>
                                                 </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Ko'cha</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.kocha}}</p>
-                                                    </div>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>                                
                                 </div>
                                 <div class="row g-3">
                                     <div class="passport-info col-lg-6">
-                                        <h4>Passport rasmi</h4>
-                                        <img class="w-50" src="{{a.pasport_rasm.url}}">
-                                    </div>
+                                        <h4>To`lov tarixi</h4>
+                                        <p><strong>narxi</strong>{{i.narhi}}</p>
+                                    </div> 
                                     <div class="passport-info col-lg-6">
-                                        <h4>Imtiyoz rasmi</h4>
-                                        <img class="w-50" src="{{i.imtiyoz_file.url}}">
-                                    </div>
+                                      <h4>Tolov kivtansiyasi</h4>
+                                      <img class="w-100" src="{{i.kivtansiya.url}}">
+                                  </div>                                   
                                 </div>
+                                <div class="col-12 pt-5 text-center">                                  
+                                  <a class="btn btn-danger mx-4" href="{% url 'tolov_radetish' i.talaba_id %}">Rad etish</a>
+                                </div>  
                                                       
                                 {% endfor %}
                                 {% endfor %}

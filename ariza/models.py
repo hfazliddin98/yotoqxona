@@ -13,8 +13,7 @@ class Ariza(models.Model):
     yonalish = models.CharField(max_length=100)
     kurs    = models.CharField(max_length=100)
     pasport_serya_raqam = models.CharField(max_length=100)    
-    pasport_rasm = models.FileField(upload_to='rasmlar/')
-    
+    pasport_rasm = models.FileField(upload_to='rasmlar/')    
    
     # xulosa kiritish
     xulosa = models.CharField(max_length=1000, blank=True)
@@ -35,6 +34,9 @@ class Imtiyoz(models.Model):
     
 class Tolov(models.Model):
     talaba_id = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    sharif = models.CharField(max_length=100)
     narhi = models.CharField(max_length=100)
     kivtansiya = models.FileField(upload_to='kivtansiya/')
     tasdiqlash = models.CharField(max_length=100, blank=True)
@@ -49,6 +51,9 @@ class Barcha_tolov(models.Model):
     
 class Tark_etgan(models.Model):
     talaba_id  = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    sharif = models.CharField(max_length=100)
     tark_etish = models.CharField(max_length=100)
     sabab = models.CharField(max_length=300)
     sana = models.DateTimeField(auto_now_add=True)

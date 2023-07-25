@@ -168,6 +168,7 @@
                             <h3 class="py-3 text-center">Talaba ma'lumotlari</h3>
                             {% for t in talabalar %}
                                 {% for a in arizalar %}
+                                {% for i in imtiyozlar %}
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="card mb-4">
@@ -222,7 +223,7 @@
                                                         <p class="mb-0">Imtiyoz turi</p>
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.imtiyoz_nomi}}</p>
+                                                        <p class="text-muted mb-0">{{i.imtiyoz_nomi}}</p>
                                                     </div>
                                                 </div>                                          
                                             </div>
@@ -295,12 +296,13 @@
                                     </div>
                                     <div class="passport-info col-lg-6">
                                         <h4>Imtiyoz rasmi</h4>
-                                        <img class="w-50" src="{{a.imtiyoz_file.url}}">
+                                        <img class="w-50" src="{{i.imtiyoz_file.url}}">
                                     </div>
                                 </div>
                                 <div class="col-12 pt-5 text-center">
                                     <a class="btn btn-success" href="{% url 'tasdiqlangan_ariza' a.talaba_id %}">Tasdiqlash</a>
                                 </div>                            
+                                {% endfor %}
                                 {% endfor %}
                             {% endfor %}
                         </div>

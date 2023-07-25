@@ -87,7 +87,7 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-heading">Qo'shimcha</li>
-      
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'dekanat_barcha_arizalar' %}">
           <i class="bi bi-envelope"></i>
@@ -118,7 +118,8 @@
       <h1>Asosiy</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item active"><a href="index.html">Asosiy</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Asosiy</a></li>
+          <li class="breadcrumb-item active"><a href="index.html">Rad etilgan arizalar</a></li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -126,76 +127,46 @@
     <section class="section dashboard">
       <div class="row">
         <div class="col-lg-12">
+
           <div class="card">
-            <div class="card-body d-flex align-items-center justify-content-between p-5 ota">
-
-              <div class="border p-4 rounded child">
-                <a class="nav-link collapsed" href="{% url 'superadmin_qoshish' %}">
-                  <i class="bi bi-person-plus-fill"></i>
-                  <span>Superadminlar</span>
-                </a>
+            <div class="card-body">
+              <div class="d-flex align-items-center justify-content-between">
+                <h5 class="card-title">Rad etilgan arizalar</h5>
+                <a class="btn btn-primary" href="#">Yuklab olish</a>
               </div>
-      
-              <div class="border p-4 rounded child">
-                <a class="nav-link collapsed" href="{% url 'dekanatadmin_qoshish' %}">
-                  <i class="bi bi-envelope"></i>
-                  <span>Dekanat adminlar</span>
-                </a>
-              </div>
-      
-              <div class="border p-4 rounded child">
-                <a class="nav-link collapsed" href="{% url 'barcha_arizalar' %}">
-                  <i class="bi bi-person-check-fill"></i>
-                  <span>Barcha arizalar</span>
-                </a>
-              </div>
-      
-              <div class="border p-4 rounded child">
-                <a class="nav-link collapsed" href="{% url 'tasdiqlangan' %}">
-                  <i class="bi bi-person-x-fill"></i>
-                  <span>Tasdiqlangan arizalar</span>
-                </a>
-              </div>
-
-              <div class="border p-4 rounded child">
-                <a class="nav-link collapsed" href="{% url 'radetilgan' %}">
-                  <i class="bi bi-person-x-fill"></i>
-                  <span>Rad etilgan arizalar</span>
-                </a>
-              </div>
-
-              <div class="border p-4 rounded child">
-                <a class="nav-link collapsed" href="{% url 'tark_etgan_talaba' %}">
-                  <i class="bi bi-person-x-fill"></i>
-                  <span>Tark etgan talabalar</span>
-                </a>
-              </div>
-
-              <div class="border p-4 rounded child">
-                <a class="nav-link collapsed" href="{% url 'barcha_tolovlar' %}">
-                  <i class="bi bi-person-x-fill"></i>
-                  <span>To'lov qilgan talabalar</span>
-                </a>
-              </div>
-
-              <div class="border p-4 rounded child">
-                <a class="nav-link collapsed" href="{% url 'tasdiqlangan_tolov' %}">
-                  <i class="bi bi-person-x-fill"></i>
-                  <span>To'lov tasdiqlangan talabalar</span>
-                </a>
-              </div>
-
-              <div class="border p-4 rounded child">
-                <a class="nav-link collapsed" href="{% url 'hisob_varoq' %}">
-                  <i class="bi bi-person-x-fill"></i>
-                  <span>To'lovlar</span>
-                </a>
-              </div>
-
+                            <!-- Table with stripped rows -->
+                            <table class="table datatable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">№</th>
+                                        <th scope="col">Ism</th>
+                                        <th scope="col">Familiya</th>
+                                        <th scope="col">Sharif</th>
+                                        <th scope="col">Fakultet</th>                 
+                                        
+                                        <th></th>
+                                    </tr>
+                                </thead>                                
+                                                
+                                  <tbody>
+                                    {% for d in data %}
+                                    <tr>
+                                      <th scope="row">1</th>
+                                      <td>{{d.first_name}}</td>
+                                      <td>{{d.last_name}}</td>
+                                      <td>{{d.sharif}}</td>
+                                      <td>{{d.fakultet}}</td>                                      
+                                      <td><a class="btn btn-primary" href="{% url 'dekanat_tasdiqlangan_malumot' d.talaba_id %}">Ko'rish</a></td>
+                                    </tr>
+                                    {% endfor %}
+                                  </tbody>                                 
+                               
+                            </table>
+                            <!-- End Table with stripped rows -->
             </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </section>
 
@@ -220,6 +191,7 @@
 
   <!-- Template Main JS File -->
   <script src="{% static '/assets/js/main.js' %}"></script>
+
 
 </body>
 

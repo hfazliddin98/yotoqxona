@@ -107,6 +107,12 @@
         </a>
       </li>
       <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'imtiyozli_arizalar' %}">
+          <i class="bi bi-envelope"></i>
+          <span>Imtiyozli arizalar</span>
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'tasdiqlangan' %}">
           <i class="bi bi-person-check-fill"></i>
           <span>Tasdiqlangan arizalar</span>
@@ -186,15 +192,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                  {% for d in data %}
                                     <tr>
                                         <th scope="row">1</th>
-                                        <td>+998905253565</td>
-                                        <td>Nishonov</td>
-                                        <td>Bobur</td>
-                                        <td>Ikromjonovich</td>
-                                        <td>Pedagogika</td>
-                                        <td>NN250605</td>
+                                        <td>{{d.username}}</td>
+                                        <td>{{d.last_name}}</td>
+                                        <td>{{d.first_name}}</td>
+                                        <td>{{d.sharif}}</td>
+                                        <td>{{d.fakultet}}</td>
+                                        <td>{{d.parol}}</td>
                                     </tr>
+                                  {% endfor %}
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->

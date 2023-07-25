@@ -111,16 +111,86 @@ def tolovlar(request, pk):
 
 def barcha_arizalar(request):
     talaba = User.objects.filter(lavozim='talaba')
-    arizalar = Ariza.objects.filter(tasdiqlash='')
-   
-    
-   
+    arizalar = Ariza.objects.filter(tasdiqlash='')   
     
     contex = {
         'talaba':talaba,
         'arizalar':arizalar,
     }
     return render(request, 'superadmin/barcha_arizalar.html', contex)
+
+def dekanat_barcha_arizalar(request):
+    dekanat_fakultet = request.user.fakultet
+    talaba = User.objects.filter(lavozim='talaba')
+    arizalar = Ariza.objects.filter(tasdiqlash='')
+    fakultet = Ariza.objects.filter(fakultet=dekanat_fakultet)   
+    print(fakultet)
+    print(dekanat_fakultet)
+    
+    contex = {
+        'talaba':talaba,
+        'arizalar':arizalar,
+        'fakultet':fakultet,
+    }
+    return render(request, 'dekanatadmin/dekanat/dekanat_barcha_arizalar.html', contex)
+
+def dekanat_tasdiqlangan_arizalar(request):
+    talabalar = User.objects.filter(lavozim='talaba')
+    data = Ariza.objects.filter(tasdiqlash='tasdiqlandi')
+    contex = {
+        'data':data,
+        'talabalar':talabalar,
+    }
+    return render(request,  'dekanatadmin/dekanat/dekanat_tasdiqlangan_arizalar.html', contex)
+
+
+def dekanat_radetilgan_arizalar(request):
+    talabalar = User.objects.filter(lavozim='talaba')
+    data = Ariza.objects.filter(tasdiqlash = 'radetildi')
+    contex = {
+        'data':data,
+        'talabalar':talabalar,
+    }
+    return render(request,  'dekanatadmin/dekanat/dekanat_radetilgan_arizalar.html', contex)
+
+
+def dekanat_barcha_malumot(request, pk):
+    talabalar = User.objects.filter(id=pk)
+    arizalar = Ariza.objects.filter(fakultet=request.user.fakultet)
+    imtiyozlar = Imtiyoz.objects.filter(talaba_id=pk)
+    
+    contex = {
+        'talabalar':talabalar,
+        'arizalar':arizalar,
+        'imtiyozlar':imtiyozlar,
+    }
+    return render(request, 'dekanatadmin/dekanat/dekanat_barcha_malumot.html', contex)
+
+
+def dekanat_tasdiqlangan_malumot(request, pk):
+    talabalar = User.objects.filter(id=pk)
+    arizalar = Ariza.objects.filter(talaba_id=pk)
+    imtiyozlar = Imtiyoz.objects.filter(talaba_id=pk)
+    
+    contex = {
+        'talabalar':talabalar,
+        'arizalar':arizalar,
+        'imtiyozlar':imtiyozlar,
+    }
+    return render(request, 'dekanatadmin/dekanat/dekanat_tasdiqlangan_malumot.html', contex)
+
+
+def dekanat_radetilgan_malumot(request, pk):
+    talabalar = User.objects.filter(id=pk)
+    arizalar = Ariza.objects.filter(talaba_id=pk)
+    imtiyozlar = Imtiyoz.objects.filter(talaba_id=pk)
+    
+    contex = {
+        'talabalar':talabalar,
+        'arizalar':arizalar,
+        'imtiyozlar':imtiyozlar,
+    }
+    return render(request, 'dekanatadmin/dekanat/dekanat_radetilgan_malumot.html', contex)
 
 
 def arizalar_jadvali(request, pk):
@@ -258,32 +328,38 @@ def talaba_malumotlar(request, pk):
 
 def tasdiqlangan_malumotlar(request, pk):
     talabalar = User.objects.filter(id=pk)
-    arizalar = Ariza.objects.all
+    arizalar = Ariza.objects.filter(talaba_id=pk)
+    imtiyozlar = Imtiyoz.objects.filter(talaba_id=pk)
     
     contex = {
         'talabalar':talabalar,
         'arizalar':arizalar,
+        'imtiyozlar':imtiyozlar,
     }
     return render(request, 'dekanatadmin/tasdiqlangan_malumot.html', contex)
 
 def radetilgan_malumotlar(request, pk):
     talabalar = User.objects.filter(id=pk)
-    arizalar = Ariza.objects.all
+    arizalar = Ariza.objects.filter(talaba_id=pk)
+    imtiyozlar = Imtiyoz.objects.filter(talaba_id=pk)
     
     contex = {
         'talabalar':talabalar,
         'arizalar':arizalar,
+        'imtiyozlar':imtiyozlar,
     }
     return render(request, 'dekanatadmin/radetilgan_malumot.html', contex)
 
 
 def tark_etgan_malumotlar(request, pk):
     talabalar = User.objects.filter(id=pk)
-    arizalar = Ariza.objects.all
+    arizalar = Ariza.objects.filter(talaba_id=pk)
+    imtiyozlar = Imtiyoz.objects.filter(talaba_id=pk)
     
     contex = {
         'talabalar':talabalar,
         'arizalar':arizalar,
+        'imtiyozlar':imtiyozlar,
     }
     return render(request, 'dekanatadmin/tark_etgan_malumot.html', contex)
 
@@ -291,31 +367,36 @@ def tark_etgan_malumotlar(request, pk):
 
 def talaba_tolov_malumotlar(request, pk):
     talabalar = User.objects.filter(id=pk)
-    arizalar = Ariza.objects.all
-    tolov = Tolov.objects.all
+    arizalar = Ariza.objects.filter(talaba_id=pk)
+    tolovlar = Tolov.objects.filter(talaba_id=pk)
     
     contex = {
         'talabalar':talabalar,
         'arizalar':arizalar,
-        'tolov':tolov,
+        'tolovlar':tolovlar,
     }
     return render(request, 'dekanatadmin/talaba_tolov_malumot.html', contex)
 
-def tasdiqlangan_tolov_malumotlar(request, pk):
+def radetilgan_tolov_malumotlar(request, pk):
     talabalar = User.objects.filter(id=pk)
-    arizalar = Ariza.objects.all
+    arizalar = Ariza.objects.filter(talaba_id=pk)
+    tolovlar = Tolov.objects.filter(talaba_id=pk)
     
     contex = {
         'talabalar':talabalar,
         'arizalar':arizalar,
+        'tolovlar':tolovlar,
     }
-    return render(request, 'dekanatadmin/tasdiqlangan_tolov_malumot.html', contex)
+    return render(request, 'dekanatadmin/radetilgan_tolov_malumotlar.html', contex)
 
 
 
-def talaba_tolov(request):    
-    if request.method == 'POST':
-        talaba_id = request.user.id
+def talaba_tolov(request):  
+    talaba_id = request.user.id
+    first_name = request.user.first_name
+    last_name = request.user.last_name
+    sharif = request.user.sharif  
+    if request.method == 'POST':        
         narhi = request.POST['narhi']
         kivtansiya = request.FILES['kivtansiya']
         
@@ -323,7 +404,9 @@ def talaba_tolov(request):
             return redirect('/ariza/talaba_tolov/')
         else:        
             tolov = Tolov.objects.create(
-                talaba_id=talaba_id, narhi = narhi, kivtansiya = kivtansiya
+                talaba_id=talaba_id, first_name=first_name,
+                last_name=last_name, sharif=sharif,
+                narhi = narhi, kivtansiya = kivtansiya
             )
             tolov.save()
             return redirect('/')
@@ -334,41 +417,24 @@ def talaba_tolov(request):
     return render(request, 'talaba/tolov.html', contex)
 
 def tolov_tasdiqlash(request, pk):
-    tolov = Tolov.objects.get(id=pk)  
-    talaba = User.objects.filter(id=tolov.talaba_id)
-    for t in talaba:
-        ism  = t.first_name           
-    data = get_object_or_404(Tolov, id=pk)                     
+             
+    data = get_object_or_404(Tolov, talaba_id=pk)                     
     data.tasdiqlash = 'tasdiqlandi'       
     data.save()
     
-    contex = {
-       'tolov':tolov, 
-       'ism':ism,
-    }
-    return redirect('/ariza/barcha_tolovlar/', contex)
+    return redirect('/ariza/barcha_tolovlar/')
 
 
-def tolov_radetish(request, pk):
-    tolov = Tolov.objects.get(id=pk)
-   
-    print(tolov.talaba_id)
-    talaba = User.objects.filter(id=tolov.talaba_id)
-    for t in talaba:
-        ism  = t.first_name  
-        print(ism)    
-    data = get_object_or_404(Tolov, id=pk)                     
+def tolov_radetish(request, pk):             
+    data = get_object_or_404(Tolov, talaba_id=pk)                     
     data.tasdiqlash = 'radetildi'       
     data.save()
+    return redirect('/ariza/barcha_tolovlar/')
     
-    contex = {
-       'tolov':tolov, 
-       'ism':ism,
-    }
-    return redirect('/ariza/barcha_tolovlar/', contex)
+   
 
-def tasdiqlangan_tolov(request, pk):
-    talabalar = User.objects.get(id=pk)
+def tasdiqlangan_tolov(request):
+    talabalar = User.objects.filter(lavozim='talaba')
     tolovlar = Tolov.objects.filter(tasdiqlash='tasdiqlandi')
     arizalar = Ariza.objects.all()  
     
@@ -381,16 +447,18 @@ def tasdiqlangan_tolov(request, pk):
 
 
 def superadminlar(request):
+    data = User.objects.filter(lavozim='super')
     
     contex = {
-        
+        'data':data,
     }
     return render(request, 'superadmin/superadminlar.html', contex)
 
 def dekanatadminlar(request):
+    data = User.objects.filter(lavozim='dekanat')
     
     contex = {
-        
+        'data':data,
     }
     return render(request, 'superadmin/dekanatadminlar.html', contex)
 
@@ -407,6 +475,9 @@ def barcha_tolovlar(request):
 
 def tark_etish(request):
     talaba_id = request.user.id
+    first_name = request.user.first_name
+    last_name = request.user.last_name
+    sharif = request.user.sharif 
     data = ''
     if request.method == 'POST':
         sabab = request.POST['sabab']
@@ -414,7 +485,9 @@ def tark_etish(request):
             data = 'Oldin tark etib bolgansiz'
         else:
             data = Tark_etgan.objects.create(
-                talaba_id=talaba_id, tark_etish='tark_etdi',
+                talaba_id=talaba_id, first_name=first_name,
+                last_name=last_name, sharif=sharif,
+                tark_etish='tark_etdi',
                 sabab=sabab
             )
             data.save()

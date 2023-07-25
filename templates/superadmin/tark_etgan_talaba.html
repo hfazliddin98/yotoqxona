@@ -176,28 +176,28 @@
                                         <th scope="col">№</th>                                        
                                         <th scope="col">Familiya</th>
                                         <th scope="col">Ism</th>
-                                        <th scope="col">Sharif</th>
-                                        <th scope="col">Telefon nomer</th>
+                                        <th scope="col">Sharif</th>                                     
                                         <th scope="col">Sana</th>
                                         <th></th>
                                     </tr>
                                 </thead>
-                                {% for d in data %}
+                                
 
-                                  {% for t in talabalar %}                  
+                                                  
                                   <tbody>
+                                    {% for d in data %}
                                     <tr>
                                       <th scope="row">1</th>                                      
-                                      <td>{{t.last_name}}</td>
-                                      <td>{{t.first_name}}</td>                                      
-                                      <td>{{t.sharif}}</td>
-                                     <td>{{t.username}}</td>
+                                      <td>{{d.last_name}}</td>
+                                      <td>{{d.first_name}}</td>                                      
+                                      <td>{{d.sharif}}</td>                                     
                                       <td>{{d.sana}}</td>
-                                      <td><a class="btn btn-primary" href="{% url 'tark_etgan_malumotlar' t.pk %}">Ko'rish</a></td>
+                                      <td><a class="btn btn-primary" href="{% url 'tark_etgan_malumotlar' d.talaba_id %}">Ko'rish</a></td>
                                     </tr>
+                                    {% endfor %}
                                   </tbody>
-                                  {% endfor %}
-                                {% endfor %}
+                                  
+                               
                             </table>
                             <!-- End Table with stripped rows -->
                             

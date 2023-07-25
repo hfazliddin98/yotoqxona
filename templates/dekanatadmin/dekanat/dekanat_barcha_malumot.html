@@ -89,59 +89,24 @@
       <li class="nav-heading">Qo'shimcha</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'superadminlar' %}">
-          <i class="bi bi-person-fill"></i>
-          <span>Super adminlar</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'dekanatadminlar' %}">
-          <i class="bi bi-person"></i>
-          <span>Dekanat adminlar</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'barcha_arizalar' %}">
+        <a class="nav-link collapsed" href="{% url 'dekanat_barcha_arizalar' %}">
           <i class="bi bi-envelope"></i>
           <span>Barcha arizalar</span>
         </a>
-      </li>
+      </li>      
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'tasdiqlangan' %}">
+        <a class="nav-link collapsed" href="{% url 'dekanat_tasdiqlangan_arizalar' %}">
           <i class="bi bi-person-check-fill"></i>
           <span>Tasdiqlangan arizalar</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'radetilgan' %}">
+        <a class="nav-link collapsed" href="{% url 'dekanat_radetilgan_arizalar' %}">
           <i class="bi bi-person-x-fill"></i>
           <span>Rad etilgan arizalar</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'tark_etgan_talaba' %}">
-          <i class="bi bi-house-x-fill"></i>
-          <span>Tark etgan talabalar</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'barcha_tolovlar' %}">
-          <i class="bi bi-cash-coin"></i>
-          <span>To'lov qilgan talabalar</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'tasdiqlangan_tolov' %}">
-          <i class="bi bi-check2-all"></i>
-          <span>To'lov tasdiqlangan talabalar</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'hisob_varoq' %}">
-          <i class="bi bi-wallet2"></i>
-          <span>To'lovlar</span>
-        </a>
-      </li><!-- End Contact Page Nav -->
+      <!-- End Contact Page Nav -->
 
     </ul>
 
@@ -168,7 +133,7 @@
                             <h3 class="py-3 text-center">Talaba ma'lumotlari</h3>
                             {% for t in talabalar %}
                                 {% for a in arizalar %}
-                                {% for i in imtiyozlar %}
+                                {% for i in imtiyoz %}
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="card mb-4">
@@ -292,15 +257,18 @@
                                 <div class="row g-3">
                                     <div class="passport-info col-lg-6">
                                         <h4>Passport rasmi</h4>
-                                        <img class="w-50" src="{{a.pasport_rasm.url}}">
+                                        <img class="w-100" src="{{a.pasport_rasm.url}}">
                                     </div>
                                     <div class="passport-info col-lg-6">
                                         <h4>Imtiyoz rasmi</h4>
-                                        <img class="w-50" src="{{i.imtiyoz_file.url}}">
+                                        <img class="w-100" src="{{i.imtiyoz_file.url}}">
                                     </div>
                                 </div>
-                                                      
-                                {% endfor %}
+                                <div class="col-12 pt-5 text-center">
+                                    <a class="btn btn-success" href="{% url 'tasdiqlangan_ariza' a.talaba_id %}">Tasdiqlash</a>
+                                    <a class="btn btn-danger mx-4" href="{% url 'radetilgan_ariza' a.talaba_id %}">Rad etish</a>
+                                </div>  
+                                {% endfor %}                          
                                 {% endfor %}
                             {% endfor %}
                         </div>

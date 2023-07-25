@@ -4,9 +4,11 @@ from .views import tasdiqlangan, radetilgan, talaba_tolov, tolov_tasdiqlash, tol
 from .views import hisob_varoq, tolov_chek, shartnoma, shartnomalar, order, tark_etgan_talaba, tolovlar, tasdiqlangan_tolov
 from .views import superadminlar, dekanatadminlar
 from .views import talaba_malumotlar, radetilgan_malumotlar, tasdiqlangan_malumotlar, tark_etgan_malumotlar
-from .views import talaba_tolov_malumotlar, tasdiqlangan_tolov_malumotlar
+from .views import talaba_tolov_malumotlar, radetilgan_tolov_malumotlar
 from .views import imtiyoz, imtiyozli_arizalar, imtiyoz_malumotlar, imtiyozni_tasdiqlash, imtiyozni_radetish
 from .views import arizalar_jadvali
+from .views import dekanat_barcha_arizalar, dekanat_tasdiqlangan_arizalar, dekanat_radetilgan_arizalar
+from .views import dekanat_barcha_malumot, dekanat_tasdiqlangan_malumot, dekanat_radetilgan_malumot
 
 
 urlpatterns = [
@@ -58,4 +60,13 @@ urlpatterns = [
     
    # tolov malumot
    path('talaba_tolov_malumotlar/<str:pk>/', talaba_tolov_malumotlar, name='talaba_tolov_malumotlar'),
+   path('radetilgan_tolov_malumotlar/<str:pk>/', radetilgan_tolov_malumotlar, name='radetilgan_tolov_malumotlar'),
+   
+   # dekanat uchun
+   path('dekanat_barcha_arizalar/', dekanat_barcha_arizalar, name='dekanat_barcha_arizalar'),
+   path('dekanat_tasdiqlangan_arizalar/', dekanat_tasdiqlangan_arizalar, name='dekanat_tasdiqlangan_arizalar'),
+   path('dekanat_radetilgan_arizalar/', dekanat_radetilgan_arizalar, name='dekanat_radetilgan_arizalar'),
+   path('dekanat_barcha_malumot/<str:pk>/', dekanat_barcha_malumot, name='dekanat_barcha_malumot'),
+   path('dekanat_tasdiqlangan_malumot/<str:pk>/', dekanat_tasdiqlangan_malumot, name='dekanat_tasdiqlangan_malumot'),
+   path('dekanat_radetilgan_malumot/<str:pk>/', dekanat_radetilgan_malumot, name='dekanat_radetilgan_malumot'),
 ]

@@ -182,11 +182,10 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                {% for d in tolovlar %}
-                                  {% for a in arizalar %}
-
-                                    {% for t in talabalar %}      
+                                
+                                      
                                     <tbody>
+                                      {% for t in tolovlar %}
                                         <tr>
                                           <th scope="row">1</th>
                                           <td>{{t.first_name}}</td>
@@ -194,12 +193,12 @@
                                           <td>{{t.sharif}}</td>
                                           <td>{{a.fakultet}}</td>
                                           <td>{{t.username}}</td>
-                                          <td><a class="btn btn-primary" href="{% url 'talaba_tolov_malumotlar' t.pk %}">Ko'rish</a></td>
+                                          <td><a class="btn btn-primary" href="{% url 'radetilgan_tolov_malumotlar' t.talaba_id %}">Ko'rish</a></td>
                                         </tr>
+                                        {% endfor %}
                                     </tbody>
-                                    {% endfor %}
-                                  {% endfor %}
-                                {% endfor %}
+                                    
+                                  
                             </table>
                             <!-- End Table with stripped rows -->
                             

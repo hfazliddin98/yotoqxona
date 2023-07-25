@@ -185,14 +185,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                  {% for d in data %}
                                     <tr>
                                         <th scope="row">1</th>
-                                        <td>+998905253565</td>
-                                        <td>Nishonov</td>
-                                        <td>Bobur</td>
-                                        <td>Ikromjonovich</td>
-                                        <td>NN250605</td>
+                                        <td>{{d.username}}</td>
+                                        <td>{{d.last_name}}</td>
+                                        <td>{{d.first_name}}</td>
+                                        <td>{{d.sharif}}</td>
+                                        <td>{{d.parol}}</td>
                                     </tr>
+                                  {% endfor %}
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->
