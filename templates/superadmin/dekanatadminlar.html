@@ -35,7 +35,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="{% url 'home' %}" class="logo d-flex align-items-center">
         <img src="{% static '/assets/img/logo.png' %}" alt="">
-        <span class="d-none d-lg-block"> Turar - Joy</span>
+        <span class="d-none d-lg-block">QDPI TTJ</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -45,15 +45,15 @@
 
         <li class="nav-item dropdown pe-3">
 
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="{% url 'home' %}" data-bs-toggle="dropdown">
             <img src="{% static '/assets/img/profile-img.jpg' %}" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Nodirbek Nurmamatov</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{user.last_name}} {{user.first_name}}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Nodirbek Nurmamatov </h6>
-              <span>Web Dasturchi</span>
+              <h6>{{user.last_name}} {{user.first_name}}</h6>
+              <span>Super admin</span>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -152,15 +152,15 @@
     </ul>
 
   </aside><!-- End Sidebar-->
-    
-    <main id="main" class="main">
+
+  <main id="main" class="main">
         
         <div class="pagetitle">
             <h1>Asosiy</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Asosiy</a></li>
-                    <li class="breadcrumb-item active"><a href="dekanatadmin.html">Dekanat adminlar</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Asosiy</a></li>
+                    <li class="breadcrumb-item active"><a href="{% url 'home' %}">Dekanat adminlar</a></li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->

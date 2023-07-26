@@ -142,12 +142,12 @@
 <script src="{% static '/js/register.js' %}"></script>
 <script>
   let boshHarf = document.querySelectorAll('.bosh-harf');
-  boshHarf.forEach((e) => {
-    e.addEventListener('keyup', (event)=> {
-      event.preventDefault()
-      e.value = e.value.charAt(0).toUpperCase() + e.vlaue.slice(1).toLowerCase();
+    boshHarf.forEach((e) => {
+      e.addEventListener('keyup', function(event) {
+        event.preventDefault();
+        e.value = e.value.charAt(0).toUpperCase() + e.value.slice(1);
+      })
     })
-  })
 </script>
 </body>
 </html>

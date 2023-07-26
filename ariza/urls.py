@@ -45,7 +45,9 @@ urlpatterns = [
    path('hisob_varoq/', hisob_varoq, name='hisob_varoq'),
    path('tolov_chek/', tolov_chek, name='tolov_chek'),
    path('tolovlar/<str:pk>/', tolovlar, name='tolovlar'),
-   path('shartnoma/', shartnoma, name='shartnoma'),
+
+   # shartnomalar
+   path('shartnoma/<str:pk>/', shartnoma, name='shartnoma'),
    path('shartnomalar/', shartnomalar, name='shartnomalar'),
    path('order/', order, name='order'),
    # royhatlar

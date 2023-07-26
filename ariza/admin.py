@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Ariza, Tolov, Tark_etgan, Barcha_tolov, Imtiyoz
+from .models import Ariza, Tolov, Tark_etgan, Barcha_tolov, Imtiyoz, Shartnoma, Rasm, Order
 
 
 class ArizaAdmin(admin.ModelAdmin):
@@ -33,4 +33,25 @@ class ImtiyozAdmin(admin.ModelAdmin):
         'id'
     ]
 admin.site.register(Imtiyoz, ImtiyozAdmin)
+
+
+class ShartnomaAdmin(admin.ModelAdmin):
+    list_display= [
+        'id'
+    ]
+admin.site.register(Shartnoma, ShartnomaAdmin)
+
+
+class RasmAdmin(admin.ModelAdmin):
+    list_display= [
+        'id'
+    ]
+admin.site.register(Rasm, RasmAdmin)
+
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display= [
+        'id'
+    ]
+admin.site.register(Order, OrderAdmin)
 

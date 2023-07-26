@@ -60,7 +60,7 @@ class Tark_etgan(models.Model):
     
     
 class Shartnoma(models.Model):
-    talaba_id = models.CharField(max_length=10, blank=True)    
+    talaba_id = models.CharField(max_length=100)    
     talaba_f_i_sh = models.CharField(max_length=100, blank=True)
     manzil = models.CharField(max_length=100, blank=True)    
     iib_manzil = models.CharField(max_length=200, blank=True)   
@@ -69,13 +69,13 @@ class Shartnoma(models.Model):
    
    
 class Rasm(models.Model):
-    talaba_id = models.CharField(max_length=10, blank=True)    
+    talaba_id = models.CharField(max_length=100)    
     link = models.CharField(max_length=100, blank=True)
     rasm = models.FileField(upload_to='qrcode/')  
     
     
 class Order(models.Model):
-    talaba_id = models.CharField(max_length=10, blank=True)    
+    talaba_id = models.CharField(max_length=100)    
     familiya = models.CharField(max_length=100, blank=True)
     ism = models.CharField(max_length=100, blank=True)    
     sharif = models.CharField(max_length=200, blank=True)   

@@ -35,7 +35,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="{% url 'home' %}" class="logo d-flex align-items-center">
         <img src="{% static '/assets/img/logo.png' %}" alt="">
-        <span class="d-none d-lg-block"> Turar - Joy</span>
+        <span class="d-none d-lg-block">QDPI TTJ</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -45,15 +45,15 @@
 
         <li class="nav-item dropdown pe-3">
 
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="{% url 'home' %}" data-bs-toggle="dropdown">
             <img src="{% static '/assets/img/profile-img.jpg' %}" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Nodirbek Nurmamatov</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{user.last_name}} {{user.first_name}}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Nodirbek Nurmamatov </h6>
-              <span>Web Dasturchi</span>
+              <h6>{{user.last_name}} {{user.first_name}}</h6>
+              <span>Super admin</span>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -159,9 +159,9 @@
             <h1>Asosiy</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Asosiy</a></li>
-                    <li class="breadcrumb-item"><a href="dekanatadmin.html">Dekanat adminlar</a></li>
-                    <li class="breadcrumb-item active"><a href="add-dekanat.html">Admin qo'shish</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Asosiy</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Dekanat adminlar</a></li>
+                    <li class="breadcrumb-item active"><a href="{% url 'home' %}">Admin qo'shish</a></li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -183,21 +183,21 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="familiya" class="form-label">Familiya</label>
-                                    <input name="last_name" type="text" class="form-control" id="familiya" placeholder="Familiya" required>
+                                    <input name="last_name" type="text" class="form-control bosh-harf" id="familiya" placeholder="Familiya" required>
                                     <div class="invalid-feedback">
                                         Familiyangizni kiriting.!
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="ism" class="form-label">Ism</label>
-                                    <input name="first_name" type="text" class="form-control" id="ism" placeholder="Ism" required>
+                                    <input name="first_name" type="text" class="form-control bosh-harf" id="ism" placeholder="Ism" required>
                                     <div class="invalid-feedback">
                                         Ismingizni kiriting.!
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="sharif" class="form-label">Sharif</label>
-                                    <input name="sharif" type="text" class="form-control" id="sharif" placeholder="Sharif" required>
+                                    <input name="sharif" type="text" class="form-control bosh-harf" id="sharif" placeholder="Sharif" required>
                                     <div class="invalid-feedback">
                                         Sharifingizni kiriting.!
                                     </div>
@@ -224,14 +224,14 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="password" class="form-label">Parol</label>
-                                    <input name="password1" type="text" class="form-control" id="password" placeholder="Parol" required>
+                                    <input name="password1" type="text" class="form-control bosh-harf" id="password" placeholder="Parol" required>
                                     <div class="invalid-feedback">
                                         Parol o'ylab toping.!
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="password2" class="form-label">Parol</label>
-                                    <input name="password2" type="text" class="form-control" id="password2" placeholder="Parolni qayta kiriting" required>
+                                    <input name="password2" type="text" class="form-control bosh-harf" id="password2" placeholder="Parolni qayta kiriting" required>
                                     <div class="invalid-feedback">
                                         Parolni qayta kiriting.!
                                     </div>
@@ -261,13 +261,22 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
     
     
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-    
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+     <!-- Vendor JS Files -->
+     <script src="{% static '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+     <script src="{% static '/assets/vendor/simple-datatables/simple-datatables.js' %}"></script>
+     <script src="{% static '/assets/vendor/tinymce/tinymce.min.js' %}"></script>
+ 
+     <!-- Template Main JS File -->
+     <script src="{% static '/assets/js/main.js' %}"></script>
+     <script>
+       let boshHarf = document.querySelectorAll('.bosh-harf');
+         boshHarf.forEach((e) => {
+           e.addEventListener('keyup', function(event) {
+             event.preventDefault();
+             e.value = e.value.charAt(0).toUpperCase() + e.value.slice(1);
+           })
+         })
+     </script>
     
 </body>
 
