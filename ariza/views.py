@@ -697,6 +697,7 @@ def shartnomalar(request):
     
     contex = {        
         'yil':yil,
+        'ariza':ariza,
         'oy':oy,
         'kun':kun,
         'hozir':hozir,
@@ -707,13 +708,51 @@ def shartnomalar(request):
 
 
 @csrf_exempt
-def shartnoma(request, pk):
+def shartnoma(request):
     talaba_id = User.objects.all()
+    for t in talaba_id:
+        arizalar = Ariza.objects.filter(talaba_id=t.id)
+        if arizalar:
+            for a in arizalar:
+                shartnoma = Shartnoma.objects.filter(talaba_id=t.id)               
+                if shartnoma:
+                    # update qilish
+                    talaba_f_i_sh = f'{a.last_name} {a.first_name} {a.sharif}'
+                    manzil = f'{a.viloyat} {a.tuman} {a.kocha}'
+                    iib_manzil = f'{a.viloyat} {a.tuman}'
+                    data = get_object_or_404(Shartnoma, talaba_id=t.id)
+                    data.talaba_f_i_sh = talaba_f_i_sh
+                    data.manzil = manzil
+                    data.iib_manzil = iib_manzil
+                    data.pasport = a.pasport_serya_raqam
+                    data.save()
+                    print('update qilindi')
+                else:
+                    talaba_f_i_sh = f'{a.last_name} {a.first_name} {a.sharif}'
+                    manzil = f'{a.viloyat} {a.tuman} {a.kocha}'
+                    iib_manzil = f'{a.viloyat} {a.tuman}'
+                    ttj_nomer = ''
+                    data = Shartnoma.objects.create(
+                        talaba_id = t.id,
+                        talaba_f_i_sh = talaba_f_i_sh,
+                        manzil = manzil,
+                        iib_manzil = iib_manzil,
+                        pasport = a.pasport_serya_raqam,
+                        ttj_nomer=ttj_nomer
+                    )
+                    data.save()
+                    print('yangi kiritildi')
+
+
+        else:
+            ariza = 'Hozirda ariza mavjud emas'
+
     for t in talaba_id:
         import qrcode
         import datetime as dt
 
-        data = f"https://shartnoma.kspi.uz/pdf/qrcode/{t.id}/"  # QR-kodga kiritmoqchi bo'lgan ma'lumot
+
+        data = f"https://ttj.kspi.uz/ariza/shartnomalar/{t.id}/"  # QR-kodga kiritmoqchi bo'lgan ma'lumot
 
         # QR-kod obyektini yaratish
         qr = qrcode.QRCode(version=1, box_size=10, border=4)
@@ -730,7 +769,7 @@ def shartnoma(request, pk):
         # Tasvirni saqlash
         img.save(f"media/code/qrcode{t.id}.png")
         
-        link = f'http://shartnoma.kspi.uz/media/code/qrcode{t.id}.png'
+        link = f'http://ttj.kspi.uz/media/code/qrcode{t.id}.png'
         rasmlar = Rasm.objects.filter(talaba_id=t.id)
         qrcode = Rasm.objects.filter(talaba_id=t.id)
         
@@ -754,26 +793,26 @@ def shartnoma(request, pk):
             data.save()
             print('create qilindi')
     
-    template_path = 'amaliyot/qrcode.html' 
-    # sayt foydalanuvchisini va amaliyotni aniq ko`rsatish uchun ishlatiladi`   
-    talaba_id = request.user.id   
-    pdf = Shartnoma.objects.filter(talaba_id=pk)   
-    
    
-    
+    talaba = User.objects.filter(id=request.user.id)     
     hozir = dt.datetime.now()
     yil = hozir.year
     oy = hozir.month
     kun = hozir.day
+    shartnoma = Shartnoma.objects.filter(talaba_id=request.user.id)
+    qrcode_rasm = Rasm.objects.filter(talaba_id=request.user.id)
+
     
-    contex = {       
-        'pdf':pdf,
+    contex = {        
         'yil':yil,
+        'ariza':ariza,
         'oy':oy,
         'kun':kun,
         'hozir':hozir,
-        'qrcode':qrcode,              
-    }
+        'qrcode_rasm':qrcode_rasm,   
+        'talaba':talaba,
+        'shartnoma':shartnoma,           
+    }  
     
     
     

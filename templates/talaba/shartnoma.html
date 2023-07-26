@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,15 +16,17 @@
         </p>     
 
         <p style='text-align: right;'>
-            «5» sentabr 2023 y. Qo‘qon shahri
+            {{hozir}}
         </p>
 
         <!-- abzasdan yozish -->
+        {% for s in shartnoma %}
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
             Qo‘qon davlat pedagogika instituti (kelgusida institut deb nomlanadi) nomidan rektor 
-            D.Xodjaeva   bir   tomondan   va   ikkinchi   tomondan,   Ijarachi   deb   nomlanuvchi 
-            F_____I____SH mazkur shartnomani quyidagi mazmunda tuzdilar: 
+            <strong>D.Xodjaeva</strong>   bir   tomondan   va   ikkinchi   tomondan,   Ijarachi   deb   nomlanuvchi 
+            <strong>{{s.talaba_f_i_sh}}</strong> mazkur shartnomani quyidagi mazmunda tuzdilar:           
         </p>
+        {% endfor %}
         
         <p style='text-align:center;'>
             <strong style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:center;text-indent:10.2pt;'>
@@ -33,7 +36,7 @@
 
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
             1.1. Mazkur shartnoma bo‘yicha institut Ijarachiga vaqtincha yashash uchun  «5» sentabr 2023 yildan «30» iyun 2024 yilgacha bo‘lgan davr 
-            davomida Qo‘qon davlat pedagogika institutiga qarashli №  –sonli talabalar turar joyidan bitta joy ajratish, ijarachi ajratilgan joyni qabul qilish 
+            davomida Qo‘qon davlat pedagogika institutiga qarashli talabalar turar joyidan bitta joy ajratish, ijarachi ajratilgan joyni qabul qilish 
             va unda yashash majburiyatini oladi. Bu haqida topshirish-qabul qilish dalolatnomasi tuzilib, taraflar imzolaydi (ilova-1). 
         </p>
 
@@ -370,6 +373,9 @@
                     </td>
                     <td style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:justify;text-indent:10.2pt;'>
                         salom
+                        {% for r in qrcode_rasm %}                                                      
+                            <img height="100px" width="100px" src="{{r.link}}"/>
+                        {% endfor %}
                     </td>
                 </tr>
             </tbody>
