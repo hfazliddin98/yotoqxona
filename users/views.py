@@ -13,7 +13,12 @@ def home(request):
     barcha_tolovlar = Barcha_tolov.objects.all()
     tasdiqlangan_tolov = Tolov.objects.filter(tasdiqlash='tasdiqlandi')
     for b in barcha_tolovlar:
-        yillik = int(b.xonalar_soni)*1650000
+        # if b.xonalar_soni == '':
+        #     b.xonalar_soni = 0
+        #     yillik = int(b.xonalar_soni)*1650000
+        # else:
+        #     yillik = int(b.xonalar_soni)*1650000
+        yillik = 41250000
         xonalar = int(b.xonalar_soni)
         ttj = int(b.ttj_soni)
         
@@ -23,10 +28,8 @@ def home(request):
     contex = {
         'data':data,
         'ariza':ariza,
-        'yillik':yillik,
-        'xonalar':xonalar,
-        'ttj':ttj,
-        'tolovlar':tolovlar,
+        
+      
     }
     return render(request, 'asosiy/home.html', contex)
 
