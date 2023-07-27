@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Ariza, Tolov, Tark_etgan, Barcha_tolov, Imtiyoz, Shartnoma, Rasm, Order
+from .models import Ariza, Tolov, Tark_etgan, Barcha_tolov, Imtiyoz, Shartnoma, Rasm, Order, Order_link
 
 
 class ArizaAdmin(admin.ModelAdmin):
@@ -54,4 +54,11 @@ class OrderAdmin(admin.ModelAdmin):
         'id'
     ]
 admin.site.register(Order, OrderAdmin)
+
+
+class Order_linkAdmin(admin.ModelAdmin):
+    list_display= [
+        'id'
+    ]
+admin.site.register(Order_link, Order_linkAdmin)
 

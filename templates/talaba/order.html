@@ -1,1 +1,36 @@
-<h4>order</h4>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ttj.kspi.uz</title>
+</head>
+<body>
+    <div>
+        <h1 style="font-size: xx-large; text-align:center;">Qo`qon davlat pedagogika institut</h1>
+    </div>
+    {{hozir}}
+    <div style="margin-top: 20px;">
+        <table>
+            <tbody>
+                <tr>
+                    <!-- <td><strong style="margin-right: 100px;">Qo`qon davlat pedagogika instituti rektori</strong></td>
+                    <td style="text-align: center;">D.Xodjaeva</td> -->
+                    
+                    <td>
+                        {% for r in qrcode_rasm %}                                                      
+                            <img height="150px" width="150px" src="{{r.link}}"/>
+                        {% endfor %}
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+            </tbody>
+        </table>
+             
+        
+    </div>
+
+</body>
+</html>

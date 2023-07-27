@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,11 +6,12 @@
     <title>Shartnoma</title>
 </head>
 <body>
-    <div style="max-width: 21cm; margin-left:0.7cm;margin-right:0.3cm;">
+    {% for s in shartnoma %}
+    <div style="max-width: 21cm; margin-left:0.7cm;margin-right:0.3cm;">        
         <!-- markazda turib qalin yozish -->
         <p style='text-align:center;'>
             <strong style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:center;text-indent:10.2pt;'>
-                TALABALAR TURAR JOYI(TTJ)DA YASHASH UCHUN XONANI IJARAGA BERISH HAQIDA SHARTNOMA
+                QO`QON DAVLAT PEDAPOGIKA INSTITUTI TALABALAR TURAR JOYI(TTJ)DA YASHASH UCHUN XONANI IJARAGA BERISH HAQIDA SHARTNOMA
             </strong>
         </p>     
 
@@ -20,13 +20,13 @@
         </p>
 
         <!-- abzasdan yozish -->
-        {% for s in shartnoma %}
+       
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            Qo‘qon davlat pedagogika instituti (kelgusida institut deb nomlanadi) nomidan rektor 
+            Qo`qon davlat pedagogika instituti (kelgusida institut deb nomlanadi) nomidan rektor 
             <strong>D.Xodjaeva</strong>   bir   tomondan   va   ikkinchi   tomondan,   Ijarachi   deb   nomlanuvchi 
             <strong>{{s.talaba_f_i_sh}}</strong> mazkur shartnomani quyidagi mazmunda tuzdilar:           
         </p>
-        {% endfor %}
+        
         
         <p style='text-align:center;'>
             <strong style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:center;text-indent:10.2pt;'>
@@ -35,13 +35,13 @@
         </p> 
 
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            1.1. Mazkur shartnoma bo‘yicha institut Ijarachiga vaqtincha yashash uchun  «5» sentabr 2023 yildan «30» iyun 2024 yilgacha bo‘lgan davr 
-            davomida Qo‘qon davlat pedagogika institutiga qarashli talabalar turar joyidan bitta joy ajratish, ijarachi ajratilgan joyni qabul qilish 
+            1.1. Mazkur shartnoma bo`yicha institut Ijarachiga vaqtincha yashash uchun  «5» sentabr 2023 yildan «30» iyun 2024 yilgacha bo`lgan davr 
+            davomida Qo`qon davlat pedagogika institutiga qarashli talabalar turar joyidan bitta joy ajratish, ijarachi ajratilgan joyni qabul qilish 
             va unda yashash majburiyatini oladi. Bu haqida topshirish-qabul qilish dalolatnomasi tuzilib, taraflar imzolaydi (ilova-1). 
         </p>
 
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            1.2. Ijarachining belgilangan xonaga ko‘chib kirishi va yashashi uchun mazkur shartnoma va institut yo‘llanmasi asos hisoblanadi. 
+            1.2. Ijarachining belgilangan xonaga ko`chib kirishi va yashashi uchun mazkur shartnoma va institut yo`llanmasi asos hisoblanadi. 
         </p>
 
         <!-- markazda turib qalin yozish -->
@@ -58,22 +58,22 @@
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            - yashash xonasidan faqat yashash uchun foydalanishi (boshqa maqsadlarda, kasb yoki tadbirkorlik faoliyatini amalga oshirish  maqsadida foydalanishga  yo‘l qo‘yilmaydi);
+            - yashash xonasidan faqat yashash uchun foydalanishi (boshqa maqsadlarda, kasb yoki tadbirkorlik faoliyatini amalga oshirish  maqsadida foydalanishga  yo`l qo`yilmaydi);
         </p>
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            - o‘z vaqtida va muntazam yotoqxona  ijara haqini to‘lash;  
+            - o`z vaqtida va muntazam yotoqxona  ijara haqini to`lash;  
         </p>
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            - institut Ustavi, Ichki tartib qoidalari, TTJ  nizomi, Yong‘in xavfsizligi qoidalari va boshqa lokal normativ hujjatlarni bilishi va qat’iy rioya etishi;  
+            - institut Ustavi, Ichki tartib qoidalari, TTJ  nizomi, Yong`in xavfsizligi qoidalari va boshqa lokal normativ hujjatlarni bilishi va qat’iy rioya etishi;  
         </p>
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            - yashash xonasini qayta jihozlash, qayta qurish va o‘zgartirishni amalga oshirmaslik;  
+            - yashash xonasini qayta jihozlash, qayta qurish va o`zgartirishni amalga oshirmaslik;  
         </p>
 
         <!-- abzasdan yozish -->
@@ -88,13 +88,13 @@
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            - turar joyida o‘tkaziladigan ommaviy, madaniy, sport va tarbiyaviy tadbirlarda ishtirok etish; 
+            - turar joyida o`tkaziladigan ommaviy, madaniy, sport va tarbiyaviy tadbirlarda ishtirok etish; 
         </p>
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
             - turar joyidan uzoq muddatga ketayotib yoki TTJdan tark etishda  (qishki ta’til, dam olish, amaliyot, akademik ta’til olgan hollar), turar joyi 
-            rahbarini ikki kun oldin yozma ravishda ogohlantirib qo‘yish; 
+            rahbarini ikki kun oldin yozma ravishda ogohlantirib qo`yish; 
         </p>
 
         <!-- abzasdan yozish -->
@@ -109,13 +109,13 @@
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            - mazkur shartnoma asosida institut Ustavi, Ichki tartib qoidalari, TTJ nizomi, Yong‘in xavfsizligi qoidalari va boshqa lokal normativ hujjatlarga 
-            rioya qilgan holda,   ko‘rsatilgan muddatda unga biriktirilgan xonada istiqomat qilish va jihozlardan foydalanish;  
+            - mazkur shartnoma asosida institut Ustavi, Ichki tartib qoidalari, TTJ nizomi, Yong`in xavfsizligi qoidalari va boshqa lokal normativ hujjatlarga 
+            rioya qilgan holda,   ko`rsatilgan muddatda unga biriktirilgan xonada istiqomat qilish va jihozlardan foydalanish;  
         </p>
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            - o‘rnatilgan tartibda  va texnika xavfsizligiga rioya qilgan holda  elektr jihozlari, sport anjomlari, maydonlari, ARM  va boshqa 
+            - o`rnatilgan tartibda  va texnika xavfsizligiga rioya qilgan holda  elektr jihozlari, sport anjomlari, maydonlari, ARM  va boshqa 
             resurslardan unumli va oqilona foydalanish;  
         </p>
 
@@ -131,64 +131,64 @@
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            - avariya holatlarida darhol uni oqibatlarini bartaraf etish va uni oldini olish choralarini ko‘rish ;  
+            - avariya holatlarida darhol uni oqibatlarini bartaraf etish va uni oldini olish choralarini ko`rish ;  
         </p>
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            - institut Ustavi, Ichki tartib qoidalari, TTJ nizomi, Yong‘in xavfsizligi qoidalari va boshqa lokal normativ hujjatlarda belgilangan boshqa majburiyatlarni bajarish.   
+            - institut Ustavi, Ichki tartib qoidalari, TTJ nizomi, Yong`in xavfsizligi qoidalari va boshqa lokal normativ hujjatlarda belgilangan boshqa majburiyatlarni bajarish.   
         </p>
 
         <!-- markazda turib qalin yozish -->
         <p style='text-align:center;'>
             <strong style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:center;text-indent:10.2pt;'>
-                3. Ijara haqi to‘lovi shartlari va hisob-kitob tartibi 
+                3. Ijara haqi to`lovi shartlari va hisob-kitob tartibi 
             </strong>
         </p>  
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
             3.1. Shartnoma tuzilgan paytda ijara haqi 2023 yil “5” sentabr – 2024 yil 30 iyun kunlari uchun bazaviy hisoblash miqdorining 5 (besh) 
-            baravari 1.650000 (bir million oltiyuz ellik  ming) so‘mni tashkil etadi. 
+            baravari 1.650000 (bir million oltiyuz ellik  ming) so`mni tashkil etadi. 
         </p>
 
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
             3.2. Shartnoma amal qilish muddati davomida bazaviy hisoblash miqdori yoki kommunal xizmatlar uchun tariflar oshgan taqdirda, institut bir tomonlama 
-            tartibda ijara haqi miqdorini qayta ko‘rib chiqishi va ijara haqini o‘zgartirishi mumkin.
+            tartibda ijara haqi miqdorini qayta ko`rib chiqishi va ijara haqini o`zgartirishi mumkin.
         </p>
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            Har o‘quv yili uchun ijara haqi miqdori institut Kengashi qaroriga asosan rektor buyrug‘i bilan tasdiqlanadi. Buyruq nusxasi talabalar turar 
+            Har o`quv yili uchun ijara haqi miqdori institut Kengashi qaroriga asosan rektor buyrug`i bilan tasdiqlanadi. Buyruq nusxasi talabalar turar 
             joyining e’lonlar doskasiga joylashtiriladi. 
         </p>
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            Ijarachining o‘z vaqtida to‘lov miqdori haqida xabardor bo‘lmaganligi avvalgi miqdorda to‘lovni amalga oshirishiga asos bo‘lmaydi. 
+            Ijarachining o`z vaqtida to`lov miqdori haqida xabardor bo`lmaganligi avvalgi miqdorda to`lovni amalga oshirishiga asos bo`lmaydi. 
         </p>
 
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            3.3. Ijarachi to‘lovni ijara shartnomasi tuzilgan kundan boshlab 3 (uch) ish kunida institut hisob raqamiga o‘tkazish yo‘li bilan amalga oshiradi. 
+            3.3. Ijarachi to`lovni ijara shartnomasi tuzilgan kundan boshlab 3 (uch) ish kunida institut hisob raqamiga o`tkazish yo`li bilan amalga oshiradi. 
         </p>
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            3.4. Ijarachiga to‘lovni amalga oshirganligi haqidagi to‘lov xujjatlari nusxasini taqdim etganidan so‘ng yashash uchun order beriladi. 
+            3.4. Ijarachiga to`lovni amalga oshirganligi haqidagi to`lov xujjatlari nusxasini taqdim etganidan so`ng yashash uchun order beriladi. 
         </p>
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            3.5. Talabalar yozgi ta’til davri (iyul-avgust oylari)ga to‘lov amalga oshirilmaydi. Boshqa qisqa muddatli ta’tillar va amaliyot davri uchun to‘lov amalga oshiriladi.  
+            3.5. Talabalar yozgi ta’til davri (iyul-avgust oylari)ga to`lov amalga oshirilmaydi. Boshqa qisqa muddatli ta’tillar va amaliyot davri uchun to`lov amalga oshiriladi.  
         </p>
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            3.6. Mazkur shartnomada nazarda tutilmagan qo‘shimcha xizmatlar uchun xarajatlar ushbu shartnomaga qo‘shimcha tuzilgan kelishuv asosida belgilanadi.   
+            3.6. Mazkur shartnomada nazarda tutilmagan qo`shimcha xizmatlar uchun xarajatlar ushbu shartnomaga qo`shimcha tuzilgan kelishuv asosida belgilanadi.   
         </p>
 
         <!-- markazda turib qalin yozish -->
@@ -200,14 +200,14 @@
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            5.1. Mazkur shartnomani bajarmagan yoki lozim darajada bajarmagan tomonlarga nisbatan  O‘zbekiston Respublikasining amaldagi qonunchiligi va 
-            boshqa institut lokal hujjatlariga binoan javobgarlik qo‘llaniladi. 
+            5.1. Mazkur shartnomani bajarmagan yoki lozim darajada bajarmagan tomonlarga nisbatan  O`zbekiston Respublikasining amaldagi qonunchiligi va 
+            boshqa institut lokal hujjatlariga binoan javobgarlik qo`llaniladi. 
         </p>
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            5.2. Mazkur  shartnomaning talablariga, institut Ustavi, Ichki tartib qoidalari, Odob-axloq kodeksi, TTJ nizomi, Yong‘in xavfsizligi qoidalari va 
-            boshqa lokal normativ hujjatlarga rioya qilmagan  ijarachiga: xayfsan, TTJdan chiqarish, talabalar safidan chiqarish intizomiy jazo choralari qo‘llaniladi. 
+            5.2. Mazkur  shartnomaning talablariga, institut Ustavi, Ichki tartib qoidalari, Odob-axloq kodeksi, TTJ nizomi, Yong`in xavfsizligi qoidalari va 
+            boshqa lokal normativ hujjatlarga rioya qilmagan  ijarachiga: xayfsan, TTJdan chiqarish, talabalar safidan chiqarish intizomiy jazo choralari qo`llaniladi. 
         </p>
 
         <!-- abzasdan yozish -->
@@ -224,23 +224,23 @@
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            b) yashash xonasini o‘zi yoki u taklif qilgan shaxs tomonidan buzilishi yoki shikastlantirilishi;  
+            b) yashash xonasini o`zi yoki u taklif qilgan shaxs tomonidan buzilishi yoki shikastlantirilishi;  
         </p>
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            v) ro‘yxat(propiska)dan o‘tishdan bosh tortishi;  
+            v) ro`yxat(propiska)dan o`tishdan bosh tortishi;  
         </p>
 
 
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            g) birga yashovchilar, qo‘shnilarning birgalikda yashashiga imkoniyat bermaydigan muntazam ravishda ularning huquq va manfaatlarini buzishi; 
+            g) birga yashovchilar, qo`shnilarning birgalikda yashashiga imkoniyat bermaydigan muntazam ravishda ularning huquq va manfaatlarini buzishi; 
         </p>
         
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            d) ikki oydan ortiq muddat davomida ijara to‘lovini amalga oshirmaslik; 
+            d) ikki oydan ortiq muddat davomida ijara to`lovini amalga oshirmaslik; 
         </p>
         
         <!-- abzasdan yozish -->
@@ -255,7 +255,7 @@
         
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            z) giyohvand, portlovchi kimyoviy xavfli moddalar yoki sovuq, o‘qotar qurollarni saqlash, tarqatish;  
+            z) giyohvand, portlovchi kimyoviy xavfli moddalar yoki sovuq, o`qotar qurollarni saqlash, tarqatish;  
         </p>
         
         <!-- abzasdan yozish -->
@@ -265,19 +265,19 @@
         
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            l) O‘zbekiston Respublikasining  qonunchiligida nazarda tutilgan boshqa hollarda.  
+            l) O`zbekiston Respublikasining  qonunchiligida nazarda tutilgan boshqa hollarda.  
         </p>
         
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            5.4. Ijara shartnomasi bekor qilingan hollarda ijarachi 3(uch) ish kunida xonani bo‘shatishi, olgan barcha jihozlarni yaroqli va but holatda topshirishi shart. 
-            Ijarachi xonani bo‘shatishdan bosh tortgan taqdirda, majburiy tartibda ko‘chiriladi.  
+            5.4. Ijara shartnomasi bekor qilingan hollarda ijarachi 3(uch) ish kunida xonani bo`shatishi, olgan barcha jihozlarni yaroqli va but holatda topshirishi shart. 
+            Ijarachi xonani bo`shatishdan bosh tortgan taqdirda, majburiy tartibda ko`chiriladi.  
         </p>
          
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            5.5. Ijarachi yashash xonasini shartnomada belgilangan muddatda bo‘shatib bermagan hollarda, muddat o‘tgan kunning ertasidan xonani bo‘shatgan kungacha 
-            rektor buyrug‘i bilan belgilangan oshirilgan miqdorda to‘lovni amalga oshiradi.  
+            5.5. Ijarachi yashash xonasini shartnomada belgilangan muddatda bo`shatib bermagan hollarda, muddat o`tgan kunning ertasidan xonani bo`shatgan kungacha 
+            rektor buyrug`i bilan belgilangan oshirilgan miqdorda to`lovni amalga oshiradi.  
         </p>
 
         <!-- markazda turib qalin yozish -->
@@ -289,99 +289,126 @@
          
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            6.1. Shartnoma yuzasidan nizo va kelishmovchiliklar yuzaga kelganda, dastlab TTJ ma’muriyati va talabalar o‘zini o‘zi boshqarish organi kengash tomonidan, 
-            kelishuvga erishilmaganda  institut ma’muriyati va kasaba uyushmasi qo‘mitasi ijarachi ishtirokida ko‘rib chiqiladi.         
+            6.1. Shartnoma yuzasidan nizo va kelishmovchiliklar yuzaga kelganda, dastlab TTJ ma’muriyati va talabalar o`zini o`zi boshqarish organi kengash tomonidan, 
+            kelishuvga erishilmaganda  institut ma’muriyati va kasaba uyushmasi qo`mitasi ijarachi ishtirokida ko`rib chiqiladi.         
         </p>
          
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            6.2. Mazkur shartnoma ijarachining istagiga ko‘ra, har qanday muddatda, institut shartnomaniig 5.3- bandida ko‘rsatilgan asoslarda hamda shartnoma 
+            6.2. Mazkur shartnoma ijarachining istagiga ko`ra, har qanday muddatda, institut shartnomaniig 5.3- bandida ko`rsatilgan asoslarda hamda shartnoma 
             muddati tugaganda bekor qilinishi mumkin.  
         </p>
          
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            6.3. Tomonlardan birining manzili va boshqa rekvizitlari o‘zgargan taqdirda, boshqa tomonni 10 kun ichida xabardor qilishi shart.  
+            6.3. Tomonlardan birining manzili va boshqa rekvizitlari o`zgargan taqdirda, boshqa tomonni 10 kun ichida xabardor qilishi shart.  
         </p>
          
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            6.4 Ijarachining yashash xonasidagi yo‘qolgan (tilla taqinchoqlar, kompyuter, noutbuk, telefon, pul va x.k) qimat baho buyumlarga TTJ ma’muriyati javob bermaydi.  
+            6.4 Ijarachining yashash xonasidagi yo`qolgan (tilla taqinchoqlar, kompyuter, noutbuk, telefon, pul va x.k) qimat baho buyumlarga TTJ ma’muriyati javob bermaydi.  
         </p>
          
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            6.5. Shartnoma yuzasidan nizo va kelishmovchiliklar o‘zaro muzokara-kelishuvlar asosida hal qilinadi, kelishuvga erishilmaganda, O‘zbekiston Respublikasining 
-            amaldagi  qonunchiligi asosida fuqarolik ishlari bo‘yicha Qo‘qon tumanlararo sudida hal etiladi.  
+            6.5. Shartnoma yuzasidan nizo va kelishmovchiliklar o`zaro muzokara-kelishuvlar asosida hal qilinadi, kelishuvga erishilmaganda, O`zbekiston Respublikasining 
+            amaldagi  qonunchiligi asosida fuqarolik ishlari bo`yicha Qo`qon tumanlararo sudida hal etiladi.  
         </p>
          
         <!-- abzasdan yozish -->
         <p style='margin-left:1cm;margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:left;text-indent:10.2pt;'>
-            6.6. Shartnoma teng yuridik kuchga ega bo‘lgan uch nusxada tuzildi. 
+            6.6. Shartnoma teng yuridik kuchga ega bo`lgan uch nusxada tuzildi. 
+        </p>
+
+        <!-- markazda turib qalin yozish -->
+        <p style='text-align:center;'>
+            <strong style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:center;text-indent:10.2pt;'>
+                Malumotlar  
+            </strong>
         </p>
          
-        <table style="width:537.0pt;border-collapse:collapse;border:none;text-align :center; margin-left:auto;margin-right:auto;">
+        <table style="width:537.0pt;border-collapse:collapse;border:none;text-align :center;margin-top: 20px; margin-left:auto;margin-right:auto;">
             <tbody>
                 <tr>
                     <td style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:justify;text-indent:10.2pt;'>
-                        <strong>Ijarachi: </strong> salom
+                        <strong>Ijarachi: </strong> {{s.talaba_f_i_sh}}
                     </td>
                     <td style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:justify;text-indent:10.2pt;'>
-                        salom
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:justify;text-indent:10.2pt;'>
-                        salom
-                    </td>
-                    <td style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:justify;text-indent:10.2pt;'>
-                        salom
+                        <strong>Institut: </strong> Qo`qon davlat pedagogika instituti
                     </td>
                 </tr>
 
                 <tr>
                     <td style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:justify;text-indent:10.2pt;'>
-                        salom
+                        <strong>Manzil: </strong> {{s.manzil}}
                     </td>
                     <td style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:justify;text-indent:10.2pt;'>
-                        salom
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:justify;text-indent:10.2pt;'>
-                        salom
-                    </td>
-                    <td style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:justify;text-indent:10.2pt;'>
-                        salom
+                        <strong>XKKM: </strong> Markaziy bank Toshkent shaxar BB
                     </td>
                 </tr>
 
                 <tr>
                     <td style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:justify;text-indent:10.2pt;'>
-                        salom
+                        <strong>Pasport serya raqam: </strong> {{s.pasport}}
                     </td>
                     <td style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:justify;text-indent:10.2pt;'>
-                        salom
+                        <strong>Xisob raqam</strong> 23402000300100001010
                     </td>
                 </tr>
 
                 <tr>
                     <td style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:justify;text-indent:10.2pt;'>
-                        salom
+                        <strong>IIB manzil: </strong> {{s.iib_manzil}} IIB
                     </td>
                     <td style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:justify;text-indent:10.2pt;'>
-                        salom
-                        {% for r in qrcode_rasm %}                                                      
-                            <img height="100px" width="100px" src="{{r.link}}"/>
-                        {% endfor %}
+                        <strong>MFO: </strong> 00014 <strong>STIR: </strong> 201122919
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:justify;text-indent:10.2pt;'>
+                       
+                    </td>
+                    <td style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:justify;text-indent:10.2pt;'>
+                        <strong>SHXR: </strong> 400110860304057094100079001
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:justify;text-indent:10.2pt;'>
+                        
+                    </td>
+                    <td style='margin:0cm;margin-bottom:.0001pt;font-size:12px;font-family:"Times New Roman",serif;text-align:justify;text-indent:10.2pt;'>
+                        <strong>STIR: </strong> 200131171                        
                     </td>
                 </tr>
             </tbody>
         </table>
+
+        <div style="margin-top: 20px;">
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- <td><strong style="margin-right: 100px;">Qo`qon davlat pedagogika instituti rektori</strong></td>
+                        <td style="text-align: center;">D.Xodjaeva</td> -->
+                        
+                        <td>
+                            {% for r in qrcode_rasm %}                                                      
+                                <img height="150px" width="150px" src="{{r.link}}"/>
+                            {% endfor %}
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+                 
+            
+        </div>
         
 
     </div>
+    {% endfor %}
 </body>
 </html>

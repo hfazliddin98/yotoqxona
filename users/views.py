@@ -4,15 +4,29 @@ from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login, authenticate, get_user_model
 from users.models import User
-from ariza.models import Ariza
+from ariza.models import Ariza, Barcha_tolov, Tolov
 
 @csrf_exempt
 def home(request):    
     data = User.objects.filter(id=request.user.id)
     ariza = Ariza.objects.all()
+    barcha_tolovlar = Barcha_tolov.objects.all()
+    tasdiqlangan_tolov = Tolov.objects.filter(tasdiqlash='tasdiqlandi')
+    for b in barcha_tolovlar:
+        yillik = int(b.xonalar_soni)*1650000
+        xonalar = int(b.xonalar_soni)
+        ttj = int(b.ttj_soni)
+        
+    for t in tasdiqlangan_tolov:
+        tolovlar = int(t.narhi)
+        
     contex = {
         'data':data,
         'ariza':ariza,
+        'yillik':yillik,
+        'xonalar':xonalar,
+        'ttj':ttj,
+        'tolovlar':tolovlar,
     }
     return render(request, 'asosiy/home.html', contex)
 

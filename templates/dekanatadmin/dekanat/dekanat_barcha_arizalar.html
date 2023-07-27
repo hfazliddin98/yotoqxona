@@ -153,6 +153,7 @@
                                 <tbody>
                                     
                                     {% for a in arizalar %}
+                                    {% if a.fakultet == fakultet or a.tasdiqlash == '' %}
                                    
                                     <tr>                                       
                                         <th scope="row">1</th>
@@ -164,6 +165,7 @@
                                         <td><a class="btn btn-primary" href="{% url 'dekanat_barcha_malumot' a.talaba_id %}">Ko'rish</a></td>
                                         
                                     </tr>
+                                    {% endif %}
                                     {% endfor %}
                                     
                                 </tbody>                               

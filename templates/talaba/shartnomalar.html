@@ -74,9 +74,9 @@
                             <div>Shartnoma</div>
                         </div>
                         <hr>
-                        
-                        <a class="btn btn-primary text-center w-100" href="{% url 'shartnoma' %}">Yuklab olish</a>
-                       
+                        {% for t in talaba %}
+                        <a class="btn btn-primary text-center w-100" href="{% url 'shartnoma' t.pk %}">Yuklab olish</a>
+                        {% endfor %}
                     </div>
                     <div class="col-md-2"></div>
                     <div class="hisob-varoq border border-2 border-rounded col-md-3 p-3 mb-3">
@@ -92,7 +92,9 @@
                             <div>Order</div>
                         </div>
                         <hr>
-                        <a class="btn btn-primary text-center w-100" href="{% url 'order' %}">Yuklab olish</a>
+                        {% for t in talaba %}
+                        <a class="btn btn-primary text-center w-100" href="{% url 'order' t.pk%}">Yuklab olish</a>
+                        {% endfor %}
                     </div>
                     <div class="col-md-2"></div>
                 </div>

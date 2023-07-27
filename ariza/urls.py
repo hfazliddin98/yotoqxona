@@ -47,9 +47,10 @@ urlpatterns = [
    path('tolovlar/<str:pk>/', tolovlar, name='tolovlar'),
 
    # shartnomalar
-   path('shartnoma/', shartnoma, name='shartnoma'),
+   path('shartnoma/<str:pk>/', shartnoma, name='shartnoma'),
+   path('order/<str:pk>/', order, name='order'),
    path('shartnomalar/', shartnomalar, name='shartnomalar'),
-   path('order/', order, name='order'),
+   
    # royhatlar
    path('superadminlar/', superadminlar, name='superadminlar'),   
    path('dekanatadminlar/', dekanatadminlar, name='dekanatadminlar'),

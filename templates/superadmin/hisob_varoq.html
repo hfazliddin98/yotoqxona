@@ -174,21 +174,8 @@
                             <h5 class="card-title text-center">To'lovlar</h5>
                             <!-- Table with stripped rows -->
                             <form method="POST" class="row g-3 needs-validation" novalidate>
-                                {% csrf_token %}
-                                <div class="col-md-3">
-                                    <label for="yillik" class="form-label">Yillik to'lov</label>
-                                    <input name="barcha" type="text" class="form-control" id="yillik" placeholder="Yillik to'lov" required>
-                                    <div class="invalid-feedback">
-                                        Yillik to'lovni kiriting.!
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="oylik" class="form-label">Oylik to'lov</label>
-                                    <input name="oylik" type="text" class="form-control" id="oylik" placeholder="Oylik to'lov" required>
-                                    <div class="invalid-feedback">
-                                        Oylik to'lovni kiriting.!
-                                    </div>
-                                </div>
+                                {% csrf_token %}                          
+                                
                                 <div class="col-md-3">
                                     <label for="boshlangich" class="form-label">Boshlang'ich to'lov</label>
                                     <input name="boshlanginch_tolov" type="text" class="form-control" id="boshlangich" placeholder="Boshlang'ich to'lov" required>
@@ -197,12 +184,29 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <label for="hisob" class="form-label">Hisob raqam</label>
-                                    <input name="hisob_raqam" type="text" class="form-control" id="hisob" placeholder="Hisob raqam" required>
+                                  <label for="oylik" class="form-label">Oylik to'lov</label>
+                                  <input name="oylik" type="text" class="form-control" id="oylik" placeholder="Oylik to'lov" required>
+                                  <div class="invalid-feedback">
+                                      Oylik to'lovni kiriting.!
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="hisob" class="form-label">TTJ soni</label>
+                                    <input name="ttj_soni" type="text" class="form-control" id="hisob" placeholder="TTJ soni" required>
                                     <div class="invalid-feedback">
-                                        Hisob raqamni kiriting.!
+                                        TTJ sonini kiriting.!
                                     </div>
                                 </div>
+
+                                <div class="col-md-3">
+                                  <label for="yillik" class="form-label">Xonalar soni</label>
+                                  <input name="xonalar_soni" type="text" class="form-control" id="yillik" placeholder="Xonalar soni" required>
+                                  <div class="invalid-feedback">
+                                      Xonalar sonini kiriting.!
+                                  </div>
+                                </div>
+
+
                                 <div class="col-12 text-center">
                                     <button class="btn btn-primary" type="submit">Saqlash</button>
                                 </div>

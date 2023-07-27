@@ -43,10 +43,12 @@ class Tolov(models.Model):
     sana = models.DateTimeField(auto_now_add=True)
     
 class Barcha_tolov(models.Model):
-    barcha = models.CharField(max_length=100)
+    yillik_tolv = models.CharField(max_length=100)
     oylik = models.CharField(max_length=100, blank=True)
     boshlanginch_tolov = models.CharField(max_length=100, blank=True)
-    hisob_raqam = models.CharField(max_length=100, blank=True)
+    yigilgan_summa = models.CharField(max_length=100, blank=True)
+    ttj_soni = models.CharField(max_length=100, blank=True)
+    xonalar_soni = models.CharField(max_length=100, blank=True)    
     sana = models.DateTimeField(auto_now_add=True)
     
 class Tark_etgan(models.Model):
@@ -72,6 +74,11 @@ class Rasm(models.Model):
     talaba_id = models.CharField(max_length=100)    
     link = models.CharField(max_length=100, blank=True)
     rasm = models.FileField(upload_to='qrcode/')  
+    
+class Order_link(models.Model):
+    talaba_id = models.CharField(max_length=100)    
+    link = models.CharField(max_length=100, blank=True)
+    rasm = models.FileField(upload_to='order_qrcode/')  
     
     
 class Order(models.Model):
