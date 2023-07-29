@@ -5,8 +5,8 @@ from .views import hisob_varoq, tolov_chek, shartnoma, shartnomalar, order, tark
 from .views import superadminlar, dekanatadminlar
 from .views import talaba_malumotlar, radetilgan_malumotlar, tasdiqlangan_malumotlar, tark_etgan_malumotlar
 from .views import talaba_tolov_malumotlar, radetilgan_tolov_malumotlar
-from .views import imtiyoz, imtiyozli_arizalar, imtiyoz_malumotlar, imtiyozni_tasdiqlash, imtiyozni_radetish
-from .views import arizalar_jadvali
+from .views import imtiyoz, imtiyozli_arizalar, imtiyoz_malumotlar, imtiyozni_tasdiqlash, imtiyozni_radetish, tasdiqlangan_imtiyoz_malumotlar
+from .views import arizalar_jadvali, tasdiqlangan_imtiyozli_arizalar
 from .views import dekanat_barcha_arizalar, dekanat_tasdiqlangan_arizalar, dekanat_radetilgan_arizalar
 from .views import dekanat_barcha_malumot, dekanat_tasdiqlangan_malumot, dekanat_radetilgan_malumot
 
@@ -24,10 +24,12 @@ urlpatterns = [
    
    # imtiyozlar uchun
    path('imtiyoz/', imtiyoz, name='imtiyoz'), 
-   path('imtiyozli_arizalar/', imtiyozli_arizalar, name='imtiyozli_arizalar'),   
+   path('imtiyozli_arizalar/', imtiyozli_arizalar, name='imtiyozli_arizalar'),  
+   path('tasdiqlangan_imtiyozli_arizalar/', tasdiqlangan_imtiyozli_arizalar, name='tasdiqlangan_imtiyozli_arizalar'), 
    path('imtiyoz_malumotlar/<str:pk>/', imtiyoz_malumotlar, name='imtiyoz_malumotlar'),
    path('imtiyozni_tasdiqlash/<str:pk>/', imtiyozni_tasdiqlash, name='imtiyozni_tasdiqlash'),
    path('imtiyozni_radetish/<str:pk>/', imtiyozni_radetish, name='imtiyozni_radetish'),
+   path('tasdiqlangan_imtiyoz_malumotlar/<str:pk>/', tasdiqlangan_imtiyoz_malumotlar, name='tasdiqlangan_imtiyoz_malumotlar'),
    
    # talaba uchun
    path('ariza/', ariza, name='ariza'), 

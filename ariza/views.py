@@ -227,11 +227,54 @@ def arizalar_jadvali(request, pk):
     talabalar = User.objects.filter(id=pk)
     arizalar = Ariza.objects.filter(talaba_id=pk)
     imtiyoz = Imtiyoz.objects.filter(talaba_id=pk)
+    if talabalar:
+        for t in talabalar:
+            telefon = t.username
+    else:
+        telefon = ''
+        
+    if arizalar:
+        for a in arizalar:
+            rasm_url = a.pasport_rasm.url
+            familya = a.last_name
+            ism = a.first_name
+            sharif = a.sharif
+            pasport = a.pasport_serya_raqam
+            fakultet = a.fakultet
+            yonalish = a.yonalish
+            kurs = a.kurs
+            viloyat = a.viloyat
+            tuman = a.tuman
+            kocha = a.kocha
+            
+    else:
+        rasm_url = 'Pasport rasmi joylanmagan'
+        familya = ''
+        ism = ''
+        sharif = ''
+        pasport = ''
+        fakultet = ''
+        yonalish = ''
+        kurs = ''
+        viloyat = ''
+        tuman = ''
+        kocha = ''
+        
+    if imtiyoz:  
+        for i in imtiyoz:            
+            imtiyoz_url = i.imtiyoz_file.url
+            imtiyoz_turi = i.imtiyoz_nomi
+    else:
+        imtiyoz_url = 'Talabada imtiyoz mavjud emas'
+        imtiyoz_turi = ''
+        
+    
     
     contex = {
-        'talabalar':talabalar,
-        'arizalar':arizalar,
-        'imtiyoz':imtiyoz,
+        'talabalar':talabalar,'arizalar':arizalar,'imtiyoz':imtiyoz,'rasm_url':rasm_url,
+        'imtiyoz_url':imtiyoz_url,'familya':familya,'ism':ism,'sharif':sharif,'telefon':telefon,
+        'pasport':pasport,'imtiyoz_turi':imtiyoz_turi,'fakultet':fakultet,'yonalish':yonalish,
+        'kurs':kurs,'viloyat':viloyat,'tuman':tuman,'kocha':kocha,
     }
     return render(request, 'superadmin/arizalar_jadvali.html', contex)
 
@@ -249,18 +292,134 @@ def imtiyozli_arizalar(request):
     }
     return render(request, 'superadmin/imtiyozli_arizalar.html', contex)
 
+
 @csrf_exempt
-def imtiyoz_malumotlar(request, pk):
-    talabalar = User.objects.filter(id=pk)
-    arizalar = Ariza.objects.all
-    imtiyoz = Imtiyoz.objects.filter(talaba_id=pk)
+def tasdiqlangan_imtiyozli_arizalar(request):
+    talabalar = User.objects.filter(lavozim='talaba')
+    imtiyozlar = Imtiyoz.objects.filter(tasdiqlash='')
+    
     
     contex = {
         'talabalar':talabalar,
-        'arizalar':arizalar,
-        'imtiyoz':imtiyoz,
+        'imtiyozlar':imtiyozlar,        
+    }
+    return render(request, 'superadmin/tasdiqlangan_imtiyozli_arizalar.html', contex)
+
+@csrf_exempt
+def imtiyoz_malumotlar(request, pk):
+    talabalar = User.objects.filter(id=pk)
+    arizalar = Ariza.objects.filter(talaba_id=pk)
+    imtiyoz = Imtiyoz.objects.filter(talaba_id=pk)
+    if talabalar:
+        for t in talabalar:
+            telefon = t.username
+    else:
+        telefon = ''
+        
+    if arizalar:
+        for a in arizalar:
+            rasm_url = a.pasport_rasm.url
+            familya = a.last_name
+            ism = a.first_name
+            sharif = a.sharif
+            pasport = a.pasport_serya_raqam
+            fakultet = a.fakultet
+            yonalish = a.yonalish
+            kurs = a.kurs
+            viloyat = a.viloyat
+            tuman = a.tuman
+            kocha = a.kocha
+            
+    else:
+        rasm_url = 'Pasport rasmi joylanmagan'
+        familya = ''
+        ism = ''
+        sharif = ''
+        pasport = ''
+        fakultet = ''
+        yonalish = ''
+        kurs = ''
+        viloyat = ''
+        tuman = ''
+        kocha = ''
+        
+    if imtiyoz:  
+        for i in imtiyoz:            
+            imtiyoz_url = i.imtiyoz_file.url
+            imtiyoz_turi = i.imtiyoz_nomi
+    else:
+        imtiyoz_url = 'Talabada imtiyoz mavjud emas'
+        imtiyoz_turi = ''
+        
+    
+    
+    contex = {
+        'talabalar':talabalar,'arizalar':arizalar,'imtiyoz':imtiyoz,'rasm_url':rasm_url,
+        'imtiyoz_url':imtiyoz_url,'familya':familya,'ism':ism,'sharif':sharif,'telefon':telefon,
+        'pasport':pasport,'imtiyoz_turi':imtiyoz_turi,'fakultet':fakultet,'yonalish':yonalish,
+        'kurs':kurs,'viloyat':viloyat,'tuman':tuman,'kocha':kocha,
     }
     return render(request, 'superadmin/imtiyoz_malumotlar.html', contex)
+
+
+
+
+@csrf_exempt
+def tasdiqlangan_imtiyoz_malumotlar(request, pk):
+    talabalar = User.objects.filter(id=pk)
+    arizalar = Ariza.objects.filter(talaba_id=pk)
+    imtiyoz = Imtiyoz.objects.filter(talaba_id=pk)
+    if talabalar:
+        for t in talabalar:
+            telefon = t.username
+    else:
+        telefon = ''
+        
+    if arizalar:
+        for a in arizalar:
+            rasm_url = a.pasport_rasm.url
+            familya = a.last_name
+            ism = a.first_name
+            sharif = a.sharif
+            pasport = a.pasport_serya_raqam
+            fakultet = a.fakultet
+            yonalish = a.yonalish
+            kurs = a.kurs
+            viloyat = a.viloyat
+            tuman = a.tuman
+            kocha = a.kocha
+            
+    else:
+        rasm_url = 'Pasport rasmi joylanmagan'
+        familya = ''
+        ism = ''
+        sharif = ''
+        pasport = ''
+        fakultet = ''
+        yonalish = ''
+        kurs = ''
+        viloyat = ''
+        tuman = ''
+        kocha = ''
+        
+    if imtiyoz:  
+        for i in imtiyoz:            
+            imtiyoz_url = i.imtiyoz_file.url
+            imtiyoz_turi = i.imtiyoz_nomi
+    else:
+        imtiyoz_url = 'Talabada imtiyoz mavjud emas'
+        imtiyoz_turi = ''
+        
+    
+    
+    contex = {
+        'talabalar':talabalar,'arizalar':arizalar,'imtiyoz':imtiyoz,'rasm_url':rasm_url,
+        'imtiyoz_url':imtiyoz_url,'familya':familya,'ism':ism,'sharif':sharif,'telefon':telefon,
+        'pasport':pasport,'imtiyoz_turi':imtiyoz_turi,'fakultet':fakultet,'yonalish':yonalish,
+        'kurs':kurs,'viloyat':viloyat,'tuman':tuman,'kocha':kocha,
+    }
+    return render(request, 'superadmin/tasdiqlangan_imtiyoz_malumot.html', contex)
+
 
 
 @csrf_exempt
@@ -371,12 +530,55 @@ def talaba_malumotlar(request, pk):
 def tasdiqlangan_malumotlar(request, pk):
     talabalar = User.objects.filter(id=pk)
     arizalar = Ariza.objects.filter(talaba_id=pk)
-    imtiyozlar = Imtiyoz.objects.filter(talaba_id=pk)
+    imtiyoz = Imtiyoz.objects.filter(talaba_id=pk)
+    if talabalar:
+        for t in talabalar:
+            telefon = t.username
+    else:
+        telefon = ''
+        
+    if arizalar:
+        for a in arizalar:
+            rasm_url = a.pasport_rasm.url
+            familya = a.last_name
+            ism = a.first_name
+            sharif = a.sharif
+            pasport = a.pasport_serya_raqam
+            fakultet = a.fakultet
+            yonalish = a.yonalish
+            kurs = a.kurs
+            viloyat = a.viloyat
+            tuman = a.tuman
+            kocha = a.kocha
+            
+    else:
+        rasm_url = 'Pasport rasmi joylanmagan'
+        familya = ''
+        ism = ''
+        sharif = ''
+        pasport = ''
+        fakultet = ''
+        yonalish = ''
+        kurs = ''
+        viloyat = ''
+        tuman = ''
+        kocha = ''
+        
+    if imtiyoz:  
+        for i in imtiyoz:            
+            imtiyoz_url = i.imtiyoz_file.url
+            imtiyoz_turi = i.imtiyoz_nomi
+    else:
+        imtiyoz_url = 'Talabada imtiyoz mavjud emas'
+        imtiyoz_turi = ''
+        
+    
     
     contex = {
-        'talabalar':talabalar,
-        'arizalar':arizalar,
-        'imtiyozlar':imtiyozlar,
+        'talabalar':talabalar,'arizalar':arizalar,'imtiyoz':imtiyoz,'rasm_url':rasm_url,
+        'imtiyoz_url':imtiyoz_url,'familya':familya,'ism':ism,'sharif':sharif,'telefon':telefon,
+        'pasport':pasport,'imtiyoz_turi':imtiyoz_turi,'fakultet':fakultet,'yonalish':yonalish,
+        'kurs':kurs,'viloyat':viloyat,'tuman':tuman,'kocha':kocha,
     }
     return render(request, 'dekanatadmin/tasdiqlangan_malumot.html', contex)
 
@@ -385,12 +587,55 @@ def tasdiqlangan_malumotlar(request, pk):
 def radetilgan_malumotlar(request, pk):
     talabalar = User.objects.filter(id=pk)
     arizalar = Ariza.objects.filter(talaba_id=pk)
-    imtiyozlar = Imtiyoz.objects.filter(talaba_id=pk)
+    imtiyoz = Imtiyoz.objects.filter(talaba_id=pk)
+    if talabalar:
+        for t in talabalar:
+            telefon = t.username
+    else:
+        telefon = ''
+        
+    if arizalar:
+        for a in arizalar:
+            rasm_url = a.pasport_rasm.url
+            familya = a.last_name
+            ism = a.first_name
+            sharif = a.sharif
+            pasport = a.pasport_serya_raqam
+            fakultet = a.fakultet
+            yonalish = a.yonalish
+            kurs = a.kurs
+            viloyat = a.viloyat
+            tuman = a.tuman
+            kocha = a.kocha
+            
+    else:
+        rasm_url = 'Pasport rasmi joylanmagan'
+        familya = ''
+        ism = ''
+        sharif = ''
+        pasport = ''
+        fakultet = ''
+        yonalish = ''
+        kurs = ''
+        viloyat = ''
+        tuman = ''
+        kocha = ''
+        
+    if imtiyoz:  
+        for i in imtiyoz:            
+            imtiyoz_url = i.imtiyoz_file.url
+            imtiyoz_turi = i.imtiyoz_nomi
+    else:
+        imtiyoz_url = 'Talabada imtiyoz mavjud emas'
+        imtiyoz_turi = ''
+        
+    
     
     contex = {
-        'talabalar':talabalar,
-        'arizalar':arizalar,
-        'imtiyozlar':imtiyozlar,
+        'talabalar':talabalar,'arizalar':arizalar,'imtiyoz':imtiyoz,'rasm_url':rasm_url,
+        'imtiyoz_url':imtiyoz_url,'familya':familya,'ism':ism,'sharif':sharif,'telefon':telefon,
+        'pasport':pasport,'imtiyoz_turi':imtiyoz_turi,'fakultet':fakultet,'yonalish':yonalish,
+        'kurs':kurs,'viloyat':viloyat,'tuman':tuman,'kocha':kocha,
     }
     return render(request, 'dekanatadmin/radetilgan_malumot.html', contex)
 
@@ -573,19 +818,31 @@ def tark_etgan_talaba(request):
 
 @csrf_exempt
 def hisob_varoq(request):
+    tolov_id = Barcha_tolov.objects.filter(kiritish = 'kiritildi')
     if request.method == 'POST': 
         boshlanginch_tolov = request.POST['boshlanginch_tolov']       
-        oylik = request.POST['oylik']        
+        oylik = request.POST['oylik']
+        yillik_tolov = request.POST['yillik_tolov']        
         ttj_soni = request.POST['ttj_soni']
         xonalar_soni = request.POST['xonalar_soni']
-        
-        
-        data = Barcha_tolov.objects.create(
-            boshlanginch_tolov=boshlanginch_tolov, oylik=oylik,
-            ttj_soni=ttj_soni, xonalar_soni=xonalar_soni,
-        )
-        data.save()
-        return redirect('/')
+        if tolov_id:
+            for t in tolov_id:
+                data = get_object_or_404(Barcha_tolov, id=t.id)
+                data.boshlanginch_tolov = boshlanginch_tolov
+                data.oylik = oylik
+                data.yillik_tolov = yillik_tolov
+                data.ttj_soni = ttj_soni
+                data.xonalar_soni = xonalar_soni
+                data.save()
+                return redirect('/')
+        else:        
+            data = Barcha_tolov.objects.create(
+                kiritish = 'kiritildi',yillik_tolov=yillik_tolov,
+                boshlanginch_tolov=boshlanginch_tolov, oylik=oylik,
+                ttj_soni=ttj_soni, xonalar_soni=xonalar_soni,
+            )
+            data.save()
+            return redirect('/')
     
     contex = {
         

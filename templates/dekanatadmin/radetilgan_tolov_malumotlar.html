@@ -74,8 +74,8 @@
 
   </header><!-- End Header -->
 
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
+   <!-- ======= Sidebar ======= -->
+   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
@@ -106,12 +106,7 @@
           <span>Barcha arizalar</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'imtiyozli_arizalar' %}">
-          <i class="bi bi-envelope"></i>
-          <span>Imtiyozli arizalar</span>
-        </a>
-      </li>
+      
       <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'tasdiqlangan' %}">
           <i class="bi bi-person-check-fill"></i>
@@ -122,6 +117,18 @@
         <a class="nav-link collapsed" href="{% url 'radetilgan' %}">
           <i class="bi bi-person-x-fill"></i>
           <span>Rad etilgan arizalar</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'imtiyozli_arizalar' %}">
+          <i class="bi bi-envelope"></i>
+          <span>Barcha imtiyozlar</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'tasdiqlangan_imtiyozli_arizalar' %}">
+          <i class="bi bi-person-check-fill"></i>
+          <span>Tasdiqlangan imtiyozlar</span>
         </a>
       </li>
       <li class="nav-item">
@@ -139,7 +146,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'tasdiqlangan_tolov' %}">
           <i class="bi bi-check2-all"></i>
-          <span>To'lov tasdiqlangan talabalar</span>
+          <span>To'lovi tasdiqlanganlar</span>
         </a>
       </li>
       <li class="nav-item">
@@ -151,7 +158,8 @@
 
     </ul>
 
-  </aside><!-- End Sidebar-->
+  </aside>
+  <!-- End Sidebar-->
     
     <main id="main" class="main">
         
@@ -281,9 +289,9 @@
                                 </div>
                                 <div class="row g-3">
                                     <div class="passport-info col-lg-6">
-                                        <h4>To`lov tarixi</h4>
-                                        <p><strong>narxi</strong>{{i.narhi}}</p>
-                                    </div> 
+                                        <h4>To`lov haqida malumot</h4>
+                                        <p><strong>Talaba qilgan tolov narxi: </strong>{{i.narhi}} so`m</p>
+                                    </div>                                     
                                     <div class="passport-info col-lg-6">
                                       <h4>Tolov kivtansiyasi</h4>
                                       <img class="w-100" src="{{i.kivtansiya.url}}">

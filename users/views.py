@@ -12,23 +12,32 @@ def home(request):
     ariza = Ariza.objects.all()
     barcha_tolovlar = Barcha_tolov.objects.all()
     tasdiqlangan_tolov = Tolov.objects.filter(tasdiqlash='tasdiqlandi')
-    for b in barcha_tolovlar:
-        # if b.xonalar_soni == '':
-        #     b.xonalar_soni = 0
-        #     yillik = int(b.xonalar_soni)*1650000
-        # else:
-        #     yillik = int(b.xonalar_soni)*1650000
-        yillik = 41250000
-        xonalar = int(b.xonalar_soni)
-        ttj = int(b.ttj_soni)
+    if barcha_tolovlar :        
+        for b in barcha_tolovlar:        
+            yillik = int(b.xonalar_soni)*int(b.yillik_tolov)
+            xonalar = int(b.xonalar_soni)
+            ttj = int(b.ttj_soni)        
+    else:               
+        yillik = 0
+        xonalar = 0
+        ttj = 0 
         
-    for t in tasdiqlangan_tolov:
-        tolovlar = int(t.narhi)
+    if tasdiqlangan_tolov:
+        tolovlar = 0
+        for t in tasdiqlangan_tolov:            
+            tolovlar += int(t.narhi) 
+      
+    else:
+        tolovlar = 0       
+    
         
     contex = {
         'data':data,
         'ariza':ariza,
-        
+        'yillik':yillik,
+        'ttj':ttj,
+        'xonalar':xonalar,
+        'tolovlar':tolovlar,
       
     }
     return render(request, 'asosiy/home.html', contex)

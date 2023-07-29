@@ -43,7 +43,8 @@ class Tolov(models.Model):
     sana = models.DateTimeField(auto_now_add=True)
     
 class Barcha_tolov(models.Model):
-    yillik_tolv = models.CharField(max_length=100)
+    kiritish = models.CharField(max_length=100)
+    yillik_tolov = models.CharField(max_length=100)
     oylik = models.CharField(max_length=100, blank=True)
     boshlanginch_tolov = models.CharField(max_length=100, blank=True)
     yigilgan_summa = models.CharField(max_length=100, blank=True)

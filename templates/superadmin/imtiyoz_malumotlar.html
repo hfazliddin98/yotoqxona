@@ -106,12 +106,7 @@
           <span>Barcha arizalar</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'imtiyozli_arizalar' %}">
-          <i class="bi bi-envelope"></i>
-          <span>Imtiyozli arizalar</span>
-        </a>
-      </li>
+      
       <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'tasdiqlangan' %}">
           <i class="bi bi-person-check-fill"></i>
@@ -122,6 +117,18 @@
         <a class="nav-link collapsed" href="{% url 'radetilgan' %}">
           <i class="bi bi-person-x-fill"></i>
           <span>Rad etilgan arizalar</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'imtiyozli_arizalar' %}">
+          <i class="bi bi-envelope"></i>
+          <span>Barcha imtiyozlar</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'tasdiqlangan_imtiyozli_arizalar' %}">
+          <i class="bi bi-person-check-fill"></i>
+          <span>Tasdiqlangan imtiyozlar</span>
         </a>
       </li>
       <li class="nav-item">
@@ -139,7 +146,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'tasdiqlangan_tolov' %}">
           <i class="bi bi-check2-all"></i>
-          <span>To'lov tasdiqlangan talabalar</span>
+          <span>To'lovi tasdiqlanganlar</span>
         </a>
       </li>
       <li class="nav-item">
@@ -151,7 +158,8 @@
 
     </ul>
 
-  </aside><!-- End Sidebar-->
+  </aside>
+  <!-- End Sidebar-->
   
   
   <main id="main" class="main">
@@ -174,8 +182,7 @@
             <div class="card-body">
               <h3 class="py-3 text-center">Talaba ma'lumotlari</h3>
               
-              {% for t in talabalar %}
-              {% for a in arizalar %}
+             
               <div class="row">
                 <div class="col-lg-6">
                   <div class="card mb-4">
@@ -185,7 +192,7 @@
                           <p class="mb-0">Familiya</p>
                         </div>
                         <div class="col-sm-7">
-                          <p class="text-muted mb-0">{{t.last_name}}</p>
+                          <p class="text-muted mb-0">{{familya}}</p>
                         </div>
                       </div>
                       <hr>
@@ -194,7 +201,7 @@
                           <p class="mb-0">Ism</p>
                         </div>
                         <div class="col-sm-7">
-                          <p class="text-muted mb-0">{{t.first_name}}</p>
+                          <p class="text-muted mb-0">{{ism}}</p>
                         </div>
                       </div>
                       <hr>
@@ -203,7 +210,7 @@
                           <p class="mb-0">Otasining ismi</p>
                         </div>
                         <div class="col-sm-7">
-                          <p class="text-muted mb-0">{{t.sharif}}</p>
+                          <p class="text-muted mb-0">{{sharif}}</p>
                         </div>
                       </div>                                           
                       
@@ -218,7 +225,7 @@
                           <p class="mb-0">Fakultet</p>
                         </div>
                         <div class="col-sm-7">
-                          <p class="text-muted mb-0">{{a.fakultet}}</p>
+                          <p class="text-muted mb-0">{{fakultet}}</p>
                         </div>
                       </div>
                       <hr>
@@ -227,7 +234,7 @@
                           <p class="mb-0">Yo'nalish</p>
                         </div>
                         <div class="col-sm-7">
-                          <p class="text-muted mb-0">{{a.yonalish}}</p>
+                          <p class="text-muted mb-0">{{yonalish}}</p>
                         </div>
                       </div>
                       <hr>                                           
@@ -236,7 +243,7 @@
                           <p class="mb-0">Telefon raqam</p>
                         </div>
                         <div class="col-sm-7">
-                          <p class="text-muted mb-0">{{t.username}}</p>
+                          <p class="text-muted mb-0">{{telefon}}</p>
                         </div>
                       </div>
                     </div>
@@ -244,25 +251,24 @@
                 </div>                                
               </div>
               
-              {% for i in imtiyoz %}
+              
               <div class="row g-3">
                 <div class="col-lg-6">
                   <h4>Imtiyoz nomi</h4>
-                  <p>Talabada "{{i.imtiyoz_nomi}}" turidagi imtiyoz mavjud</p>
+                  <p>Talabada "{{imtiyoz_turi}}" turidagi imtiyoz mavjud</p>
                   
                 </div>
                 <div class="col-lg-6">
                   <h4>Imtiyoz rasmi</h4>
-                  <img class="w-75" src="{{i.imtiyoz_file.url}}">
+                  <img class="w-75" src="{{imtiyoz_url}}">
                 </div>
               </div>
-              
+             
+              {% for i in imtiyoz %}
               <div class="col-12 pt-5 text-center">
                 <a class="btn btn-success" href="{% url 'imtiyozni_tasdiqlash' i.talaba_id %}">Tasdiqlash</a>
                 <a class="btn btn-danger" href="{% url 'imtiyozni_radetish' i.talaba_id %}">Rad etish</a>
-              </div>
-              {% endfor %}
-              {% endfor %}
+              </div>             
               {% endfor %}
             </div>
           </div>

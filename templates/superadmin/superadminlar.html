@@ -74,84 +74,92 @@
 
   </header><!-- End Header -->
 
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
 
-    <ul class="sidebar-nav" id="sidebar-nav">
-
-      <li class="nav-item">
-        <a class="nav-link " href="{% url 'home' %}">
-          <i class="bi bi-grid"></i>
-          <span>Asosiy</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
-
-      <li class="nav-heading">Qo'shimcha</li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'superadminlar' %}">
-          <i class="bi bi-person-fill"></i>
-          <span>Super adminlar</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'dekanatadminlar' %}">
-          <i class="bi bi-person"></i>
-          <span>Dekanat adminlar</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'barcha_arizalar' %}">
-          <i class="bi bi-envelope"></i>
-          <span>Barcha arizalar</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'imtiyozli_arizalar' %}">
-          <i class="bi bi-envelope"></i>
-          <span>Imtiyozli arizalar</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'tasdiqlangan' %}">
-          <i class="bi bi-person-check-fill"></i>
-          <span>Tasdiqlangan arizalar</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'radetilgan' %}">
-          <i class="bi bi-person-x-fill"></i>
-          <span>Rad etilgan arizalar</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'tark_etgan_talaba' %}">
-          <i class="bi bi-house-x-fill"></i>
-          <span>Tark etgan talabalar</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'barcha_tolovlar' %}">
-          <i class="bi bi-cash-coin"></i>
-          <span>To'lov qilgan talabalar</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'tasdiqlangan_tolov' %}">
-          <i class="bi bi-check2-all"></i>
-          <span>To'lov tasdiqlangan talabalar</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'hisob_varoq' %}">
-          <i class="bi bi-wallet2"></i>
-          <span>To'lovlar</span>
-        </a>
-      </li><!-- End Contact Page Nav -->
-
-    </ul>
-
-  </aside><!-- End Sidebar-->
+      <ul class="sidebar-nav" id="sidebar-nav">
+  
+        <li class="nav-item">
+          <a class="nav-link " href="{% url 'home' %}">
+            <i class="bi bi-grid"></i>
+            <span>Asosiy</span>
+          </a>
+        </li><!-- End Dashboard Nav -->
+  
+        <li class="nav-heading">Qo'shimcha</li>
+  
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'superadminlar' %}">
+            <i class="bi bi-person-fill"></i>
+            <span>Super adminlar</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'dekanatadminlar' %}">
+            <i class="bi bi-person"></i>
+            <span>Dekanat adminlar</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'barcha_arizalar' %}">
+            <i class="bi bi-envelope"></i>
+            <span>Barcha arizalar</span>
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'tasdiqlangan' %}">
+            <i class="bi bi-person-check-fill"></i>
+            <span>Tasdiqlangan arizalar</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'radetilgan' %}">
+            <i class="bi bi-person-x-fill"></i>
+            <span>Rad etilgan arizalar</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'imtiyozli_arizalar' %}">
+            <i class="bi bi-envelope"></i>
+            <span>Barcha imtiyozlar</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'tasdiqlangan_imtiyozli_arizalar' %}">
+            <i class="bi bi-person-check-fill"></i>
+            <span>Tasdiqlangan imtiyozlar</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'tark_etgan_talaba' %}">
+            <i class="bi bi-house-x-fill"></i>
+            <span>Tark etgan talabalar</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'barcha_tolovlar' %}">
+            <i class="bi bi-cash-coin"></i>
+            <span>To'lov qilgan talabalar</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'tasdiqlangan_tolov' %}">
+            <i class="bi bi-check2-all"></i>
+            <span>To'lovi tasdiqlanganlar</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'hisob_varoq' %}">
+            <i class="bi bi-wallet2"></i>
+            <span>To'lovlar</span>
+          </a>
+        </li><!-- End Contact Page Nav -->
+  
+      </ul>
+  
+    </aside>
+    <!-- End Sidebar-->
     
     <main id="main" class="main">
         
