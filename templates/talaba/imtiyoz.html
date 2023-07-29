@@ -66,20 +66,27 @@
                 <div class="col-md-1"></div>
                 <div class="col-md-4 col-sm-6">
                     <label for="imtiyoz" class="form-label">Imtiyoz turi</label>
-                    <select name="imtiyoz_nomi" class="form-select" id="imtiyoz">
-                        <option selected disabled value="">Imtiyoz</option>
+                    <select name="imtiyoz_nomi" class="form-select" id="imtiyoz"  required>
+                        <option selected disabled value="">Imtiyozni kiriting</option>
                         <option>Chin yetim (Mehribonlik uyi tarbiyalanuvchilari)</option>
                         <option>Nogironlik (1-2-guruh)</option>
                         <option>Ayollar daftari</option>
                         <option>Yoshlar daftari</option>
                         <option>Temir daftar</option>
-                    </select>                    
+                    </select>
+                    <div class="invalid-feedback">
+                        Imitiyoz maydoni toldirilmadi !!!
+                    </div>                    
                 </div>
                 <div class="col-md-2"></div>
                 <div class="col-md-4 col-sm-6">
                     <label for="imtiyoz-elektron" class="form-label">Imtiyoz elektron varianti (maksimal 4Mb)</label>
-                    <input name="imtiyoz_file" type="file" class="form-control" id="imtiyoz-elektron" accept=".jpg,.jpeg,.png">
+                    <input name="imtiyoz_file" type="file" class="form-control" id="imtiyoz-elektron" accept=".jpg,.jpeg,.png" required>
+                    <div class="invalid-feedback">
+                        Imtiyoz rasmini yuklang.!
+                    </div>
                 </div>  
+                
                 <div class="col-md-1"></div> 
                 
                 <div class="col-12 text-center mb-4">

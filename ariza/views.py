@@ -103,16 +103,19 @@ def imtiyoz(request):
     if request.method == 'POST':       
         imtiyoz_nomi = request.POST['imtiyoz_nomi']
         imtiyoz_file = request.FILES['imtiyoz_file']   
-        
-        if Imtiyoz.objects.filter(talaba_id=talaba_id):
-            data = 'Bu foydalanuvchi imtiyoz yuborgan'
+        if imtiyoz_nomi == '':
+            print('bosh')
         else:
-            data = Imtiyoz.objects.create(
-                talaba_id=talaba_id, imtiyoz_nomi=imtiyoz_nomi, 
-                imtiyoz_file=imtiyoz_file,               
-            ) 
-            data.save()          
-            return redirect('/ariza/ariza_imtiyoz/')   
+            print('bosh emas')
+            if Imtiyoz.objects.filter(talaba_id=talaba_id):
+                data = 'Bu foydalanuvchi imtiyoz yuborgan'
+            else:
+                data = Imtiyoz.objects.create(
+                    talaba_id=talaba_id, imtiyoz_nomi=imtiyoz_nomi, 
+                    imtiyoz_file=imtiyoz_file,               
+                ) 
+                data.save()          
+                return redirect('/ariza/ariza_imtiyoz/')   
     contex = {
         'data':data,
     }
