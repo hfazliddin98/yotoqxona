@@ -121,13 +121,13 @@
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'imtiyozli_arizalar' %}">
-          <i class="bi bi-envelope"></i>
+          <i class="bi bi-file-medical"></i>
           <span>Barcha imtiyozlar</span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'tasdiqlangan_imtiyozli_arizalar' %}">
-          <i class="bi bi-person-check-fill"></i>
+          <i class="bi bi-journal-check"></i>
           <span>Tasdiqlangan imtiyozlar</span>
         </a>
       </li>
@@ -150,11 +150,18 @@
         </a>
       </li>
       <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'barcha_orderlar' %}">
+          <i class="bi bi-bookmark-star"></i>
+          <span>Barcha orderlar</span>
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'hisob_varoq' %}">
           <i class="bi bi-wallet2"></i>
           <span>To'lovlar</span>
         </a>
-      </li><!-- End Contact Page Nav -->
+      </li>
+      <!-- End Contact Page Nav -->
 
     </ul>
 
@@ -185,7 +192,6 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between">
                                 <h5 class="card-title">Tark etgan talabalar ro'yxati</h5>
-                                <a class="btn btn-primary" href="#">Yuklab olish</a>
                             </div>
                             <!-- Table with stripped rows -->
                             <table class="table datatable">
@@ -198,14 +204,12 @@
                                         <th scope="col">Sana</th>
                                         <th></th>
                                     </tr>
-                                </thead>
-                                
-
+                                </thead> 
                                                   
                                   <tbody>
                                     {% for d in data %}
                                     <tr>
-                                      <th scope="row">1</th>                                      
+                                      <th scope="row">{{d.id}}</th>                                      
                                       <td>{{d.last_name}}</td>
                                       <td>{{d.first_name}}</td>                                      
                                       <td>{{d.sharif}}</td>                                     

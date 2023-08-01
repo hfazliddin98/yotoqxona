@@ -25,6 +25,9 @@ class Ariza(models.Model):
 
 class Imtiyoz(models.Model):
     talaba_id = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    sharif = models.CharField(max_length=100)
     imtiyoz_nomi = models.CharField(max_length=100)
     imtiyoz_file = models.FileField(upload_to='imtiyoz/')
     tasdiqlash = models.CharField(max_length=100, blank=True)
@@ -95,6 +98,7 @@ class Order(models.Model):
     ttj_nomer = models.CharField(max_length=100, blank=True)
     qavat = models.CharField(max_length=10, blank=True)    
     xona = models.CharField(max_length=100, blank=True)
+    tasdiqlash = models.CharField(max_length=100, blank=True)
     sana = models.DateTimeField(auto_now_add=True)
 
     

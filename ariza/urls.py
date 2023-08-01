@@ -9,6 +9,7 @@ from .views import imtiyoz, imtiyozli_arizalar, imtiyoz_malumotlar, imtiyozni_ta
 from .views import arizalar_jadvali, tasdiqlangan_imtiyozli_arizalar
 from .views import dekanat_barcha_arizalar, dekanat_tasdiqlangan_arizalar, dekanat_radetilgan_arizalar
 from .views import dekanat_barcha_malumot, dekanat_tasdiqlangan_malumot, dekanat_radetilgan_malumot
+from .views import barcha_orderlar, order_berish, order_csv
 
 
 urlpatterns = [
@@ -49,9 +50,14 @@ urlpatterns = [
    path('tolovlar/<str:pk>/', tolovlar, name='tolovlar'),
 
    # shartnomalar
-   path('shartnoma/<str:pk>/', shartnoma, name='shartnoma'),
-   path('order/<str:pk>/', order, name='order'),
+   path('shartnoma/<str:pk>/', shartnoma, name='shartnoma'),   
    path('shartnomalar/', shartnomalar, name='shartnomalar'),
+   
+   # orderlar
+   path('order/<str:pk>/', order, name='order'),
+   path('order_berish/<str:pk>/', order_berish, name='order_berish'),
+   path('barcha_orderlar/', barcha_orderlar, name='barcha_orderlar'),
+   path('order_csv/', order_csv, name='order_csv'),
    
    # royhatlar
    path('superadminlar/', superadminlar, name='superadminlar'),   
