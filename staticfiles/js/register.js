@@ -2761,8 +2761,28 @@ const regionStateInfo = {
     }
 }
 
-window.onload = function () {
 
+     // Modal
+     let modal = document.getElementById("myModal");
+     let closedBtn = document.getElementById("closed-btn");
+     let rozilik = document.getElementById("rozilik");
+     let btn = document.getElementById("myBtn");
+     var span = document.getElementsByClassName("close")[0];
+     window.onload = function() {
+         modal.style.display = "block";
+         closedBtn.disabled = true;
+     }
+     function myFunction() {
+         closedBtn.disabled = false;
+     }
+     closedBtn.onclick = function() {
+         modal.style.display = "none";
+     }   
+     
+
+
+window.onload = function () {
+    
     // FAKULTET
     const fakultetSelection = document.querySelector("#fakultet"),
     majorSelection = document.querySelector("#major");
@@ -2790,9 +2810,9 @@ window.onload = function () {
                     );
                 }
             };
-
-
-
+            
+            
+            
     // REGION
     const regionSelection = document.querySelector("#region"),
     districtSelection = document.querySelector("#district");
@@ -2820,5 +2840,15 @@ window.onload = function () {
                     );
                 }
             };
-        };
-        
+                    
+                    
+                    
+     //Uppercase
+     const inputField = document.getElementById("seriya");    
+     inputField.addEventListener("keyup", function(event) {
+         event.preventDefault();
+         inputField.value = inputField.value.toUpperCase();
+         inputField.value.length = 2;
+     });
+};
+                
