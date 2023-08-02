@@ -1895,3 +1895,13 @@ textarea.form-control {
   text-decoration: none;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 420px) {
+  .summa {
+      flex-direction: column;
+      justify-content: center !important;
+  }
+  .summa-info {
+      margin-bottom: 25px;
+  }
+}

@@ -28,7 +28,7 @@
 </head>
 
 <body>
-  
+  {% if user.is_authenticated %}
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
     
@@ -76,18 +76,18 @@
   
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
-
+    
     <ul class="sidebar-nav" id="sidebar-nav">
-
+      
       <li class="nav-item">
         <a class="nav-link " href="{% url 'home' %}">
           <i class="bi bi-grid"></i>
           <span>Asosiy</span>
         </a>
       </li><!-- End Dashboard Nav -->
-
+      
       <li class="nav-heading">Qo'shimcha</li>
-
+      
       <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'superadminlar' %}">
           <i class="bi bi-person-fill"></i>
@@ -255,6 +255,17 @@
   
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   
+  
+  {% else %}
+  <div style="text-align: center;">
+    <h1 style="text-align: center; margin:50px;">
+      <strong>
+        Bunday sahifa mavjud emas 
+      </strong> 
+    </h1>
+    <a class="btn btn-primary" href="{% url 'home' %}">Bosh sahifaga qaytish</a>
+  </div>
+  {% endif %}
   <!-- Vendor JS Files -->
   <script src="{% static '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static '/assets/vendor/simple-datatables/simple-datatables.js' %}"></script>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{% static '/fonts/ionicons/css/ionicons.min.css' %}">
     <link rel="stylesheet" href="{% static '/fonts/fontawesome/css/font-awesome.min.css' %}">
@@ -13,13 +13,13 @@
     <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+    
     <title>ttj.kspi.uz</title>
     <link rel="shortcut icon" href="{% static '/images/logo1.png' %}" type="image/x-icon">
     
 </head>
 <body>
-    
+    {% if user.is_authenticated %}
     <header>
         <nav class="navbar navbar-expand-md navbar-dark py-2">
             <div class="container">
@@ -45,108 +45,115 @@
             </nav>
         </header>
         <!-- END header -->
-    
-    <section class="section-cover asosiy-rasm" data-stellar-background-ratio="0.5">
-        <div class="container">
-            <div class="row justify-content-center align-items-center intro">
-                <div class="col-md-9 text-center element-animate">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END section -->
-    
-    <div class="main-content">
-        <div class="">
+        
+        
+        <!-- TO'LOVLAR -->
+        <section class="section-cover asosiy-rasm" data-stellar-background-ratio="0.5">
             <div class="container">
-                <div class="d-flex align-items-center justify-content-around">
-                    <div class="yillik-summa text-center">
-                        <div class="yillik-summa-header sarlavha">Yillik to'lov</div>
-                        <div class="yillik-summa-sonda narx">1650000</div>
+                <div class="d-flex justify-content-between align-items-center intro summa">
+                    <div class="text-center summa-info" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 8px 18px">
+                        <h3 class="summa-title text-white" style="font-size: 2rem; background: rgba(0, 0, 0, 0.2); border-top: 1px solid #111; border-bottom: 1px solid #111; padding: 5px;">Yillik to'lov</h3>
+                        <div class="summa-qiymat" style="font-size: 2rem; color: #fff;">1 650 000</div>
                     </div>
-                    <div class="qolgan-summa text-center">
-                        <div class="qolgan-summa-header sarlavha">Qarzdorlik</div>
-                        <div class="qarzdorlik-sonda narx">350000</div>
+                    <div class="text-center" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 8px 18px">
+                        <h3 class="summa-title text-white" style="font-size: 2rem; background: rgba(0, 0, 0, 0.2); border-top: 1px solid #111; border-bottom: 1px solid #111; padding: 5px;">Qarzdorlik</h3>
+                        <div class="summa-qiymat" style="font-size: 2rem; color: #fff;">750 000</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END section -->
+        
+        <div class="main-content">    
+            
+            
+            <div class="container p-5">
+                <div class="row text-center">
+                    <div class="hisob-varoq border border-2 border-rounded col-md-3 p-3 mb-3">
+                        <div class="hisob-varoq-header fs-3">Bank hisob raqami</div>
+                        <hr>
+                        <a class="btn btn-primary text-center w-100" href="{% url 'tolov_chek' %}">Yuklab olish</a>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="hisob-varoq border border-2 border-rounded col-md-3 p-3 mb-3">
+                        <div class="hisob-varoq-header fs-3">To'langan summa</div>
+                        <hr>
+                        <a class="btn btn-primary text-center w-100" href="{% url 'talaba_tolov' %}">Yuborish</a>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="hisob-varoq border border-2 border-rounded col-md-3 p-3">
+                        <div class="hisob-varoq-header fs-3">To'lov tarixi</div>
+                        <hr>
+                        <button id="korish" class="btn btn-primary text-center w-100">Ko'rish</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container p-5">
-            <div class="row text-center">
-                <div class="hisob-varoq border border-2 border-rounded col-md-3 p-3 mb-3">
-                    <div class="hisob-varoq-header fs-3">Bank hisob raqami</div>
-                    <hr>
-                    <a class="btn btn-primary text-center w-100" href="{% url 'tolov_chek' %}">Yuklab olish</a>
-                </div>
-                <div class="col-md-1"></div>
-                <div class="hisob-varoq border border-2 border-rounded col-md-3 p-3 mb-3">
-                    <div class="hisob-varoq-header fs-3">To'langan summa</div>
-                    <hr>
-                    <a class="btn btn-primary text-center w-100" href="{% url 'talaba_tolov' %}">Yuborish</a>
-                </div>
-                <div class="col-md-1"></div>
-                <div class="hisob-varoq border border-2 border-rounded col-md-3 p-3">
-                    <div class="hisob-varoq-header fs-3">To'lov tarixi</div>
-                    <hr>
-                    <button id="korish" class="btn btn-primary text-center w-100">Ko'rish</button>
-                </div>
+        <div class="container pb-5 jadval">
+            {% for t in data %}
+            <table class="table table-striped">
+                <thead class="table-primary">
+                    <th>№</th>
+                    <th>Summa</th>
+                    <th>Sana</th>
+                    <th>Holati</th>
+                </thead>
+                <tbody>
+                    <th>{{t.id}}</th>
+                    <td>{{t.narhi}}</td>
+                    <td>{{t.sana}}</td>
+                    <td>{{t.tasdiqlash}}</td>
+                </tbody>
+            </table>
+            {% endfor %}
+        </div>
+        
+        
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row mb-3">
+                    <div class="col-md-4 mb-3">
+                        <h3 class="mb-0">
+                            <span>ttj.kspi.uz</span>
+                        </h3>
+                        <p class="lead">Qo'qon davlat pedagogika instituti talabalar turar joyi uchun online ro'yxatdan o'tish platformasi</p>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <h3 class="mb-0">Murojaat uchun telefonlar</h3>
+                        <p class="lead mb-0"><a href="tel:+998944482303">+998 94 4482303</a></p>
+                        <p class="lead mt-0"><a href="tel:+998912040234">+998 91 2040234</a></p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3 class="mb-0">Biz bilan bog'lanish</h3>
+                        <p>Bizning ijtimoiy tarmoqlar</p>
+                        <p>
+                            <a href="https://www.facebook.com/kspi.official/" class="pl-0 p-3"><span class="fa fa-facebook"></span></a>
+                            <a href="https://t.me/ALISHERTTJ" class="p-3"><span class="fa fa-telegram"></span></a>
+                            <a href="https://instagram.com/kspi_uz?igshid=MzRlODBiNWFlZA==" class="p-3"><span class="fa fa-instagram"></span></a>
+                            <a href="https://www.youtube.com/@qoqondpi296" class="p-3"><span class="fa fa-youtube-play"></span></a>
+                        </p>
+                    </div>              
+                </form>
             </div>
         </div>
-    </div>
-    <div class="container pb-5 jadval">
-        {% for t in data %}
-        <table class="table table-striped">
-            <thead class="table-primary">
-                <th>№</th>
-                <th>Summa</th>
-                <th>Sana</th>
-                <th>Holati</th>
-            </thead>
-            <tbody>
-                <th>{{t.id}}</th>
-                <td>{{t.narhi}}</td>
-                <td>{{t.sana}}</td>
-                <td>{{t.tasdiqlash}}</td>
-            </tbody>
-        </table>
-        {% endfor %}
-    </div>
-    
-    
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="row mb-3">
-                <div class="col-md-4 mb-3">
-                    <h3 class="mb-0">
-                        <span>ttj.kspi.uz</span>
-                    </h3>
-                    <p class="lead">Qo'qon davlat pedagogika instituti talabalar turar joyi uchun online ro'yxatdan o'tish platformasi</p>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <h3 class="mb-0">Murojaat uchun telefonlar</h3>
-                    <p class="lead mb-0"><a href="tel:+998944482303">+998 94 4482303</a></p>
-                    <p class="lead mt-0"><a href="tel:+998912040234">+998 91 2040234</a></p>
-                </div>
-                <div class="col-md-4">
-                    <h3 class="mb-0">Biz bilan bog'lanish</h3>
-                    <p>Bizning ijtimoiy tarmoqlar</p>
-                    <p>
-                        <a href="https://www.facebook.com/kspi.official/" class="pl-0 p-3"><span class="fa fa-facebook"></span></a>
-                        <a href="https://t.me/ALISHERTTJ" class="p-3"><span class="fa fa-telegram"></span></a>
-                        <a href="https://instagram.com/kspi_uz?igshid=MzRlODBiNWFlZA==" class="p-3"><span class="fa fa-instagram"></span></a>
-                        <a href="https://www.youtube.com/@qoqondpi296" class="p-3"><span class="fa fa-youtube-play"></span></a>
-                    </p>
-                </div>              
-            </form>
+        <div class="text-center">
+            &copy;QDPI IT-Park
         </div>
     </div>
-    <div class="text-center">
-        &copy;QDPI IT-Park
-    </div>
-</div>
 </footer>
 <!-- END footer -->
+
+{% else %}
+<div style="text-align: center;">
+    <h1 style="text-align: center; margin:50px;">
+        <strong>
+            Bunday sahifa mavjud emas 
+        </strong> 
+    </h1>
+    <a class="btn btn-primary" href="{% url 'home' %}">Bosh sahifaga qaytish</a>
+</div>
+{% endif %}
 
 
 <script src="{% static '/bootstrap/js/bundle.min.js' %}"></script>

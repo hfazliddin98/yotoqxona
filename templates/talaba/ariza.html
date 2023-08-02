@@ -19,7 +19,7 @@
     
 </head>
 <body>
-    
+    {% if user.is_authenticated %}
     <header>
         <nav class="navbar navbar-expand-md navbar-dark py-2">
             <div class="container">
@@ -228,6 +228,17 @@
     </div>
     
 </div>
+
+{% else %}
+    <div style="text-align: center;">
+        <h1 style="text-align: center; margin:50px;">
+            <strong>
+                Bunday sahifa mavjud emas 
+            </strong> 
+        </h1>
+        <a class="btn btn-primary" href="{% url 'home' %}">Bosh sahifaga qaytish</a>
+    </div>
+{% endif %}
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>

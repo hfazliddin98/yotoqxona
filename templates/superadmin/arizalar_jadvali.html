@@ -28,7 +28,7 @@
 </head>
 
 <body>
-  
+  {% if user.is_authenticated %}
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
     
@@ -354,6 +354,17 @@
 </footer><!-- End Footer -->
 
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+{% else %}
+    <div style="text-align: center;">
+        <h1 style="text-align: center; margin:50px;">
+            <strong>
+                Bunday sahifa mavjud emas 
+            </strong> 
+        </h1>
+        <a class="btn btn-primary" href="{% url 'home' %}">Bosh sahifaga qaytish</a>
+    </div>
+{% endif %}
+
 
 <!-- Vendor JS Files -->
 <script src="{% static '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>

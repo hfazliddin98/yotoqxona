@@ -19,7 +19,7 @@
     
 </head>
 <body>
-    
+    {% if user.is_authenticated %}
     <header>
         <nav class="navbar navbar-expand-md navbar-dark py-2">
             <div class="container">
@@ -115,6 +115,17 @@
 </div>
 </footer>
 <!-- END footer -->
+
+{% else %}
+    <div style="text-align: center;">
+        <h1 style="text-align: center; margin:50px;">
+            <strong>
+                Bunday sahifa mavjud emas 
+            </strong> 
+        </h1>
+        <a class="btn btn-primary" href="{% url 'home' %}">Bosh sahifaga qaytish</a>
+    </div>
+{% endif %}
 
 
 <script src="{% static '/bootstrap/js/bundle.min.js' %}"></script>
