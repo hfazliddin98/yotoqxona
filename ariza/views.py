@@ -51,9 +51,10 @@ def ariza(request):
 
 @csrf_exempt
 def arizalar(request):
+    ariza_tasdiqlsh = Ariza.objects.filter(talaba_id=request.user.id).filter(tasdiqlash='tasdiqlandi')
     
     contex = {
-        
+        'ariza_tasdiqlsh':ariza_tasdiqlsh,
     }
     return render(request, 'talaba/arizalar.html', contex)
 
@@ -1002,6 +1003,8 @@ def shartnomalar(request):
     yil = hozir.year
     oy = hozir.month
     kun = hozir.day
+    tasdiqlangan_tolov = Tolov.objects.filter(talaba_id=request.user.id).filter(tasdiqlash='tasdiqlandi')
+    tasdiqlangan_orderlar = Order.objects.filter(talaba_id=request.user.id).filter(tasdiqlash='tasdiqlandi')
     
     contex = {        
         'yil':yil,
@@ -1010,7 +1013,9 @@ def shartnomalar(request):
         'kun':kun,
         'hozir':hozir,
         'qrcode':qrcode,   
-        'talaba':talaba,           
+        'talaba':talaba,
+        'tasdiqlangan_tolov':tasdiqlangan_tolov, 
+        'tasdiqlangan_orderlar':tasdiqlangan_orderlar,          
     }  
     return render(request, 'talaba/shartnomalar.html', contex)
 
@@ -1214,6 +1219,7 @@ def order(request, pk):
             ttj_nomer = o.ttj_nomer
             qavat = o.qavat
             xona = o.xona
+            order_id = o.id
     else:
         familya = ''
         ism = ''
@@ -1225,6 +1231,7 @@ def order(request, pk):
         ttj_nomer = ''
         qavat = ''
         xona = ''
+        order_id = ''
             
     contex = {
         'ariza':ariza,
@@ -1240,7 +1247,8 @@ def order(request, pk):
         'xona':xona,
         'hozir':hozir,
         'qrcode_rasm':qrcode_rasm,   
-        'talaba':talaba,                   
+        'talaba':talaba,
+        'order_id':order_id,                   
     }  
     
     

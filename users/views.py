@@ -9,6 +9,7 @@ from ariza.models import Ariza, Barcha_tolov, Tolov
 @csrf_exempt
 def home(request):    
     data = User.objects.filter(id=request.user.id)
+    ariza_tasdiqlsh = Ariza.objects.filter(talaba_id=request.user.id).filter(tasdiqlash='tasdiqlandi')
     ariza = Ariza.objects.all()
     barcha_tolovlar = Barcha_tolov.objects.all()
     tasdiqlangan_tolov = Tolov.objects.filter(tasdiqlash='tasdiqlandi')
@@ -38,6 +39,7 @@ def home(request):
         'ttj':ttj,
         'xonalar':xonalar,
         'tolovlar':tolovlar,
+        'ariza_tasdiqlsh':ariza_tasdiqlsh,
       
     }
     return render(request, 'asosiy/home.html', contex)

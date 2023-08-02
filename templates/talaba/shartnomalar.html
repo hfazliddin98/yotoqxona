@@ -79,6 +79,8 @@
                         {% endfor %}
                     </div>
                     <div class="col-md-2"></div>
+
+                    {% if tasdiqlangan_orderlar %}
                     <div class="hisob-varoq border border-2 border-rounded col-md-3 p-3 mb-3">
                         <div class="hisob-varoq-header fs-3">
                             <div class="d-flex flex-column align-items-center" >
@@ -96,6 +98,8 @@
                         <a class="btn btn-primary text-center w-100" href="{% url 'order' t.pk%}">Yuklab olish</a>
                         {% endfor %}
                     </div>
+                    {% endif %}
+                    
                     <div class="col-md-2"></div>
                 </div>
             </div>

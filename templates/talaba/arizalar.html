@@ -60,7 +60,7 @@
     
     <div class="main-content asosiy py-5">
         <div class="container">
-            <div class="asosiy d-flex align-items-center justify-content-around">
+            <div class="asosiy justify-content-around">
                 <a href="{% url 'ariza_imtiyoz' %}" class="ariza d-inline-block mx-2">
                     <div class="text-center p-4 border border-3 rounded-circle doira">
                         <svg style="color: #032676;" xmlns="http://www.w3.org/2000/svg" width="60%" height="auto" fill="currentColor" class="bi bi-envelope-plus-fill" viewBox="0 0 16 16">
@@ -70,6 +70,7 @@
                     </div>
                     <div class="p-1 text-center rang" style="font-size: 2rem;"><b>Ariza yuborish</b></div>
                 </a>
+                {% if ariza_tasdiqlsh %}
                 <a href="{% url 'shartnomalar' %}" class="pay d-inline-block mx-2">
                     <div class="text-center p-4 border border-3 rounded-circle doira">
                         <svg style="color: #032676;" xmlns="http://www.w3.org/2000/svg" width="60%" height="auto" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
@@ -88,6 +89,7 @@
                     </div>
                     <div class="p-1 text-center rang" style="font-size: 2rem;"><b>Yotoqni tark etish</b></div>
                 </a>
+                {% endif %}
             </div>
         </div>
     </div>
