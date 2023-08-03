@@ -19,6 +19,14 @@
 
 // FAKULTET
 const fakultetName = {
+    "Magistratura": ["Magistratura"],
+    "Qo'shma ta'lim": [
+        "Ona tili va adabiyoti: Rus tili va adabiyoti",
+        "Matematika va informatika",
+        "Psixologiya(amaliy psixologiya)",
+        "Ta'limda axborot texnalogiyalari; (magistratura)",
+        "Ona tili va adabiyoti: Rus tili va adabiyoti; (magistratura)"
+    ],
     "Fizika va matematika": [
         "Matematika va informatika", 
         "Matematika o'qitish metodikasi", 
@@ -2769,6 +2777,7 @@ const regionStateInfo = {
      let btn = document.getElementById("myBtn");
      var span = document.getElementsByClassName("close")[0];
      window.onload = function() {
+        console.log("salom");
          modal.style.display = "block";
          closedBtn.disabled = true;
      }

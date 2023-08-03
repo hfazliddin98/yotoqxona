@@ -135,10 +135,17 @@ def imtiyoz(request):
 
 @csrf_exempt
 def tolovlar(request, pk):
-    data = Tolov.objects.filter(talaba_id=pk)
+    data = Tolov.objects.filter(talaba_id=pk).filter(tasdiqlash='tasdiqlandi')
+
+    if data:
+        tolangan = 0
+        for d in data:
+            tolangan += d.narhi
+    else:
+        tolangan = 0
     
     contex = {
-        'data':data,
+        'tolangan':tolangan,
     }
     return render(request, 'talaba/tolovlar.html', contex)
 
