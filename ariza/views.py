@@ -157,9 +157,9 @@ def barcha_arizalar(request):
 
 @csrf_exempt
 def dekanat_barcha_arizalar(request):
-    talaba = User.objects.filter(lavozim='talaba')
-    arizalar = Ariza.objects.all()  
     fakultet = request.user.fakultet 
+    talaba = User.objects.filter(lavozim='talaba') 
+    arizalar = Ariza.objects.filter(fakultet=fakultet).filter(tasdiqlash='') 
     
     contex = {
         'talaba':talaba,
@@ -171,8 +171,9 @@ def dekanat_barcha_arizalar(request):
 
 @csrf_exempt
 def dekanat_tasdiqlangan_arizalar(request):
+    fakultet = request.user.fakultet
     talabalar = User.objects.filter(lavozim='talaba')
-    data = Ariza.objects.filter(tasdiqlash='tasdiqlandi')
+    data = Ariza.objects.filter(fakultet=fakultet).filter(tasdiqlash='tasdiqlandi')
     contex = {
         'data':data,
         'talabalar':talabalar,
@@ -182,8 +183,9 @@ def dekanat_tasdiqlangan_arizalar(request):
 
 @csrf_exempt
 def dekanat_radetilgan_arizalar(request):
+    fakultet = request.user.fakultet
     talabalar = User.objects.filter(lavozim='talaba')
-    data = Ariza.objects.filter(tasdiqlash = 'radetildi')
+    data = Ariza.objects.filter(fakultet=fakultet).filter(tasdiqlash = 'radetildi')
     contex = {
         'data':data,
         'talabalar':talabalar,
@@ -194,13 +196,56 @@ def dekanat_radetilgan_arizalar(request):
 @csrf_exempt
 def dekanat_barcha_malumot(request, pk):
     talabalar = User.objects.filter(id=pk)
-    arizalar = Ariza.objects.filter(talaba_id=request.user.pk)
-    imtiyozlar = Imtiyoz.objects.filter(talaba_id=pk)
+    arizalar = Ariza.objects.filter(talaba_id=pk)
+    imtiyoz = Imtiyoz.objects.filter(talaba_id=pk)
+    if talabalar:
+        for t in talabalar:
+            telefon = t.username
+    else:
+        telefon = ''
+        
+    if arizalar:
+        for a in arizalar:
+            rasm_url = a.pasport_rasm.url
+            familya = a.last_name
+            ism = a.first_name
+            sharif = a.sharif
+            pasport = a.pasport_serya_raqam
+            fakultet = a.fakultet
+            yonalish = a.yonalish
+            kurs = a.kurs
+            viloyat = a.viloyat
+            tuman = a.tuman
+            kocha = a.kocha
+            
+    else:
+        rasm_url = 'Pasport rasmi joylanmagan'
+        familya = ''
+        ism = ''
+        sharif = ''
+        pasport = ''
+        fakultet = ''
+        yonalish = ''
+        kurs = ''
+        viloyat = ''
+        tuman = ''
+        kocha = ''
+        
+    if imtiyoz:  
+        for i in imtiyoz:            
+            imtiyoz_url = i.imtiyoz_file.url
+            imtiyoz_turi = i.imtiyoz_nomi
+    else:
+        imtiyoz_url = 'Talabada imtiyoz mavjud emas'
+        imtiyoz_turi = ''
+        
+    
     
     contex = {
-        'talabalar':talabalar,
-        'arizalar':arizalar,
-        'imtiyozlar':imtiyozlar,
+        'talabalar':talabalar,'arizalar':arizalar,'imtiyoz':imtiyoz,'rasm_url':rasm_url,
+        'imtiyoz_url':imtiyoz_url,'familya':familya,'ism':ism,'sharif':sharif,'telefon':telefon,
+        'pasport':pasport,'imtiyoz_turi':imtiyoz_turi,'fakultet':fakultet,'yonalish':yonalish,
+        'kurs':kurs,'viloyat':viloyat,'tuman':tuman,'kocha':kocha,
     }
     return render(request, 'dekanatadmin/dekanat/dekanat_barcha_malumot.html', contex)
 
@@ -209,12 +254,55 @@ def dekanat_barcha_malumot(request, pk):
 def dekanat_tasdiqlangan_malumot(request, pk):
     talabalar = User.objects.filter(id=pk)
     arizalar = Ariza.objects.filter(talaba_id=pk)
-    imtiyozlar = Imtiyoz.objects.filter(talaba_id=pk)
+    imtiyoz = Imtiyoz.objects.filter(talaba_id=pk)
+    if talabalar:
+        for t in talabalar:
+            telefon = t.username
+    else:
+        telefon = ''
+        
+    if arizalar:
+        for a in arizalar:
+            rasm_url = a.pasport_rasm.url
+            familya = a.last_name
+            ism = a.first_name
+            sharif = a.sharif
+            pasport = a.pasport_serya_raqam
+            fakultet = a.fakultet
+            yonalish = a.yonalish
+            kurs = a.kurs
+            viloyat = a.viloyat
+            tuman = a.tuman
+            kocha = a.kocha
+            
+    else:
+        rasm_url = 'Pasport rasmi joylanmagan'
+        familya = ''
+        ism = ''
+        sharif = ''
+        pasport = ''
+        fakultet = ''
+        yonalish = ''
+        kurs = ''
+        viloyat = ''
+        tuman = ''
+        kocha = ''
+        
+    if imtiyoz:  
+        for i in imtiyoz:            
+            imtiyoz_url = i.imtiyoz_file.url
+            imtiyoz_turi = i.imtiyoz_nomi
+    else:
+        imtiyoz_url = 'Talabada imtiyoz mavjud emas'
+        imtiyoz_turi = ''
+        
+    
     
     contex = {
-        'talabalar':talabalar,
-        'arizalar':arizalar,
-        'imtiyozlar':imtiyozlar,
+        'talabalar':talabalar,'arizalar':arizalar,'imtiyoz':imtiyoz,'rasm_url':rasm_url,
+        'imtiyoz_url':imtiyoz_url,'familya':familya,'ism':ism,'sharif':sharif,'telefon':telefon,
+        'pasport':pasport,'imtiyoz_turi':imtiyoz_turi,'fakultet':fakultet,'yonalish':yonalish,
+        'kurs':kurs,'viloyat':viloyat,'tuman':tuman,'kocha':kocha,
     }
     return render(request, 'dekanatadmin/dekanat/dekanat_tasdiqlangan_malumot.html', contex)
 
@@ -223,12 +311,55 @@ def dekanat_tasdiqlangan_malumot(request, pk):
 def dekanat_radetilgan_malumot(request, pk):
     talabalar = User.objects.filter(id=pk)
     arizalar = Ariza.objects.filter(talaba_id=pk)
-    imtiyozlar = Imtiyoz.objects.filter(talaba_id=pk)
+    imtiyoz = Imtiyoz.objects.filter(talaba_id=pk)
+    if talabalar:
+        for t in talabalar:
+            telefon = t.username
+    else:
+        telefon = ''
+        
+    if arizalar:
+        for a in arizalar:
+            rasm_url = a.pasport_rasm.url
+            familya = a.last_name
+            ism = a.first_name
+            sharif = a.sharif
+            pasport = a.pasport_serya_raqam
+            fakultet = a.fakultet
+            yonalish = a.yonalish
+            kurs = a.kurs
+            viloyat = a.viloyat
+            tuman = a.tuman
+            kocha = a.kocha
+            
+    else:
+        rasm_url = 'Pasport rasmi joylanmagan'
+        familya = ''
+        ism = ''
+        sharif = ''
+        pasport = ''
+        fakultet = ''
+        yonalish = ''
+        kurs = ''
+        viloyat = ''
+        tuman = ''
+        kocha = ''
+        
+    if imtiyoz:  
+        for i in imtiyoz:            
+            imtiyoz_url = i.imtiyoz_file.url
+            imtiyoz_turi = i.imtiyoz_nomi
+    else:
+        imtiyoz_url = 'Talabada imtiyoz mavjud emas'
+        imtiyoz_turi = ''
+        
+    
     
     contex = {
-        'talabalar':talabalar,
-        'arizalar':arizalar,
-        'imtiyozlar':imtiyozlar,
+        'talabalar':talabalar,'arizalar':arizalar,'imtiyoz':imtiyoz,'rasm_url':rasm_url,
+        'imtiyoz_url':imtiyoz_url,'familya':familya,'ism':ism,'sharif':sharif,'telefon':telefon,
+        'pasport':pasport,'imtiyoz_turi':imtiyoz_turi,'fakultet':fakultet,'yonalish':yonalish,
+        'kurs':kurs,'viloyat':viloyat,'tuman':tuman,'kocha':kocha,
     }
     return render(request, 'dekanatadmin/dekanat/dekanat_radetilgan_malumot.html', contex)
 
@@ -472,6 +603,39 @@ def imtiyozni_radetish(request, pk):
 
 
 @csrf_exempt
+def dekanat_tasdiqlangan_ariza(request, pk):    
+    talabalar = User.objects.get(id=pk)
+    if request.method == 'POST':
+        data = get_object_or_404(Ariza, talaba_id=pk)
+        xulosa = request.POST['xulosa']  
+        data.xulosa = xulosa      
+        data.tasdiqlash = 'tasdiqlandi'        
+        data.save()
+        return redirect('/ariza/dekanat_barcha_arizalar/')
+    contex = {
+        'talabalar':talabalar,
+    }
+    return render(request, 'dekanatadmin/dekanat/tasdiqlangan_ariza.html', contex)
+
+
+
+@csrf_exempt
+def dekanat_radetilgan_ariza(request, pk):   
+    talabalar = User.objects.get(id=pk)
+    if request.method == 'POST':
+        data = get_object_or_404(Ariza, talaba_id=pk)
+        xulosa = request.POST['xulosa']  
+        data.xulosa = xulosa      
+        data.tasdiqlash = 'radetildi'        
+        data.save()
+        return redirect('/ariza/dekanat_barcha_arizalar/')
+    contex = {
+      'talabalar':talabalar,  
+    }
+    return render(request, 'dekanatadmin/dekanat/radetilgan_ariza.html', contex)
+
+
+@csrf_exempt
 def tasdiqlangan_ariza(request, pk):    
     talabalar = User.objects.get(id=pk)
     if request.method == 'POST':
@@ -484,7 +648,7 @@ def tasdiqlangan_ariza(request, pk):
     contex = {
         'talabalar':talabalar,
     }
-    return render(request, 'dekanatadmin/tasdiqlangan_ariza.html', contex)
+    return render(request, 'superadmin/tasdiqlangan_ariza.html', contex)
 
 
 
@@ -501,7 +665,7 @@ def radetilgan_ariza(request, pk):
     contex = {
       'talabalar':talabalar,  
     }
-    return render(request, 'dekanatadmin/radetilgan_ariza.html', contex)
+    return render(request, 'superadmin/radetilgan_ariza.html', contex)
 
 
 @csrf_exempt
@@ -912,107 +1076,12 @@ def tolov_chek(request):
 
 
 @csrf_exempt
-def shartnomalar(request):
-    talaba_id = User.objects.all()
-    for t in talaba_id:
-        arizalar = Ariza.objects.filter(talaba_id=t.id)
-        if arizalar:
-            for a in arizalar:
-                shartnoma = Shartnoma.objects.filter(talaba_id=t.id)               
-                if shartnoma:
-                    # update qilish
-                    talaba_f_i_sh = f'{a.last_name} {a.first_name} {a.sharif}'
-                    manzil = f'{a.viloyat} {a.tuman} {a.kocha}'
-                    iib_manzil = f'{a.viloyat} {a.tuman}'
-                    data = get_object_or_404(Shartnoma, talaba_id=t.id)
-                    data.talaba_f_i_sh = talaba_f_i_sh
-                    data.manzil = manzil
-                    data.iib_manzil = iib_manzil
-                    data.pasport = a.pasport_serya_raqam
-                    data.save()
-                    print('update qilindi')
-                else:
-                    talaba_f_i_sh = f'{a.last_name} {a.first_name} {a.sharif}'
-                    manzil = f'{a.viloyat} {a.tuman} {a.kocha}'
-                    iib_manzil = f'{a.viloyat} {a.tuman}'
-                    ttj_nomer = ''
-                    data = Shartnoma.objects.create(
-                        talaba_id = t.id,
-                        talaba_f_i_sh = talaba_f_i_sh,
-                        manzil = manzil,
-                        iib_manzil = iib_manzil,
-                        pasport = a.pasport_serya_raqam,
-                        ttj_nomer=ttj_nomer
-                    )
-                    data.save()
-                    print('yangi kiritildi')
-
-
-        else:
-            ariza = 'Hozirda ariza mavjud emas'
-
-    for t in talaba_id:
-        import qrcode
-        import datetime as dt
-
-
-        data = f"https://ttj.kspi.uz/ariza/shartnomalar/{t.id}/"  # QR-kodga kiritmoqchi bo'lgan ma'lumot
-
-        # QR-kod obyektini yaratish
-        qr = qrcode.QRCode(version=1, box_size=10, border=4)
-
-        # Ma'lumotni QR-kodga qo'shish
-        qr.add_data(data)
-
-        # QR-kodni yaratish
-        qr.make()
-
-        # QR-koddan tasvir yaratish
-        img = qr.make_image()
-
-        # Tasvirni saqlash
-        img.save(f"media/code/qrcode{t.id}.png")
-        
-        link = f'http://ttj.kspi.uz/media/code/qrcode{t.id}.png'
-        rasmlar = Rasm.objects.filter(talaba_id=t.id)
-        qrcode = Rasm.objects.filter(talaba_id=t.id)
-        
-        
-        media_url = '/code/'
-        image_path = f'qrcode{t.id}.png'
-        image_url = f'{media_url}{image_path}'
-        if rasmlar:
-            data = get_object_or_404(Rasm, talaba_id=t.id)
-            data.talaba_id = t.id
-            data.link = link 
-            data.rasm = image_url
-            data.save()
-            print('update qilindi')
-        else:
-            data = Rasm.objects.create(
-                talaba_id = t.id,
-                link = link,
-                rasm = image_url
-            )
-            data.save()
-            print('create qilindi')
-    
-   
-    talaba = User.objects.filter(id=request.user.id)     
-    hozir = dt.datetime.now()
-    yil = hozir.year
-    oy = hozir.month
-    kun = hozir.day
+def shartnomalar(request): 
+    talaba = User.objects.filter(id=request.user.id)
     tasdiqlangan_tolov = Tolov.objects.filter(talaba_id=request.user.id).filter(tasdiqlash='tasdiqlandi')
     tasdiqlangan_orderlar = Order.objects.filter(talaba_id=request.user.id).filter(tasdiqlash='tasdiqlandi')
     
-    contex = {        
-        'yil':yil,
-        'ariza':ariza,
-        'oy':oy,
-        'kun':kun,
-        'hozir':hozir,
-        'qrcode':qrcode,   
+    contex = {  
         'talaba':talaba,
         'tasdiqlangan_tolov':tasdiqlangan_tolov, 
         'tasdiqlangan_orderlar':tasdiqlangan_orderlar,          
@@ -1022,31 +1091,30 @@ def shartnomalar(request):
 
 @csrf_exempt
 def shartnoma(request, pk):
-    talaba_id = User.objects.all()
-    for t in talaba_id:
-        arizalar = Ariza.objects.filter(talaba_id=t.id)
-        if arizalar:
-            for a in arizalar:
-                shartnoma = Shartnoma.objects.filter(talaba_id=t.id)               
-                if shartnoma:
+    talaba_id = User.objects.filter(id=pk)    
+    arizalar = Ariza.objects.filter(tasdiqlash='tasdiqlandi').filter(talaba_id=pk)
+    if arizalar:        
+        for a in arizalar:
+            shartnoma = Shartnoma.objects.filter(talaba_id=pk)               
+            if shartnoma:                   
                     # update qilish
                     talaba_f_i_sh = f'{a.last_name} {a.first_name} {a.sharif}'
                     manzil = f'{a.viloyat} {a.tuman} {a.kocha}'
                     iib_manzil = f'{a.viloyat} {a.tuman}'
-                    data = get_object_or_404(Shartnoma, talaba_id=t.id)
+                    data = get_object_or_404(Shartnoma, talaba_id=pk)
                     data.talaba_f_i_sh = talaba_f_i_sh
                     data.manzil = manzil
                     data.iib_manzil = iib_manzil
                     data.pasport = a.pasport_serya_raqam
                     data.save()
                     print('update qilindi')
-                else:
+            else:
                     talaba_f_i_sh = f'{a.last_name} {a.first_name} {a.sharif}'
                     manzil = f'{a.viloyat} {a.tuman} {a.kocha}'
                     iib_manzil = f'{a.viloyat} {a.tuman}'
                     ttj_nomer = ''
                     data = Shartnoma.objects.create(
-                        talaba_id = t.id,
+                        talaba_id = pk,
                         talaba_f_i_sh = talaba_f_i_sh,
                         manzil = manzil,
                         iib_manzil = iib_manzil,
@@ -1057,15 +1125,15 @@ def shartnoma(request, pk):
                     print('yangi kiritildi')
 
 
-        else:
-            ariza = 'Hozirda ariza mavjud emas'
+    else:
+        arizalar = 'Hozirda ariza mavjud emas'
 
     for t in talaba_id:
         import qrcode
         import datetime as dt
 
 
-        data = f"https://ttj.kspi.uz/ariza/shartnomalar/{t.id}/"  # QR-kodga kiritmoqchi bo'lgan ma'lumot
+        data = f"https://ttj.kspi.uz/ariza/shartnoma/{pk}/"  # QR-kodga kiritmoqchi bo'lgan ma'lumot
 
         # QR-kod obyektini yaratish
         qr = qrcode.QRCode(version=1, box_size=10, border=4)
@@ -1080,26 +1148,26 @@ def shartnoma(request, pk):
         img = qr.make_image()
 
         # Tasvirni saqlash
-        img.save(f"media/code/qrcode{t.id}.png")
+        img.save(f"media/code/qrcode{pk}.png")
         
-        link = f'http://ttj.kspi.uz/media/code/qrcode{t.id}.png'
-        rasmlar = Rasm.objects.filter(talaba_id=t.id)
-        qrcode = Rasm.objects.filter(talaba_id=t.id)
+        link = f'http://ttj.kspi.uz/media/code/qrcode{pk}.png'
+        rasmlar = Rasm.objects.filter(talaba_id=pk)
+        qrcode = Rasm.objects.filter(talaba_id=pk)
         
         
         media_url = '/code/'
-        image_path = f'qrcode{t.id}.png'
+        image_path = f'qrcode{pk}.png'
         image_url = f'{media_url}{image_path}'
         if rasmlar:
-            data = get_object_or_404(Rasm, talaba_id=t.id)
-            data.talaba_id = t.id
+            data = get_object_or_404(Rasm, talaba_id=pk)
+            data.talaba_id = pk
             data.link = link 
             data.rasm = image_url
             data.save()
             print('update qilindi')
         else:
             data = Rasm.objects.create(
-                talaba_id = t.id,
+                talaba_id = pk,
                 link = link,
                 rasm = image_url
             )
@@ -1118,7 +1186,7 @@ def shartnoma(request, pk):
     
     contex = {        
         'yil':yil,
-        'ariza':ariza,
+        'arizalar':arizalar,
         'oy':oy,
         'kun':kun,
         'hozir':hozir,
@@ -1407,17 +1475,103 @@ def order_csv(request):
     
     
     writer.writerow([
+        'TTJ nomer',
+        'Qavat', 
+        'Xona',
+        'Jins',
+        'Xona holati',
+        'Fakultet',
+        'Yonalish',
+        'Kurs',
+        'Talaba FISH',
+        'Joylashtirilgan sana',  
+        'Tark etgan sana',
+        'Viloyat',
+        'Tuman',
+        'Ko`cha',
+        'Order raqami',
         'Shartnoma raqami',
-        'Talaba F.I.SH',                           
+        'Talaba telefon raqami', 
+        'Tolovi',
+        'oylik tolov summasi',
+        'Tolov amalga oshirilgan sana',
+        'Tolovning tugash sanasi',
+        'Qarizdorlik',
+        'Qaytarilgan mablag`',
+        'Imtiyoz holati'                        
     ])   
     
     orderlar  = Order.objects.filter(tasdiqlash='tasdiqlandi')
     if orderlar:
+        jins = ''
+        hona_holati = ''
+        joylashgan_sana = ''
+        tark_etgan = ''
+        shartnoma = ''
         for o in orderlar:
-            writer.writerow([
-                o.id,
-                o.familiya
-            ])
+            talaba_fish = f'{o.familiya} {o.ism} {o.sharif}'
+            ariza = Ariza.objects.filter(talaba_id=o.talaba_id).filter(tasdiqlash='tasdiqlandi')
+            if ariza:
+                for a in ariza:
+                    talaba = User.objects.filter(id=o.talaba_id)
+                    if talaba:
+                        for t in talaba:
+                            imtiyoz = Imtiyoz.objects.filter(talaba_id=o.talaba_id).filter(tasdiqlash='tasdiqlandi')
+                            if imtiyoz:
+                                for i in imtiyoz:
+                                    writer.writerow([
+                                        o.ttj_nomer,
+                                        o.qavat,
+                                        o.xona,
+                                        jins,
+                                        hona_holati,
+                                        o.fakultet,
+                                        o.yonalish,
+                                        o.kurs,
+                                        talaba_fish,
+                                        joylashgan_sana,
+                                        tark_etgan,
+                                        a.viloyat,
+                                        a.tuman,
+                                        a.kocha,
+                                        o.id,
+                                        shartnoma,
+                                        t.username,
+                                        '',
+                                        '',
+                                        '',
+                                        '',
+                                        '',
+                                        '',
+                                        i.imtiyoz_nomi,
+                                    ])
+                            else:
+                                writer.writerow([
+                                        o.ttj_nomer,
+                                        o.qavat,
+                                        o.xona,
+                                        jins,
+                                        hona_holati,
+                                        o.fakultet,
+                                        o.yonalish,
+                                        o.kurs,
+                                        talaba_fish,
+                                        joylashgan_sana,
+                                        tark_etgan,
+                                        a.viloyat,
+                                        a.tuman,
+                                        a.kocha,
+                                        o.id,
+                                        shartnoma,
+                                        t.username,
+                                        '',
+                                        '',
+                                        '',
+                                        '',
+                                        '',
+                                        '',
+                                        '',
+                                    ])
     else:
         return redirect('/ariza/barcha_orderlar/')
     

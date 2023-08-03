@@ -131,145 +131,142 @@
                     <div class="card">
                         <div class="card-body">
                             <h3 class="py-3 text-center">Talaba ma'lumotlari</h3>
-                            {% for t in talabalar %}
-                                {% for a in arizalar %}
-                                {% for i in imtiyozlar %}
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="card mb-4">
-                                            <div class="card-body pt-3">
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Familiya</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{t.last_name}}</p>
-                                                    </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="card mb-4">
+                                        <div class="card-body pt-3">
+                                            <div class="row">
+                                                <div class="col-sm-5">
+                                                    <p class="mb-0">Familiya</p>
                                                 </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Ism</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{t.first_name}}</p>
-                                                    </div>
+                                                <div class="col-sm-7">
+                                                    <p class="text-muted mb-0">{{familya}}</p>
                                                 </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Otasining ismi</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{t.sharif}}</p>
-                                                    </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-sm-5">
+                                                    <p class="mb-0">Ism</p>
                                                 </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Telefon raqam</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{t.username}}</p>
-                                                    </div>
+                                                <div class="col-sm-7">
+                                                    <p class="text-muted mb-0">{{ism}}</p>
                                                 </div>
-                                                <hr>                                            
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Passport seriya va raqami</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.pasport_serya_raqam}}</p>
-                                                    </div>
-                                                </div>  
-                                                <hr>                                            
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Imtiyoz turi</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{i.imtiyoz_nomi}}</p>
-                                                    </div>
-                                                </div>                                          
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-sm-5">
+                                                    <p class="mb-0">Otasining ismi</p>
+                                                </div>
+                                                <div class="col-sm-7">
+                                                    <p class="text-muted mb-0">{{sharif}}</p>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-sm-5">
+                                                    <p class="mb-0">Telefon raqam</p>
+                                                </div>
+                                                <div class="col-sm-7">
+                                                    <p class="text-muted mb-0">{{telefon}}</p>
+                                                </div>
+                                            </div>
+                                            <hr>                                            
+                                            <div class="row">
+                                                <div class="col-sm-5">
+                                                    <p class="mb-0">Passport seriya va raqami</p>
+                                                </div>
+                                                <div class="col-sm-7">
+                                                    <p class="text-muted mb-0">{{pasport}}</p>
+                                                </div>
+                                            </div>  
+                                            <hr>                                            
+                                            <div class="row">
+                                                <div class="col-sm-5">
+                                                    <p class="mb-0">Imtiyoz turi</p>
+                                                </div>
+                                                <div class="col-sm-7">
+                                                    <p class="text-muted mb-0">{{imtiyoz_turi}}</p>
+                                                </div>
+                                            </div>                                          
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="card mb-4">
+                                        <div class="card-body pt-3">
+                                            <div class="row">
+                                                <div class="col-sm-5">
+                                                    <p class="mb-0">Fakultet</p>
+                                                </div>
+                                                <div class="col-sm-7">
+                                                    <p class="text-muted mb-0">{{fakultet}}</p>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-sm-5">
+                                                    <p class="mb-0">Yo'nalish</p>
+                                                </div>
+                                                <div class="col-sm-7">
+                                                    <p class="text-muted mb-0">{{yonalish}}</p>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-sm-5">
+                                                    <p class="mb-0">Kurs</p>
+                                                </div>
+                                                <div class="col-sm-7">
+                                                    <p class="text-muted mb-0">{{kurs}}</p>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-sm-5">
+                                                    <p class="mb-0">Viloyat</p>
+                                                </div>
+                                                <div class="col-sm-7">
+                                                    <p class="text-muted mb-0">{{viloyat}}</p>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-sm-5">
+                                                    <p class="mb-0">Tuman</p>
+                                                </div>
+                                                <div class="col-sm-7">
+                                                    <p class="text-muted mb-0">{{tuman}}</p>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-sm-5">
+                                                    <p class="mb-0">Ko'cha</p>
+                                                </div>
+                                                <div class="col-sm-7">
+                                                    <p class="text-muted mb-0">{{kocha}}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="card mb-4">
-                                            <div class="card-body pt-3">
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Fakultet</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.fakultet}}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Yo'nalish</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.yonalish}}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Kurs</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.kurs}}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Viloyat</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.viloyat}}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Tuman</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.tuman}}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Ko'cha</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.kocha}}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>                                
+                                </div>                                
+                            </div>
+                            <div class="row g-3">
+                                <div class="passport-info col-lg-6">
+                                    <h4>Passport rasmi</h4>
+                                    <img class="w-100" src="{{rasm_url}}">
                                 </div>
-                                <div class="row g-3">
-                                    <div class="passport-info col-lg-6">
-                                        <h4>Passport rasmi</h4>
-                                        <img class="w-50" src="{{a.pasport_rasm.url}}">
-                                    </div>
-                                    <div class="passport-info col-lg-6">
-                                        <h4>Imtiyoz rasmi</h4>
-                                        <img class="w-50" src="{{i.imtiyoz_file.url}}">
-                                    </div>
+                                <div class="passport-info col-lg-6">
+                                    <h4>Imtiyoz rasmi</h4>
+                                    <img class="w-100" src="{{imtiyoz_url}}">
                                 </div>
-                                <div class="col-12 pt-5 text-center">                                   
-                                    <a class="btn btn-danger mx-4" href="{% url 'radetilgan_ariza' a.talaba_id %}">Rad etish</a>
-                                </div>                            
-                                {% endfor %}
-                                {% endfor %}
-                            {% endfor %}
+                            </div>
+                            {% for a in arizalar %}
+                            <div class="col-12 pt-5 text-center">
+                                <a class="btn btn-danger mx-4" href="{% url 'dekanat_radetilgan_ariza' a.talaba_id %}">Rad etish</a>
+                            </div>  
+                            {% endfor %}                          
+                          
                         </div>
                     </div>
                 </div>

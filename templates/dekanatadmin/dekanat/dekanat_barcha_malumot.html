@@ -131,9 +131,9 @@
                     <div class="card">
                         <div class="card-body">
                             <h3 class="py-3 text-center">Talaba ma'lumotlari</h3>
-                            {% for t in talabalar %}
-                                {% for a in arizalar %}
-                                {% for i in imtiyoz %}
+                            
+                                
+                              
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="card mb-4">
@@ -143,7 +143,7 @@
                                                         <p class="mb-0">Familiya</p>
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{t.last_name}}</p>
+                                                        <p class="text-muted mb-0">{{familya}}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -152,7 +152,7 @@
                                                         <p class="mb-0">Ism</p>
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{t.first_name}}</p>
+                                                        <p class="text-muted mb-0">{{ism}}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -161,7 +161,7 @@
                                                         <p class="mb-0">Otasining ismi</p>
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{t.sharif}}</p>
+                                                        <p class="text-muted mb-0">{{sharif}}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -170,7 +170,7 @@
                                                         <p class="mb-0">Telefon raqam</p>
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{t.username}}</p>
+                                                        <p class="text-muted mb-0">{{telefon}}</p>
                                                     </div>
                                                 </div>
                                                 <hr>                                            
@@ -179,7 +179,7 @@
                                                         <p class="mb-0">Passport seriya va raqami</p>
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.pasport_serya_raqam}}</p>
+                                                        <p class="text-muted mb-0">{{pasport}}</p>
                                                     </div>
                                                 </div>  
                                                 <hr>                                            
@@ -188,7 +188,7 @@
                                                         <p class="mb-0">Imtiyoz turi</p>
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{i.imtiyoz_nomi}}</p>
+                                                        <p class="text-muted mb-0">{{imtiyoz_turi}}</p>
                                                     </div>
                                                 </div>                                          
                                             </div>
@@ -202,7 +202,7 @@
                                                         <p class="mb-0">Fakultet</p>
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.fakultet}}</p>
+                                                        <p class="text-muted mb-0">{{fakultet}}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -211,7 +211,7 @@
                                                         <p class="mb-0">Yo'nalish</p>
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.yonalish}}</p>
+                                                        <p class="text-muted mb-0">{{yonalish}}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -220,7 +220,7 @@
                                                         <p class="mb-0">Kurs</p>
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.kurs}}</p>
+                                                        <p class="text-muted mb-0">{{kurs}}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -229,7 +229,7 @@
                                                         <p class="mb-0">Viloyat</p>
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.viloyat}}</p>
+                                                        <p class="text-muted mb-0">{{viloyat}}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -238,7 +238,7 @@
                                                         <p class="mb-0">Tuman</p>
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.tuman}}</p>
+                                                        <p class="text-muted mb-0">{{tuman}}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -247,7 +247,7 @@
                                                         <p class="mb-0">Ko'cha</p>
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.kocha}}</p>
+                                                        <p class="text-muted mb-0">{{kocha}}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -257,20 +257,20 @@
                                 <div class="row g-3">
                                     <div class="passport-info col-lg-6">
                                         <h4>Passport rasmi</h4>
-                                        <img class="w-100" src="{{a.pasport_rasm.url}}">
+                                        <img class="w-100" src="{{rasm_url}}">
                                     </div>
                                     <div class="passport-info col-lg-6">
                                         <h4>Imtiyoz rasmi</h4>
-                                        <img class="w-100" src="{{i.imtiyoz_file.url}}">
+                                        <img class="w-100" src="{{imtiyoz_url}}">
                                     </div>
                                 </div>
+                                {% for a in arizalar %}
                                 <div class="col-12 pt-5 text-center">
-                                    <a class="btn btn-success" href="{% url 'tasdiqlangan_ariza' a.talaba_id %}">Tasdiqlash</a>
-                                    <a class="btn btn-danger mx-4" href="{% url 'radetilgan_ariza' a.talaba_id %}">Rad etish</a>
+                                    <a class="btn btn-success" href="{% url 'dekanat_tasdiqlangan_ariza' a.talaba_id %}">Tasdiqlash</a>
+                                    <a class="btn btn-danger mx-4" href="{% url 'dekanat_radetilgan_ariza' a.talaba_id %}">Rad etish</a>
                                 </div>  
                                 {% endfor %}                          
-                                {% endfor %}
-                            {% endfor %}
+                              
                         </div>
                     </div>
                 </div>

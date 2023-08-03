@@ -1632,6 +1632,10 @@ textarea.form-control {
   stroke-linecap: round;
 }
 
+.asosiy {
+  display: flex;
+}
+
 @-webkit-keyframes loader-rotate {
   100% {
     -webkit-transform: rotate(360deg);
@@ -1894,4 +1898,20 @@ textarea.form-control {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.summa {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 420px) {
+  .summa {
+      flex-direction: column;
+      justify-content: center !important;
+  }
+  .summa-info {
+      margin-bottom: 25px;
+  }
 }

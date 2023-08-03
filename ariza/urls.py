@@ -10,6 +10,7 @@ from .views import arizalar_jadvali, tasdiqlangan_imtiyozli_arizalar
 from .views import dekanat_barcha_arizalar, dekanat_tasdiqlangan_arizalar, dekanat_radetilgan_arizalar
 from .views import dekanat_barcha_malumot, dekanat_tasdiqlangan_malumot, dekanat_radetilgan_malumot
 from .views import barcha_orderlar, order_berish, order_csv
+from .views import dekanat_tasdiqlangan_ariza, dekanat_radetilgan_ariza
 
 
 urlpatterns = [
@@ -80,4 +81,6 @@ urlpatterns = [
    path('dekanat_barcha_malumot/<str:pk>/', dekanat_barcha_malumot, name='dekanat_barcha_malumot'),
    path('dekanat_tasdiqlangan_malumot/<str:pk>/', dekanat_tasdiqlangan_malumot, name='dekanat_tasdiqlangan_malumot'),
    path('dekanat_radetilgan_malumot/<str:pk>/', dekanat_radetilgan_malumot, name='dekanat_radetilgan_malumot'),
+   path('dekanat_tasdiqlangan_ariza/<str:pk>/', dekanat_tasdiqlangan_ariza, name='dekanat_tasdiqlangan_ariza'),
+   path('dekanat_radetilgan_ariza/<str:pk>/', dekanat_radetilgan_ariza, name='dekanat_radetilgan_ariza'),
 ]
