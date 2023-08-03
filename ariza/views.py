@@ -1285,6 +1285,7 @@ def order(request, pk):
             kurs = o.kurs
             manzil= o.manzil
             ttj_nomer = o.ttj_nomer
+            ttj_manzil = o.ttj_manzil
             qavat = o.qavat
             xona = o.xona
             order_id = o.id
@@ -1297,6 +1298,7 @@ def order(request, pk):
         kurs = ''
         manzil = ''
         ttj_nomer = ''
+        ttj_manzil = ''
         qavat = ''
         xona = ''
         order_id = ''
@@ -1311,6 +1313,7 @@ def order(request, pk):
         'kurs':kurs,
         'manzil':manzil,
         'ttj_nomer':ttj_nomer,
+        'ttj_manzil':ttj_manzil,
         'qavat':qavat,
         'xona':xona,
         'hozir':hozir,
@@ -1393,10 +1396,11 @@ def order_berish(request, pk):
             imtiyoz_turi = i.imtiyoz_nomi
     else:
         imtiyoz_url = 'Talabada imtiyoz mavjud emas'
-        imtiyoz_turi = 'Talabada imtiyoz mavjud emas!!!'  
+        imtiyoz_turi = ''  
     
     
     if request.method == 'POST': 
+        ttj_manzil = request.POST['ttj_manzil']   
         ttj_nomer = request.POST['ttj_nomer']       
         qavat = request.POST['qavat']
         xona = request.POST['xona']        
@@ -1404,16 +1408,20 @@ def order_berish(request, pk):
         if order_id:
             for t in order_id:
                 data = get_object_or_404(Order, talaba_id=pk)
+                data.ttj_manzil = ttj_manzil
                 data.ttj_nomer = ttj_nomer
                 data.qavat = qavat
                 data.xona = xona 
+                data.telefon = telefon
+                data.imtiyoz_nomi = imtiyoz_turi
                 data.tasdiqlash='tasdiqlandi'               
                 data.save()
                 return redirect('/ariza/barcha_orderlar/')
         else:        
             data = Order.objects.create(
-                kiritish = 'kiritildi',xona=xona,
-                ttj_nomer=ttj_nomer, qavat=qavat,
+                ttj_manzil=ttj_manzil,ttj_nomer=ttj_nomer,
+                qavat=qavat,xona=xona,
+                telefon=telefon,imtiyoz_nomi=imtiyoz_turi,
                 tasdiqlash='tasdiqlandi',                
             )
             data.save()
@@ -1442,13 +1450,17 @@ def barcha_orderlar(request):
                 data.fakultet=a.fakultet
                 data.yonalish=a.yonalish
                 data.kurs=a.kurs
-                data.manzil=manzil                
+                data.manzil=manzil
+                data.viloyat=a.viloyat
+                data.tuman=a.tuman
+                data.kocha=a.kocha                
                 print('update qilinyapti')            
             else:
                 data = Order.objects.create(
                     talaba_id=a.talaba_id,familiya=a.last_name,ism=a.first_name,
                     sharif=a.sharif,fakultet=a.fakultet,yonalish=a.yonalish,
-                    kurs=a.kurs,manzil=manzil
+                    kurs=a.kurs,manzil=manzil,viloyat=a.viloyat,tuman=a.tuman,
+                    kocha=a.kocha
                 )
                 data.save()
                 print('yangi qo`shildi') 
@@ -1502,76 +1514,36 @@ def order_csv(request):
     ])   
     
     orderlar  = Order.objects.filter(tasdiqlash='tasdiqlandi')
-    if orderlar:
-        jins = ''
-        hona_holati = ''
-        joylashgan_sana = ''
-        tark_etgan = ''
-        shartnoma = ''
+    if orderlar:               
         for o in orderlar:
-            talaba_fish = f'{o.familiya} {o.ism} {o.sharif}'
-            ariza = Ariza.objects.filter(talaba_id=o.talaba_id).filter(tasdiqlash='tasdiqlandi')
-            if ariza:
-                for a in ariza:
-                    talaba = User.objects.filter(id=o.talaba_id)
-                    if talaba:
-                        for t in talaba:
-                            imtiyoz = Imtiyoz.objects.filter(talaba_id=o.talaba_id).filter(tasdiqlash='tasdiqlandi')
-                            if imtiyoz:
-                                for i in imtiyoz:
-                                    writer.writerow([
-                                        o.ttj_nomer,
-                                        o.qavat,
-                                        o.xona,
-                                        jins,
-                                        hona_holati,
-                                        o.fakultet,
-                                        o.yonalish,
-                                        o.kurs,
-                                        talaba_fish,
-                                        joylashgan_sana,
-                                        tark_etgan,
-                                        a.viloyat,
-                                        a.tuman,
-                                        a.kocha,
-                                        o.id,
-                                        shartnoma,
-                                        t.username,
-                                        '',
-                                        '',
-                                        '',
-                                        '',
-                                        '',
-                                        '',
-                                        i.imtiyoz_nomi,
-                                    ])
-                            else:
-                                writer.writerow([
-                                        o.ttj_nomer,
-                                        o.qavat,
-                                        o.xona,
-                                        jins,
-                                        hona_holati,
-                                        o.fakultet,
-                                        o.yonalish,
-                                        o.kurs,
-                                        talaba_fish,
-                                        joylashgan_sana,
-                                        tark_etgan,
-                                        a.viloyat,
-                                        a.tuman,
-                                        a.kocha,
-                                        o.id,
-                                        shartnoma,
-                                        t.username,
-                                        '',
-                                        '',
-                                        '',
-                                        '',
-                                        '',
-                                        '',
-                                        '',
-                                    ])
+            talaba_fish = f'{o.familiya} {o.ism} {o.sharif}'            
+            writer.writerow([
+                o.ttj_nomer,
+                o.qavat,
+                o.xona,
+                '',
+                '',
+                o.fakultet,
+                o.yonalish,
+                o.kurs,
+                talaba_fish,
+                '',
+                '',
+                o.viloyat,
+                o.tuman,
+                o.kocha,
+                o.id,
+                o.id,
+                o.telefon,
+                '',
+                '',
+                '',
+                '',
+                '',
+                '',
+                o.imtiyoz_nomi,
+            ])
+            
     else:
         return redirect('/ariza/barcha_orderlar/')
     
