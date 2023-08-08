@@ -20,6 +20,7 @@
 </head>
 <body>
     {% if user.is_authenticated %}
+  
     <header>
         <nav class="navbar navbar-expand-md navbar-dark py-2">
             <div class="container">
@@ -51,15 +52,27 @@
                 <div class="row justify-content-center align-items-center intro">
                     <div class="col-md-9 text-center">
                         <p class="lead mb-5" style="font-weight: bold;">Ariza va to'lov uchun video qo'llanma</p>
-                        <div class="btn-play-wrap"><a href="https://www.youtube.com/@qoqondpi296" class="btn-play popup-vimeo "><span class="ion-ios-play"></span></a></div>
+                        <div class="btn-play-wrap"><a href="https://youtu.be/HclBP0ypZ7M" class="btn-play popup-vimeo "><span class="ion-ios-play"></span></a></div>
                     </div>
                 </div>
             </div>
         </section>
         <!-- END section -->
-        
+
+
+      
+       
+
+
         <div class="main-content asosiy py-5">
             <div class="container">
+                {% if ariza_yuborish %}
+                    <marquee >
+                        <h3 style="color: red;">
+                        Arizangiz yuborildi Zamdekaningiz tasdiqlashini yoki rad etishini kuting. Ariza holatini ariza yuborish bo`limi orqali nazorat qilishingiz munkun!!
+                        </h3>
+                    </marquee>
+                {% endif %}
                 <div class="asosiy justify-content-around">
                     <a href="{% url 'arizalar' %}" class="ariza d-inline-block mx-2">
                         <div class="text-center p-4 border border-3 rounded-circle doira">

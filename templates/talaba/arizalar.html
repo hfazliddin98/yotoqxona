@@ -57,9 +57,19 @@
         </div>
     </section>
     <!-- END section -->
-    
+
+
+   
+
     <div class="main-content asosiy py-5">
         <div class="container">
+            {% if ariza_yuborish %}
+                <marquee >
+                    <h3 style="color: red;">
+                    Arizangiz yuborildi Zamdekaningiz tasdiqlashini yoki rad etishini kuting. Ariza holatini ariza yuborish bo`limi orqali nazorat qilishingiz munkun!!
+                    </h3>
+                </marquee>
+            {% endif %}
             <div class="asosiy justify-content-around">
                 <a href="{% url 'ariza_imtiyoz' %}" class="ariza d-inline-block mx-2">
                     <div class="text-center p-4 border border-3 rounded-circle doira">

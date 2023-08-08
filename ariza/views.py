@@ -52,9 +52,11 @@ def ariza(request):
 @csrf_exempt
 def arizalar(request):
     ariza_tasdiqlsh = Ariza.objects.filter(talaba_id=request.user.id).filter(tasdiqlash='tasdiqlandi')
+    ariza_yuborish = Ariza.objects.filter(talaba_id=request.user.id)
     
     contex = {
         'ariza_tasdiqlsh':ariza_tasdiqlsh,
+        'ariza_yuborish':ariza_yuborish,
     }
     return render(request, 'talaba/arizalar.html', contex)
 

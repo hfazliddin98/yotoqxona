@@ -13,6 +13,7 @@ def home(request):
     ariza = Ariza.objects.all()
     barcha_tolovlar = Barcha_tolov.objects.all()
     tasdiqlangan_tolov = Tolov.objects.filter(tasdiqlash='tasdiqlandi')
+    ariza_yuborish = Ariza.objects.filter(talaba_id=request.user.id)
     if barcha_tolovlar :        
         for b in barcha_tolovlar:        
             yillik = int(b.xonalar_soni)*int(b.yillik_tolov)
@@ -40,6 +41,7 @@ def home(request):
         'xonalar':xonalar,
         'tolovlar':tolovlar,
         'ariza_tasdiqlsh':ariza_tasdiqlsh,
+        'ariza_yuborish':ariza_yuborish,
       
     }
     return render(request, 'asosiy/home.html', contex)
@@ -87,7 +89,7 @@ def royhat(request):
             )
             user.is_active = False
             user.is_staff = False 
-            return redirect('/')  
+            return redirect('/kirish/')  
     contex = {
         'data':data,
         'habar':habar,
