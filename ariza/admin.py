@@ -6,7 +6,7 @@ class ArizaAdmin(admin.ModelAdmin):
     list_display= [
         'id', 'talaba_id', 'viloyat', 'tuman','sana'
     ]
-    search_fields = ['id', 'talaba_id']
+    search_fields = ['id', 'talaba_id', 'viloyat', 'tuman']
 admin.site.register(Ariza,ArizaAdmin)
 
 

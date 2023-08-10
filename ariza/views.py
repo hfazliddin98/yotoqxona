@@ -1,5 +1,6 @@
 import csv
 import qrcode
+import xlwt
 import datetime as dt
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
@@ -1489,72 +1490,159 @@ def barcha_orderlar(request):
 
 @csrf_exempt
 def order_csv(request):
-    response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename=talabalar.csv'
+    # content-type of response
+        response = HttpResponse(content_type='application/ms-excel')
 
-    writer = csv.writer(response)
-    
-    
-    writer.writerow([
-        'TTJ nomer',
-        'Qavat', 
-        'Xona',
-        'Jins',
-        'Xona holati',
-        'Fakultet',
-        'Yonalish',
-        'Kurs',
-        'Talaba FISH',
-        'Joylashtirilgan sana',  
-        'Tark etgan sana',
-        'Viloyat',
-        'Tuman',
-        'Ko`cha',
-        'Order raqami',
-        'Shartnoma raqami',
-        'Talaba telefon raqami', 
-        'Tolovi',
-        'oylik tolov summasi',
-        'Tolov amalga oshirilgan sana',
-        'Tolovning tugash sanasi',
-        'Qarizdorlik',
-        'Qaytarilgan mablag`',
-        'Imtiyoz holati'                        
-    ])   
-    
-    orderlar  = Order.objects.filter(tasdiqlash='tasdiqlandi')
-    if orderlar:               
-        for o in orderlar:
-            talaba_fish = f'{o.familiya} {o.ism} {o.sharif}'            
-            writer.writerow([
-                o.ttj_nomer,
-                o.qavat,
-                o.xona,
-                '',
-                '',
-                o.fakultet,
-                o.yonalish,
-                o.kurs,
-                talaba_fish,
-                '',
-                '',
-                o.viloyat,
-                o.tuman,
-                o.kocha,
-                o.id,
-                o.id,
-                o.telefon,
-                '',
-                '',
-                '',
-                '',
-                '',
-                '',
-                o.imtiyoz_nomi,
-            ])
-            
-    else:
-        return redirect('/ariza/barcha_orderlar/')
-    
+        #decide file name
+        response['Content-Disposition'] = 'attachment; filename="arizalar.xls"'
 
-    return response
+        #creating workbook
+        wb = xlwt.Workbook(encoding='utf-8')
+
+        #adding sheet
+        ws = wb.add_sheet("sheet1")
+
+        # Sheet header, first row
+        row_num = 0
+
+        font_style = xlwt.XFStyle()
+        # headers are bold
+        font_style.font.bold = True
+
+        #column header names, you can use your own headers here
+        columns = [
+            'TTJ nomer',
+            'Qavat', 
+            'Xona',
+            'Jins',
+            'Xona holati',
+            'Fakultet',
+            'Yonalish',
+            'Kurs',
+            'Talaba FISH',
+            'Joylashtirilgan sana',  
+            'Tark etgan sana',
+            'Viloyat',
+            'Tuman',
+            'Ko`cha',
+            'Order raqami',
+            'Shartnoma raqami',
+            'Talaba telefon raqami', 
+            'Tolovi',
+            'Oylik tolov summasi',
+            'Tolov amalga oshirilgan sana',
+            'Tolovning tugash sanasi',
+            'Qarizdorlik',
+            'Qaytarilgan mablag`',
+            'Imtiyoz holati'                        
+        ]
+
+        #write column headers in sheet
+        for col_num in range(len(columns)):
+            ws.write(row_num, col_num, columns[col_num], font_style)
+
+        # Sheet body, remaining rows
+        font_style = xlwt.XFStyle()
+
+        #get your data, from database or from a text file...
+        orderlar  = Order.objects.filter(tasdiqlash='tasdiqlandi')
+        if orderlar:
+            for my_row in arizalar:  
+                talaba_fish = f'{my_row.familiya} {my_row.ism} {my_row.sharif}'              
+                row_num = row_num + 1
+                ws.write(row_num, 0, my_row.ttj_nomer, font_style)
+                ws.write(row_num, 1, my_row.qavat, font_style)
+                ws.write(row_num, 2, my_row.xona, font_style)
+                ws.write(row_num, 3, '', font_style)
+                ws.write(row_num, 4, '', font_style)
+                ws.write(row_num, 5, my_row.fakultet, font_style)
+                ws.write(row_num, 6, my_row.yonalish, font_style)
+                ws.write(row_num, 7, my_row.kurs, font_style)
+                ws.write(row_num, 8, talaba_fish, font_style)
+                ws.write(row_num, 9, '', font_style)
+                ws.write(row_num, 10, '', font_style)
+                ws.write(row_num, 11, my_row.viloyat, font_style)
+                ws.write(row_num, 12, my_row.tuman, font_style)
+                ws.write(row_num, 13, my_row.kocha, font_style)
+                ws.write(row_num, 14, my_row.id, font_style)
+                ws.write(row_num, 15, my_row.id, font_style)
+                ws.write(row_num, 16, my_row.telefon, font_style)
+                ws.write(row_num, 17, '', font_style)
+                ws.write(row_num, 18, '', font_style)
+                ws.write(row_num, 19, '', font_style)
+                ws.write(row_num, 20, '', font_style)
+                ws.write(row_num, 21, '', font_style)
+                ws.write(row_num, 22, '', font_style)
+                ws.write(row_num, 23, my_row.imtiyoz_nomi, font_style)    
+                
+
+            wb.save(response)
+            return response
+        else:
+            return redirect('/ariza/barcha_orderlar/')
+        
+
+
+@csrf_exempt
+def ariza_csv(request):        
+        # content-type of response
+        response = HttpResponse(content_type='application/ms-excel')
+
+        #decide file name
+        response['Content-Disposition'] = 'attachment; filename="arizalar.xls"'
+
+        #creating workbook
+        wb = xlwt.Workbook(encoding='utf-8')
+
+        #adding sheet
+        ws = wb.add_sheet("sheet1")
+
+        # Sheet header, first row
+        row_num = 0
+
+        font_style = xlwt.XFStyle()
+        # headers are bold
+        font_style.font.bold = True
+
+        #column header names, you can use your own headers here
+        columns = [
+            'Familya', 
+            'Ism', 
+            'Sharif', 
+            'Viloyat', 
+            'Tuman', 
+            'Ko`cha', 
+            'Fakultet', 
+            'Yonalish',
+            'Kurs',
+            'Paspor serya raqam',                               
+        ]
+
+        #write column headers in sheet
+        for col_num in range(len(columns)):
+            ws.write(row_num, col_num, columns[col_num], font_style)
+
+        # Sheet body, remaining rows
+        font_style = xlwt.XFStyle()
+
+        #get your data, from database or from a text file...
+        arizalar = Ariza.objects.filter(tasdiqlash='tasdiqlandi')
+        if arizalar:
+            for my_row in arizalar:                
+                row_num = row_num + 1
+                ws.write(row_num, 0, my_row.last_name, font_style)
+                ws.write(row_num, 1, my_row.first_name, font_style)
+                ws.write(row_num, 2, my_row.sharif, font_style)
+                ws.write(row_num, 3, my_row.viloyat, font_style)
+                ws.write(row_num, 4, my_row.tuman, font_style)
+                ws.write(row_num, 5, my_row.kocha, font_style)
+                ws.write(row_num, 6, my_row.fakultet, font_style)
+                ws.write(row_num, 7, my_row.yonalish, font_style)
+                ws.write(row_num, 8, my_row.kurs, font_style)
+                ws.write(row_num, 9, my_row.pasport_serya_raqam, font_style)
+                    
+
+            wb.save(response)
+            return response
+        else:
+            return redirect('/ariza/tasdiqlangan/')

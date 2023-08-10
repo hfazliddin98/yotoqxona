@@ -10,7 +10,7 @@ from .views import arizalar_jadvali, tasdiqlangan_imtiyozli_arizalar
 from .views import dekanat_barcha_arizalar, dekanat_tasdiqlangan_arizalar, dekanat_radetilgan_arizalar
 from .views import dekanat_barcha_malumot, dekanat_tasdiqlangan_malumot, dekanat_radetilgan_malumot
 from .views import barcha_orderlar, order_berish, order_csv
-from .views import dekanat_tasdiqlangan_ariza, dekanat_radetilgan_ariza
+from .views import dekanat_tasdiqlangan_ariza, dekanat_radetilgan_ariza, ariza_csv
 
 
 urlpatterns = [
@@ -37,6 +37,7 @@ urlpatterns = [
    path('ariza/', ariza, name='ariza'), 
    path('arizalar/', arizalar, name='arizalar'), 
    path('ariza_imtiyoz/', ariza_imtiyoz, name='ariza_imtiyoz'), 
+   path('ariza_csv/', ariza_csv, name='ariza_csv'),
    
    # tolvlar uchun
    path('talaba_tolov/', talaba_tolov, name='talaba_tolov'),
