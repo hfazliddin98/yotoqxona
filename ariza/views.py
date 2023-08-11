@@ -1547,7 +1547,7 @@ def order_csv(request):
         #get your data, from database or from a text file...
         orderlar  = Order.objects.filter(tasdiqlash='tasdiqlandi')
         if orderlar:
-            for my_row in arizalar:  
+            for my_row in orderlar:  
                 talaba_fish = f'{my_row.familiya} {my_row.ism} {my_row.sharif}'              
                 row_num = row_num + 1
                 ws.write(row_num, 0, my_row.ttj_nomer, font_style)
