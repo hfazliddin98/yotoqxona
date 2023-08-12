@@ -1577,30 +1577,29 @@ def order_berish(request, pk):
 def barcha_orderlar(request):
     arizalar = Ariza.objects.filter(tasdiqlash='tasdiqlandi') 
     rad = Ariza.objects.filter(tasdiqlash='radetildi')
-    orderlar = Order.objects.filter(tasdiqlash='')   
+    orderlar = Order.objects.filter(tasdiqlash='') 
+    if rad:
+        for r in rad:
+            data = Order.objects.filter(talaba_id=r.talaba_id)
+            data.delete()
+            print('malumot o`cirildai')  
     if arizalar:        
         for a in arizalar:
             manzil = f'{a.viloyat} {a.tuman}'
             order = Order.objects.filter(talaba_id=a.talaba_id)
-            if order:                                 
-                if rad:
-                    for r in rad:
-                        data = Order.objects.filter(talaba_id=r.talaba_id)
-                        data.delete()
-                        print('malumot o`cirildai')
-                else:
-                        data = get_object_or_404(Order, talaba_id=a.talaba_id)
-                        data.familiya=a.last_name
-                        data.ism=a.first_name
-                        data.sharif=a.sharif
-                        data.fakultet=a.fakultet
-                        data.yonalish=a.yonalish
-                        data.kurs=a.kurs
-                        data.manzil=manzil
-                        data.viloyat=a.viloyat
-                        data.tuman=a.tuman
-                        data.kocha=a.kocha
-                        print('update')                
+            if order:        
+                data = get_object_or_404(Order, talaba_id=a.talaba_id)
+                data.familiya=a.last_name
+                data.ism=a.first_name
+                data.sharif=a.sharif
+                data.fakultet=a.fakultet
+                data.yonalish=a.yonalish
+                data.kurs=a.kurs
+                data.manzil=manzil
+                data.viloyat=a.viloyat
+                data.tuman=a.tuman
+                data.kocha=a.kocha
+                print('update')                
                            
             else:
                 data = Order.objects.create(
