@@ -16,7 +16,9 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="{% static '/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -45,7 +47,8 @@
 
         <li class="nav-item dropdown pe-3">
 
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="{% url 'home' %}" data-bs-toggle="dropdown">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="{% url 'home' %}"
+            data-bs-toggle="dropdown">
             <img src="{% static '/assets/img/profile-img.jpg' %}" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{user.last_name}} {{user.first_name}}</span>
           </a><!-- End Profile Iamge Icon -->
@@ -74,7 +77,7 @@
 
   </header><!-- End Header -->
 
-   <!-- ======= Sidebar ======= -->
+  <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -106,7 +109,7 @@
           <span>Barcha arizalar</span>
         </a>
       </li>
-      
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'tasdiqlangan' %}">
           <i class="bi bi-person-check-fill"></i>
@@ -167,187 +170,211 @@
 
   </aside>
   <!-- End Sidebar-->
-    
-    <main id="main" class="main">
-        
-        <div class="pagetitle">
-            <h1>Asosiy</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Asosiy</a></li>
-                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Barcha arizalar</a></li>
-                    <li class="breadcrumb-item active"><a href="{% url 'home' %}">Talaba haqida</a></li>
-                </ol>
-            </nav>
-        </div><!-- End Page Title -->
-        
-        <section class="section dashboard">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="py-3 text-center">Talaba ma'lumotlari</h3>
-                            {% for t in talabalar %}
-                                {% for a in arizalar %}
-                                {% for i in tolovlar %}
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="card mb-4">
-                                            <div class="card-body pt-3">
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Familiya</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{t.last_name}}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Ism</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{t.first_name}}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Otasining ismi</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{t.sharif}}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Telefon raqam</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{t.username}}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>                                            
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Passport seriya va raqami</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.pasport_serya_raqam}}</p>
-                                                    </div>
-                                                </div>                                                                                         
-                                                                                         
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="card mb-4">
-                                            <div class="card-body pt-3">
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Fakultet</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.fakultet}}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Yo'nalish</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.yonalish}}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Kurs</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.kurs}}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Viloyat</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.viloyat}}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Tuman</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.tuman}}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <p class="mb-0">Ko'cha</p>
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <p class="text-muted mb-0">{{a.kocha}}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>                                
-                                </div>
-                                <div class="row g-3">
-                                    <div class="passport-info col-lg-6">
-                                        <h4>To`lov haqida malumot</h4>
-                                        <p><strong>Talaba qilgan tolov narxi: </strong>{{i.narhi}} so`m</p>
-                                    </div> 
-                                    <div class="passport-info col-lg-6">
-                                      <h4>Tolov kivtansiyasi</h4>
-                                      <img class="w-100" src="{{i.kivtansiya.url}}">
-                                  </div>                                   
-                                </div>
-                                <div class="col-12 pt-5 text-center">
-                                  <a class="btn btn-success" href="{% url 'tolov_tasdiqlash' i.talaba_id %}">Tasdiqlash</a>
-                                  <a class="btn btn-danger mx-4" href="{% url 'tolov_radetish' i.talaba_id %}">Rad etish</a>
-                                </div>  
-                                                      
-                                {% endfor %}
-                                {% endfor %}
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-    </main><!-- End #main -->
-    
-    <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
-        <div class="copyright">
-            &copy; <strong><span>QDPI IT-Park</span></strong>.
-        </div>
-        <div class="credits">
-            Designed by Nurmamatov Nodirbek
-        </div>
-    </footer><!-- End Footer -->
-    
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-    
-    <!-- Vendor JS Files -->
-    <script src="{% static '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static '/assets/vendor/simple-datatables/simple-datatables.js' %}"></script>
-    <script src="{% static '/assets/vendor/tinymce/tinymce.min.js' %}"></script>
 
-    <!-- Template Main JS File -->
-    <script src="{% static '/assets/js/main.js' %}"></script>
-    
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Asosiy</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Asosiy</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Barcha arizalar</a></li>
+          <li class="breadcrumb-item active"><a href="{% url 'home' %}">Talaba haqida</a></li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="py-3 text-center">Talaba ma'lumotlari</h3>
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="card mb-4">
+                    <div class="card-body pt-3">
+                      <div class="row">
+                        <div class="col-sm-5">
+                          <p class="mb-0">Familiya</p>
+                        </div>
+                        <div class="col-sm-7">
+                          <p class="text-muted mb-0">{{last_name}}</p>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-5">
+                          <p class="mb-0">Ism</p>
+                        </div>
+                        <div class="col-sm-7">
+                          <p class="text-muted mb-0">{{first_name}}</p>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-5">
+                          <p class="mb-0">Otasining ismi</p>
+                        </div>
+                        <div class="col-sm-7">
+                          <p class="text-muted mb-0">{{sharif}}</p>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-5">
+                          <p class="mb-0">Telefon raqam</p>
+                        </div>
+                        <div class="col-sm-7">
+                          <p class="text-muted mb-0">{{telefon}}</p>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-5">
+                          <p class="mb-0">Passport seriya va raqami</p>
+                        </div>
+                        <div class="col-sm-7">
+                          <p class="text-muted mb-0">{{pasport_serya_raqam}}</p>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="card mb-4">
+                    <div class="card-body pt-3">
+                      <div class="row">
+                        <div class="col-sm-5">
+                          <p class="mb-0">Fakultet</p>
+                        </div>
+                        <div class="col-sm-7">
+                          <p class="text-muted mb-0">{{fakultet}}</p>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-5">
+                          <p class="mb-0">Yo'nalish</p>
+                        </div>
+                        <div class="col-sm-7">
+                          <p class="text-muted mb-0">{{yonalish}}</p>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-5">
+                          <p class="mb-0">Kurs</p>
+                        </div>
+                        <div class="col-sm-7">
+                          <p class="text-muted mb-0">{{kurs}}</p>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-5">
+                          <p class="mb-0">Viloyat</p>
+                        </div>
+                        <div class="col-sm-7">
+                          <p class="text-muted mb-0">{{viloyat}}</p>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-5">
+                          <p class="mb-0">Tuman</p>
+                        </div>
+                        <div class="col-sm-7">
+                          <p class="text-muted mb-0">{{tuman}}</p>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="container">
+                <div class="row">
+                  <h1 class="text-center">To`lov tarixi</h1>
+                </div>
+                <div class="row" style="justify-content: center;">
+                  {% for t in tarixlar %}
+                  <div class="col-md-3 my-2"><strong>To`lov narxi: </strong>{{t.narhi}} so`m</div>
+                  <div class="col-md-3 my-2"><strong>Sana: </strong>{{t.sana}}</div>
+                  <div class="col-md-3 my-2"><strong>Xolati: </strong>{{t.tasdiqlash}}</div>
+                  <div class="col-md-3 my-2">
+                    <strong>Kivtansiya rasmi: </strong>
+                    <a class="btn btn-outline-primary py-0" href="{{t.kivtansiya.url}}" download>
+                      Yuklash
+                    </a>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <div class="row">
+                <h1 class="text-center">Hozirgi to`lov malumoti</h1>
+              </div>
+
+              <div class="row g-3">
+                <div class="passport-info col-lg-6">
+
+                  <div class="container">
+                    <div class="row">
+                      To`lov haqida malumot
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6"><strong>Talaba qilgan tolov narxi: </strong></div>
+                      <div class="col-md-6">{{narhi}} so`m</div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="passport-info col-lg-6">
+                  <h4>Tolov kivtansiyasi</h4>
+                  <img class="w-100 img-fluid" src="{{kivtansiya.url}}">
+                </div>
+              </div>
+
+              {% for i in data_tolov %}
+              <div class="col-12 pt-5 text-center">
+                <a class="btn btn-success" href="{% url 'tolov_tasdiqlash' i.pk %}">Tasdiqlash</a>
+                <a class="btn btn-danger mx-4" href="{% url 'tolov_radetish' i.pk %}">Rad etish</a>
+              </div>
+              {% endfor %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; <strong><span>QDPI IT-Park</span></strong>.
+    </div>
+    <div class="credits">
+      Designed by Nurmamatov Nodirbek
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static '/assets/vendor/simple-datatables/simple-datatables.js' %}"></script>
+  <script src="{% static '/assets/vendor/tinymce/tinymce.min.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static '/assets/js/main.js' %}"></script>
+
 </body>
 
 </html>

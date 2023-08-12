@@ -195,8 +195,8 @@
                 <thead>
                   <tr>
                     <th scope="col">№</th>
-                    <th scope="col">Ism</th>
                     <th scope="col">Familiya</th>
+                    <th scope="col">Ism</th>                    
                     <th scope="col">Sharif</th>
                     <th scope="col">Fakultet</th>                   
                     <th></th>
@@ -207,8 +207,8 @@
                     {% for d in data %} 
                     <tr>
                       <th scope="row">{{d.id}}</th>
-                      <td>{{d.first_name}}</td>
                       <td>{{d.last_name}}</td>
+                      <td>{{d.first_name}}</td>                      
                       <td>{{d.sharif}}</td>
                       <td>{{d.fakultet}}</td>                     
                       <td><a class="btn btn-primary" href="{% url 'radetilgan_malumotlar' d.talaba_id %}">Ko'rish</a></td>

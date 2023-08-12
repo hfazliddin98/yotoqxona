@@ -197,7 +197,8 @@
                     <th scope="col">№</th>
                     <th scope="col">Familiya</th>
                     <th scope="col">Ism</th>
-                    <th scope="col">Sharif</th>                                       
+                    <th scope="col">Sharif</th> 
+                    <th scope="col">Fakultet</th>                                      
                     <th></th>
                   </tr>
                 </thead>                              
@@ -208,8 +209,8 @@
                     <th scope="row">{{a.id}}</th>
                     <td>{{a.last_name}}</td>
                     <td>{{a.first_name}}</td>                                        
-                    <td>{{a.sharif}}</td>                 
-                    
+                    <td>{{a.sharif}}</td>
+                    <td>{{a.fakultet}}</td>                   
                     <td><a class="btn btn-primary" href="{% url 'arizalar_jadvali' a.talaba_id %}">Ko'rish</a></td>
                     
                   </tr>

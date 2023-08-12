@@ -143,7 +143,7 @@ def tolovlar(request, pk):
     if data:
         tolangan = 0
         for d in data:
-            tolangan += d.narhi
+            tolangan += int(d.narhi)
     else:
         tolangan = 0
     
@@ -844,28 +844,156 @@ def tark_etgan_malumotlar(request, pk):
 # talaba tolovlari haqida malumot dekanat uchun
 @csrf_exempt
 def talaba_tolov_malumotlar(request, pk):
-    talabalar = User.objects.filter(id=pk)
-    arizalar = Ariza.objects.filter(talaba_id=pk)
-    tolovlar = Tolov.objects.filter(talaba_id=pk)
+    data_tolov = Tolov.objects.filter(id=pk)
+    data = Tolov.objects.filter(id=pk)
+    if data:
+        for d in  data:
+            talabalar = User.objects.filter(id=d.talaba_id)
+            arizalar = Ariza.objects.filter(talaba_id=d.talaba_id)
+            tarixlar = Tolov.objects.filter(talaba_id=d.talaba_id).filter(tasdiqlash='tasdiqlandi')
+            narhi = d.narhi
+            kivtansiya = d.kivtansiya             
+            if tarixlar:
+                for x in tarixlar:
+                    narhi_t = x.narhi
+                    kivtansiya_t = x.kivtansiya 
+                    tasdiqlash = x.tasdiqlash
+                    sana = x.sana
+            else:
+                narhi_t = ''
+                kivtansiya_t = ''
+                tasdiqlash = ''
+                sana = ''
+            if talabalar:
+                for t in talabalar:
+                    last_name = t.last_name
+                    first_name = t.first_name
+                    sharif = t.sharif
+                    telefon = t.username
+            else:
+                last_name = ''
+                first_name = ''
+                sharif = ''
+                telefon = ''            
+            if arizalar:
+                for a in arizalar:
+                    pasport_serya_raqam = a.pasport_serya_raqam
+                    fakultet = a.fakultet
+                    yonalish = a.yonalish
+                    kurs = a.kurs
+                    viloyat = a.viloyat
+                    tuman = a.tuman
+                    kocha = a.kocha
+            else:
+                pasport_serya_raqam = ''
+                fakultet = ''
+                yonalish = ''
+                kurs = ''
+                viloyat = ''
+                tuman = ''
+                kocha = ''
+  
+        
+
     
     contex = {
-        'talabalar':talabalar,
-        'arizalar':arizalar,
-        'tolovlar':tolovlar,
+        'data_tolov':data_tolov,
+        'last_name':last_name,
+        'first_name':first_name,
+        'sharif':sharif,
+        'telefon':telefon,
+        'pasport_serya_raqam':pasport_serya_raqam,
+        'fakultet':fakultet,
+        'yonalish':yonalish,
+        'kurs':kurs,
+        'viloyat':viloyat,
+        'tuman':tuman,
+        'kocha':kocha,
+        'narhi_t':narhi_t,
+        'kivtansiya_t':kivtansiya_t,
+        'tasdiqlash':tasdiqlash,
+        'narhi':narhi,
+        'kivtansiya':kivtansiya,
+        'sana':sana,
+        'tarixlar':tarixlar
     }
     return render(request, 'dekanatadmin/talaba_tolov_malumot.html', contex)
 
 
 @csrf_exempt
 def radetilgan_tolov_malumotlar(request, pk):
-    talabalar = User.objects.filter(id=pk)
-    arizalar = Ariza.objects.filter(talaba_id=pk)
-    tolovlar = Tolov.objects.filter(talaba_id=pk)
+    data_tolov = Tolov.objects.filter(id=pk)
+    data = Tolov.objects.filter(id=pk)
+    if data:
+        for d in  data:
+            talabalar = User.objects.filter(id=d.talaba_id)
+            arizalar = Ariza.objects.filter(talaba_id=d.talaba_id)
+            tarixlar = Tolov.objects.filter(talaba_id=d.talaba_id).filter(tasdiqlash='tasdiqlandi')
+            narhi = d.narhi
+            kivtansiya = d.kivtansiya             
+            if tarixlar:
+                for x in tarixlar:
+                    narhi_t = x.narhi
+                    kivtansiya_t = x.kivtansiya 
+                    tasdiqlash = x.tasdiqlash
+                    sana = x.sana
+            else:
+                narhi_t = ''
+                kivtansiya_t = ''
+                tasdiqlash = ''
+                sana = ''
+            if talabalar:
+                for t in talabalar:
+                    last_name = t.last_name
+                    first_name = t.first_name
+                    sharif = t.sharif
+                    telefon = t.username
+            else:
+                last_name = ''
+                first_name = ''
+                sharif = ''
+                telefon = ''            
+            if arizalar:
+                for a in arizalar:
+                    pasport_serya_raqam = a.pasport_serya_raqam
+                    fakultet = a.fakultet
+                    yonalish = a.yonalish
+                    kurs = a.kurs
+                    viloyat = a.viloyat
+                    tuman = a.tuman
+                    kocha = a.kocha
+            else:
+                pasport_serya_raqam = ''
+                fakultet = ''
+                yonalish = ''
+                kurs = ''
+                viloyat = ''
+                tuman = ''
+                kocha = ''
+  
+        
+
     
     contex = {
-        'talabalar':talabalar,
-        'arizalar':arizalar,
-        'tolovlar':tolovlar,
+        'data_tolov':data_tolov,
+        'last_name':last_name,
+        'first_name':first_name,
+        'sharif':sharif,
+        'telefon':telefon,
+        'pasport_serya_raqam':pasport_serya_raqam,
+        'fakultet':fakultet,
+        'yonalish':yonalish,
+        'kurs':kurs,
+        'viloyat':viloyat,
+        'tuman':tuman,
+        'kocha':kocha,
+        'narhi_t':narhi_t,
+        'kivtansiya_t':kivtansiya_t,
+        'tasdiqlash':tasdiqlash,
+        'narhi':narhi,
+        'kivtansiya':kivtansiya,
+        'sana':sana,
+        'tarixlar':tarixlar
     }
     return render(request, 'dekanatadmin/radetilgan_tolov_malumotlar.html', contex)
 
@@ -899,9 +1027,8 @@ def talaba_tolov(request):
 
 
 @csrf_exempt
-def tolov_tasdiqlash(request, pk):
-             
-    data = get_object_or_404(Tolov, talaba_id=pk)                     
+def tolov_tasdiqlash(request, pk):             
+    data = get_object_or_404(Tolov, id=pk)                     
     data.tasdiqlash = 'tasdiqlandi'       
     data.save()
     
@@ -909,8 +1036,8 @@ def tolov_tasdiqlash(request, pk):
 
 
 @csrf_exempt
-def tolov_radetish(request, pk):             
-    data = get_object_or_404(Tolov, talaba_id=pk)                     
+def tolov_radetish(request, pk):
+    data = get_object_or_404(Tolov, id=pk)                     
     data.tasdiqlash = 'radetildi'       
     data.save()
     return redirect('/ariza/barcha_tolovlar/')
@@ -1365,8 +1492,9 @@ def order(request, pk):
 def order_berish(request, pk):
     order_id = Order.objects.filter(talaba_id=pk)
     talabalar = User.objects.filter(id=pk)
-    arizalar = Ariza.objects.filter(talaba_id=pk)
-    imtiyoz = Imtiyoz.objects.filter(talaba_id=pk)
+    arizalar = Ariza.objects.filter(talaba_id=pk).filter(tasdiqlash='tasdiqlandi')
+    imtiyoz = Imtiyoz.objects.filter(talaba_id=pk).filter(tasdiqlash='tasdiqlandi')
+    tarixlar = Tolov.objects.filter(talaba_id=pk).filter(tasdiqlash='tasdiqlandi')
     if talabalar:
         for t in talabalar:
             telefon = t.username
@@ -1441,30 +1569,39 @@ def order_berish(request, pk):
         'talabalar':talabalar,'arizalar':arizalar,'imtiyoz':imtiyoz,'rasm_url':rasm_url,
         'imtiyoz_url':imtiyoz_url,'familya':familya,'ism':ism,'sharif':sharif,'telefon':telefon,
         'pasport':pasport,'imtiyoz_turi':imtiyoz_turi,'fakultet':fakultet,'yonalish':yonalish,
-        'kurs':kurs,'viloyat':viloyat,'tuman':tuman,'kocha':kocha,
+        'kurs':kurs,'viloyat':viloyat,'tuman':tuman,'kocha':kocha, 'tarixlar':tarixlar
     }
     return render(request, 'superadmin/order_berish.html', contex)
 
 
 def barcha_orderlar(request):
     arizalar = Ariza.objects.filter(tasdiqlash='tasdiqlandi') 
+    rad = Ariza.objects.filter(tasdiqlash='radetildi')
     orderlar = Order.objects.filter(tasdiqlash='')   
     if arizalar:        
         for a in arizalar:
             manzil = f'{a.viloyat} {a.tuman}'
-            if Order.objects.filter(talaba_id=a.talaba_id):
-                data = get_object_or_404(Order, talaba_id=a.talaba_id)
-                data.familiya=a.last_name
-                data.ism=a.first_name
-                data.sharif=a.sharif
-                data.fakultet=a.fakultet
-                data.yonalish=a.yonalish
-                data.kurs=a.kurs
-                data.manzil=manzil
-                data.viloyat=a.viloyat
-                data.tuman=a.tuman
-                data.kocha=a.kocha                
-                print('update qilinyapti')            
+            order = Order.objects.filter(talaba_id=a.talaba_id)
+            if order:                                 
+                if rad:
+                    for r in rad:
+                        data = Order.objects.filter(talaba_id=r.talaba_id)
+                        data.delete()
+                        print('malumot o`cirildai')
+                else:
+                        data = get_object_or_404(Order, talaba_id=a.talaba_id)
+                        data.familiya=a.last_name
+                        data.ism=a.first_name
+                        data.sharif=a.sharif
+                        data.fakultet=a.fakultet
+                        data.yonalish=a.yonalish
+                        data.kurs=a.kurs
+                        data.manzil=manzil
+                        data.viloyat=a.viloyat
+                        data.tuman=a.tuman
+                        data.kocha=a.kocha
+                        print('update')                
+                           
             else:
                 data = Order.objects.create(
                     talaba_id=a.talaba_id,familiya=a.last_name,ism=a.first_name,
@@ -1473,7 +1610,8 @@ def barcha_orderlar(request):
                     kocha=a.kocha
                 )
                 data.save()
-                print('yangi qo`shildi') 
+                print('create')
+                
                 
     else:
         arizalar = '' 
@@ -1646,3 +1784,59 @@ def ariza_csv(request):
             return response
         else:
             return redirect('/ariza/tasdiqlangan/')
+        
+
+@csrf_exempt
+def tolov_csv(request):        
+        # content-type of response
+        response = HttpResponse(content_type='application/ms-excel')
+
+        #decide file name
+        response['Content-Disposition'] = 'attachment; filename="tolovlar.xls"'
+
+        #creating workbook
+        wb = xlwt.Workbook(encoding='utf-8')
+
+        #adding sheet
+        ws = wb.add_sheet("sheet1")
+
+        # Sheet header, first row
+        row_num = 0
+
+        font_style = xlwt.XFStyle()
+        # headers are bold
+        font_style.font.bold = True
+
+        #column header names, you can use your own headers here
+        columns = [
+            'Familya', 
+            'Ism', 
+            'Sharif', 
+            'Narhi', 
+            'Sana',                                          
+        ]
+
+        #write column headers in sheet
+        for col_num in range(len(columns)):
+            ws.write(row_num, col_num, columns[col_num], font_style)
+
+        # Sheet body, remaining rows
+        font_style = xlwt.XFStyle()
+
+        #get your data, from database or from a text file...
+        tolovlar = Tolov.objects.filter(tasdiqlash='tasdiqlandi')
+        if tolovlar:
+            for my_row in tolovlar:                
+                row_num = row_num + 1
+                vaqt = f'{my_row.sana}'
+                ws.write(row_num, 0, my_row.last_name, font_style)
+                ws.write(row_num, 1, my_row.first_name, font_style)
+                ws.write(row_num, 2, my_row.sharif, font_style)
+                ws.write(row_num, 3, my_row.narhi, font_style)
+                ws.write(row_num, 4, vaqt[:16], font_style)
+                                    
+
+            wb.save(response)
+            return response
+        else:
+            return redirect('/ariza/tasdiqlangan_tolov/')

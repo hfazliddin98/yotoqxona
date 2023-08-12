@@ -310,48 +310,73 @@
               </div>
               <!-- malumotlar tugashi -->
               
+              <div class="container">
+                <div class="row">
+                  <h1 class="text-center">To`lov tarixi</h1>
+                </div>
+                <div class="row" style="justify-content: center;">
+                  {% for t in tarixlar %}
+                  <div class="col-md-3 my-2"><strong>To`lov narxi </strong>{{t.narhi}} so`m</div>
+                  <div class="col-md-3 my-2"><strong>Sana: </strong>{{t.sana}}</div>
+                  <div class="col-md-3 my-2"><strong>Xolati: </strong>{{t.tasdiqlash}}</div>
+                  <div class="col-md-3 my-2">
+                    <strong>Kivtansiya rasmi: </strong>
+                    <a class="btn btn-outline-primary py-0" href="{{t.kivtansiya.url}}" download>
+                      Yuklash
+                    </a>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
               
-              <!-- Table with stripped rows -->
-              <form method="POST" class="row g-3 needs-validation" novalidate>
-                {% csrf_token %} 
-                <div class="col-md-12">
-                  <label for="" class="form-label">Talabalar turar joyini manzilini kiriting</label>
-                  <select name="ttj_manzil" class="form-select" aria-label="Default select example">
-                    <option selected disabled>Turar joy manzili</option>
-                    <option value="Turon ko'chasi 23-uy">1-yotoqxona Turon ko'chasi 23-uy</option>
-                    <option value="Turon ko'chasi 23-uy">2-yotoqxona Turon ko'chasi 23-uy</option>
-                    <option value="Darxon ko'chasi 18 uy">3-yotoqxona Darxon ko'chasi 18 uy</option>
-                    <option value="Yangi dexqon ko'chasi 23 uy">4-yotoqxona Yangi dexqon ko'chasi 23 uy</option>
-                    <option value="Movaraunnaxr ko`chasi 47-uy">5-yotoqxona Movaraunnaxr ko`chasi 47-uy</option>                   
-                  </select>
+              <div class="container">
+                <div class="row mt-5">
+                  <h1 class="text-center mb-0">Talabalar turar joyini manzili</h1>
                 </div>
-                <div class="col-md-4">
-                  <label for="oylik" class="form-label">TTJ nomer</label>
-                  <input name="ttj_nomer" type="text" class="form-control" id="oylik" placeholder="TTJ nomer" required>
-                  <div class="invalid-feedback">
-                    TTJ nomerni kiriting.!
-                  </div>
-                </div>                        
-                <div class="col-md-4">
-                  <label for="boshlangich" class="form-label">Qavat</label>
-                  <input name="qavat" type="text" class="form-control" id="boshlangich" placeholder="Qavat" required>
-                  <div class="invalid-feedback">
-                    Qavatni kiriting.!
-                  </div>
+                <div class="row">
+                  <!-- Table with stripped rows -->
+                  <form method="POST" class="row g-3 needs-validation" novalidate>
+                    {% csrf_token %} 
+                    <div class="col-md-12">                      
+                      <select name="ttj_manzil" class="form-select" aria-label="Default select example">
+                        <option selected disabled>Turar joy manzili</option>
+                        <option value="Turon ko'chasi 23-uy">1-yotoqxona Turon ko'chasi 23-uy</option>
+                        <option value="Turon ko'chasi 23-uy">2-yotoqxona Turon ko'chasi 23-uy</option>
+                        <option value="Darxon ko'chasi 18 uy">3-yotoqxona Darxon ko'chasi 18 uy</option>
+                        <option value="Yangi dexqon ko'chasi 23 uy">4-yotoqxona Yangi dexqon ko'chasi 23 uy</option>
+                        <option value="Movaraunnaxr ko`chasi 47-uy">5-yotoqxona Movaraunnaxr ko`chasi 47-uy</option>                   
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="oylik" class="form-label">TTJ nomer</label>
+                      <input name="ttj_nomer" type="text" class="form-control" id="oylik" placeholder="TTJ nomer" required>
+                      <div class="invalid-feedback">
+                        TTJ nomerni kiriting.!
+                      </div>
+                    </div>                        
+                    <div class="col-md-4">
+                      <label for="boshlangich" class="form-label">Qavat</label>
+                      <input name="qavat" type="text" class="form-control" id="boshlangich" placeholder="Qavat" required>
+                      <div class="invalid-feedback">
+                        Qavatni kiriting.!
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="oylik" class="form-label">Xona</label>
+                      <input name="xona" type="text" class="form-control" id="oylik" placeholder="Xona" required>
+                      <div class="invalid-feedback">
+                        Xonani kiriting.!
+                      </div>
+                    </div>                             
+                    
+                    
+                    <div class="col-12 text-center">
+                      <button class="btn btn-primary" type="submit">Saqlash</button>
+                    </div>
+                  </form>
                 </div>
-                <div class="col-md-4">
-                  <label for="oylik" class="form-label">Xona</label>
-                  <input name="xona" type="text" class="form-control" id="oylik" placeholder="Xona" required>
-                  <div class="invalid-feedback">
-                    Xonani kiriting.!
-                  </div>
-                </div>                             
-                
-                
-                <div class="col-12 text-center">
-                  <button class="btn btn-primary" type="submit">Saqlash</button>
-                </div>
-              </form>
+              </div>
+              
               
             </div>
           </div>
