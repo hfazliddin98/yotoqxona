@@ -1581,8 +1581,7 @@ def barcha_orderlar(request):
     if rad:
         for r in rad:
             data = Order.objects.filter(talaba_id=r.talaba_id)
-            data.delete()
-            print('malumot o`cirildai')  
+            data.delete()             
     if arizalar:        
         for a in arizalar:
             manzil = f'{a.viloyat} {a.tuman}'
@@ -1598,8 +1597,7 @@ def barcha_orderlar(request):
                 data.manzil=manzil
                 data.viloyat=a.viloyat
                 data.tuman=a.tuman
-                data.kocha=a.kocha
-                print('update')                
+                data.kocha=a.kocha                               
                            
             else:
                 data = Order.objects.create(
@@ -1608,8 +1606,7 @@ def barcha_orderlar(request):
                     kurs=a.kurs,manzil=manzil,viloyat=a.viloyat,tuman=a.tuman,
                     kocha=a.kocha
                 )
-                data.save()
-                print('create')
+                data.save()               
                 
                 
     else:
