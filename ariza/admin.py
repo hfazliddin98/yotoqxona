@@ -31,8 +31,10 @@ admin.site.register(Barcha_tolov, Barcha_tolovAdmin)
 
 class ImtiyozAdmin(admin.ModelAdmin):
     list_display= [
-        'id'
+        'id',
+        'talaba_id'
     ]
+    search_fields = ['id', 'talaba_id']
 admin.site.register(Imtiyoz, ImtiyozAdmin)
 
 

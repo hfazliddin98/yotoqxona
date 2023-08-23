@@ -64,16 +64,16 @@
                 {% csrf_token %}                
                 <div class="mb-3">
                     <label for="village" class="form-label">To`lov summasi</label>
-                    <input name="narhi" type="text" id="village"  class="form-control" placeholder="To`lov summasini kiriting" required>
+                    <input name="narhi" type="text" id="village"  class="form-control" minlength="4" maxlength="7" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="To`lov summasini kiriting" required>
                     <div class="invalid-feedback">
-                        Ko'changizni kiriting.!
+                        To`lov summasini kiriting
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Kvitansiya rasmini yuklang</label>
-                    <input name="kivtansiya" class="form-control" type="file" id="formFile">
+                    <input name="kivtansiya" class="form-control" type="file" accept=".jpg,.jpeg,.png" id="formFile">
                     <div class="invalid-feedback">
-                        Ko'changizni kiriting.!
+                        To`lov summasi rasmini kiriting
                     </div>
                 </div>
                 <button class="btn btn-primary" type="submit">Yuborish</button>
