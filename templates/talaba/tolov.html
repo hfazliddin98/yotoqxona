@@ -64,7 +64,7 @@
                 {% csrf_token %}                
                 <div class="mb-3">
                     <label for="village" class="form-label">To`lov summasi</label>
-                    <input name="narhi" type="text" id="village"  class="form-control" minlength="4" maxlength="7" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="To`lov summasini kiriting" required>
+                    <input name="narhi" type="text" id="village" pattern="[0-9]*" class="form-control" minlength="4" maxlength="7" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="To`lov summasini kiriting" required>
                     <div class="invalid-feedback">
                         To`lov summasini kiriting
                     </div>
