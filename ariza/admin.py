@@ -14,6 +14,7 @@ class TolovAdmin(admin.ModelAdmin):
     list_display= [
         'id','talaba_id','narhi', 'tasdiqlash'
     ]
+    search_fields = ['id', 'talaba_id']
 admin.site.register(Tolov, TolovAdmin)
 
 class Tark_etganAdmin(admin.ModelAdmin):

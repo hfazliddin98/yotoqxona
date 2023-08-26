@@ -1005,24 +1005,31 @@ def talaba_tolov(request):
     first_name = request.user.first_name
     last_name = request.user.last_name
     sharif = request.user.sharif  
-    if request.method == 'POST':        
-        narhi = request.POST['narhi']
-        kivtansiya = request.FILES['kivtansiya']
-        
-        if narhi == '':
-            return redirect('/ariza/talaba_tolov/')
-        else:        
-            tolov = Tolov.objects.create(
-                talaba_id=talaba_id, first_name=first_name,
-                last_name=last_name, sharif=sharif,
-                narhi = narhi, kivtansiya = kivtansiya
-            )
-            tolov.save()
-            return redirect('/')
+
+    xabar = ''
+    try:
+        if request.method == 'POST':        
+            narhi = request.POST['narhi']
+            kivtansiya = request.FILES['kivtansiya']
+            
+            if Tolov.objects.filter(talaba_id=talaba_id).filter(tasdiqlash=''):
+                return HttpResponse("Siz to`lov qilgansiz tolov tekshirilishini kuting!!!")
+                # return redirect('/ariza/talaba_tolov/')
+            else:        
+                tolov = Tolov.objects.create(
+                    talaba_id=talaba_id, first_name=first_name,
+                    last_name=last_name, sharif=sharif,
+                    narhi = narhi, kivtansiya = kivtansiya
+                )
+                tolov.save()
+                return HttpResponse('Tolovingiz muafaqiyatli yuborildi tasdiqlashini kuting!!')
+                # return redirect('/ariza/talaba_tolov/')
+    except:
+        return HttpResponse('Siz kerakli malumotlarni to`g`ri to`ldirmadingiz qaytaqdan harakat qilib koring')
     
     contex = {
-        
-    }
+
+    }  
     return render(request, 'talaba/tolov.html', contex)
 
 
